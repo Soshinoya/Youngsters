@@ -1,0 +1,34 @@
+// @use '../../base/variables';
+// @use '../../utils/mixins';
+
+// .button {
+//     width: max-content;
+//     border: none;
+//     border-radius: 5px;
+//     background-color: variables.$primary;
+//     color: variables.$neutral-500;
+//     cursor: pointer;
+//     z-index: 0;
+
+//     &.button-small {
+//         @include mixins.button-size(null, 5px 10px);
+//     }
+
+//     &.button-medium {
+//         @include mixins.button-size(null, 10px 15px);
+//     }
+
+//     &.button-large {
+//         @include mixins.button-size(18px, 10px 20px);
+//     }
+
+//     @include mixins.disabled {
+//         color: #fff;
+//         background-color: #ccc;
+//         cursor: default;
+//     }
+
+//     @include mixins.outline-on-focus;
+
+//     @include mixins.buttonHover(variables.$primary)
+// }

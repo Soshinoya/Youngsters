@@ -1,0 +1,107 @@
+@mixin image-default($height: 100%, $width: 100%, $objfit: cover) {
+    height: $height;
+    width: $width;
+    object-fit: $objfit;
+};
+
+// =============//
+// Font setting //
+// =============//
+@mixin font($size: null, $lh: null, $color: null) {
+    font-size: $size;
+    line-height: $lh;
+    color: $color;
+    
+    & {
+        @content;
+    }
+};
+
+// ================ //
+// Background image //
+// ================ //
+@mixin bg-img($width: null, $height: null, $url: null, $repeat: null, $size: null, $position: null) {
+    width: $width;
+    height: $height;
+    background: {
+        image: url($url);
+        repeat: $repeat;
+        size: $size;
+        position: $position;
+    }
+};
+
+// ============================== //
+// After & Before pseudo elements //
+// ============================== //
+@mixin pseudo-elem($location: before, $content: "", $position: relative, $top: null, $right: null, $bottom: null, $left: null) {
+    &:#{$location} {
+        content: $content;
+        position: $position;
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
+        @content;
+    }
+};
+
+// ============================== //
+// Adds a placeholder to an input //
+// ============================== //
+@mixin input-placeholder {
+    &::placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+
+    &::-webkit-input-placeholder {
+        @content;
+    }
+};
+
+@mixin outline-on-focus($color: variables.$primary) {
+    @include not-disabled {
+        &:focus-visible {
+            outline: 0;
+            box-shadow: 0 0 0 .3rem rgba($color, .4);
+            @content;
+        }
+    }
+};
+
+@mixin not-disabled {
+    &:not(:disabled) {
+        @content;
+    }
+};
+
+@mixin disabled {
+    &:disabled {
+        @content;
+    }
+};
+
+@mixin hover {
+    @include not-disabled {
+        &:hover {
+            @content;
+        }
+    }
+};
+
+@mixin button-size($font-size, $padding) {
+    font-size: $font-size;
+    padding: $padding;
+};
