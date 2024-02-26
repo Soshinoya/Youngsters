@@ -4,8 +4,10 @@ $color-third: #A0061F;
 $color-fourth: #EDEBEB;
 $color-fifth: #85C1E4;
 $color-sixth: #F4F3F3;
+$bg-color: #DBDBDB;
 
 $transitionTimingFunc: cubic-bezier(0.165, 0.84, 0.44, 1);
+$transitionDuration: .4s;
 
 %baskerville-700 {
     font-family: 'Baskerville Cyrillic LT Std';
@@ -46,5 +48,11 @@ $transitionTimingFunc: cubic-bezier(0.165, 0.84, 0.44, 1);
 %roboto-400 {
     font-family: 'Roboto';
     font-weight: 400;
+    font-style: normal;
+}
+
+%roboto-500 {
+    font-family: 'Roboto';
+    font-weight: 500;
     font-style: normal;
 }

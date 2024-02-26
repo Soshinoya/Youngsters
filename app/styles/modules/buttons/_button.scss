@@ -1,34 +1,49 @@
-// @use '../../base/variables';
-// @use '../../utils/mixins';
+@use '../../base/variables';
+@use '../../utils/mixins';
 
-// .button {
-//     width: max-content;
-//     border: none;
-//     border-radius: 5px;
-//     background-color: variables.$primary;
-//     color: variables.$neutral-500;
-//     cursor: pointer;
-//     z-index: 0;
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: max-content;
+    padding: 17px 0;
+    border: none;
+    line-height: 18.9px;
+    cursor: pointer;
+    @extend %roboto-500;
+    transition: background-color $transitionDuration $transitionTimingFunc;
 
-//     &.button-small {
-//         @include mixins.button-size(null, 5px 10px);
-//     }
+    &-first {
+        color: variables.$color-sixth;
+        background-color: variables.$color-first;
 
-//     &.button-medium {
-//         @include mixins.button-size(null, 10px 15px);
-//     }
+        @include mixins.hover() {
+            background-color: variables.$color-third;
+        }
+    }
 
-//     &.button-large {
-//         @include mixins.button-size(18px, 10px 20px);
-//     }
+    &-second {
+        color: variables.$color-first;
+        background-color: variables.$bg-color;
 
-//     @include mixins.disabled {
-//         color: #fff;
-//         background-color: #ccc;
-//         cursor: default;
-//     }
+        @include mixins.hover() {
+            background-color: #E1E0E0;
+        }
+    }
 
-//     @include mixins.outline-on-focus;
+    &-third {
+        gap: 7px;
+        background-color: variables.$color-first;
+        @include mixins.font(12px, 16px, variables.$color-sixth);
 
-//     @include mixins.buttonHover(variables.$primary)
-// }
+        svg {
+            width: 30px;
+            height: 15px;
+        }
+
+        @include mixins.hover() {
+            background-color: variables.$color-third;
+        }
+    }
+}
