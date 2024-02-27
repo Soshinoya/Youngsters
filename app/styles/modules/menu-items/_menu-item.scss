@@ -3,4 +3,5 @@
 .menu-item {
     @extend %roboto-400;
     text-transform: uppercase;
+    color: variables.$color-fourth;
 }

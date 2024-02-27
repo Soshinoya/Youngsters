@@ -11,6 +11,7 @@
 // Layout
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/header-sidebar';
 
 // Modules
 @import 'modules';
@@ -18,6 +19,24 @@
 // Utilities
 @import 'utils/functions';
 @import 'utils/mixins';
+
+.menu-dropdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 0;
+    overflow: hidden;
+
+    &--visible {
+        height: 100%;
+    }
+
+    &__item-link {
+        @include font(14px, 16px, $color-fourth) {
+            @extend %roboto-400;
+        }
+    }
+}
 
 // Media queries
 @import 'base/media';

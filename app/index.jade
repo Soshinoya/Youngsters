@@ -9,8 +9,10 @@ html(lang='ru')
         script(src="js/minified/main.min.js" defer)
     body
         include ./components/organisms/header.jade
+        include ./components/organisms/headerSidebar.jade
 
         +header('black')
+        +headerSidebar()
 
 
     //- svg
