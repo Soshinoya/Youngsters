@@ -1,0 +1,6 @@
+@use '../../base/variables';
+
+.menu-item {
+    @extend %roboto-400;
+    text-transform: uppercase;
+}
