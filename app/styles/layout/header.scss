@@ -1,21 +1,174 @@
-// .header {
-//     padding: 35px 0;
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
 
-//     &__inner {
-//         display: flex;
-//         align-items: center;
-//         justify-content: space-between;
-//         gap: 30px;
-//     }
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: transparent;
+    color: variables.$color-fourth;
 
-//     &::before {
-//         content: "";
-//         position: fixed;
-//         top: 0;
-//         bottom: 0;
-//         right: 0;
-//         left: 0;
-//         z-index: -1;
-//         backdrop-filter: blur(10px);
-//     }
-// }
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+
+    &__logo {
+        svg {
+            width: 224px;
+            height: 42px;
+            fill: variables.$color-fourth;
+        }
+    }
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    div {
+        width: 22px;
+        height: 22px;
+        @include mixins.bg-img(null, null, null, no-repeat, cover, center);
+    }
+
+    svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    &__user {
+        div {
+            background-image: url('../images/sprite.svg#male-user');
+        }
+    }
+
+    &__search {
+        cursor: pointer;
+
+        div {
+            background-image: url('../images/sprite.svg#search');
+        }
+    }
+
+    &__heart {
+        div {
+            background-image: url('../images/sprite.svg#heart');
+        }
+    }
+
+    &__bag {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        div {
+            background-image: url('../images/sprite.svg#shopping-bag');
+        }
+    }
+
+    &__icon-counter {
+        color: variables.$color-fourth;
+        @extend %roboto-400;
+    }
+}
+
+.header.header-black {
+    color: variables.$color-first;
+
+    &:hover {
+        color: variables.$color-fourth;
+        background-color: rgba(#000, .7);
+        backdrop-filter: blur(70px);
+
+        .header__inner {
+            border-bottom: none;
+        }
+
+        .header-links {
+            &__user {
+                div {
+                    background-image: url('../images/sprite.svg#male-user');
+                }
+            }
+    
+            &__search {
+                div {
+                    background-image: url('../images/sprite.svg#search');
+                }
+            }
+    
+            &__heart {
+                div {
+                    background-image: url('../images/sprite.svg#heart');
+                }
+            }
+    
+            &__bag {
+                div {
+                    background-image: url('../images/sprite.svg#shopping-bag');
+                }
+            }
+        }
+
+        .header-nav {
+            &__logo {
+                svg {
+                    fill: variables.$color-fourth;
+                }
+            }
+        }
+    }
+
+    .header__inner {
+        border-bottom: 1px solid rgba(variables.$color-first, .15);
+    }
+
+    .header-links {
+        &__user {
+            div {
+                background-image: url('../images/sprite.svg#male-user-black');
+            }
+        }
+
+        &__search {
+            div {
+                background-image: url('../images/sprite.svg#search-black');
+            }
+        }
+
+        &__heart {
+            div {
+                background-image: url('../images/sprite.svg#heart-black');
+            }
+        }
+
+        &__bag {
+            div {
+                background-image: url('../images/sprite.svg#shopping-bag-black');
+            }
+        }
+
+        &__icon-counter {
+            color: variables.$color-third;
+        }
+    }
+
+    .header-nav {
+        &__logo {
+            svg {
+                fill: variables.$color-first;
+            }
+        }
+    }
+}

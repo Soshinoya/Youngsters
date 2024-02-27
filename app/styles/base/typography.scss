@@ -5,7 +5,7 @@ body {
     @include mixins.font(14px, 19px) {
         letter-spacing: 0.035em;
         text-align: left;
-        @extend baskerville-400;
+        @extend %baskerville-400;
     }
 }
 
@@ -20,33 +20,33 @@ h3 {
 
 h1 {
     &.title--en {
-        @extend libre-baskerville-700;
+        @extend %libre-baskerville-700;
     }
 
     &.title--ru {
-        @extend baskerville-700;
+        @extend %baskerville-700;
         line-height: 24px;
     }
 }
 
 h2 {
     &.title--en {
-        @extend libre-baskerville-400;
+        @extend %libre-baskerville-400;
     }
     
     &.title--ru {
-        @extend baskerville-400;
+        @extend %baskerville-400;
         line-height: 24px;
     }
 }
 
 h3 {
     &.title--en {
-        @extend libre-baskerville-400-italic;
+        @extend %libre-baskerville-400-italic;
     }
     
     &.title--ru {
-        @extend baskerville-400-italic;
+        @extend %baskerville-400-italic;
         line-height: 24px;
     }
 }

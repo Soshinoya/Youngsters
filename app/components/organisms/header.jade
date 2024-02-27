@@ -1,0 +1,21 @@
+include ../atoms/menuItems/menuItemDropdown.jade
+
+mixin header(variant)
+    header(class=(variant == 'black' ? 'header header-black' : 'header'))
+        .container
+            .header__inner
+                .header-nav
+                    a.header-nav__logo(href="/")
+                        svg
+                            use(xlink:href="./images/sprite.svg#logo-youngsters-white")
+                    +menuItemDropdown('Меню', 'header-nav-list')
+                .header-links
+                    a.header-links__icon.header-links__user(href="/profile.html")
+                        div
+                    .header-links__icon.header-links__search
+                        div
+                    a.header-links__icon.header-links__heart(href="/profile-favorites.html")
+                        div
+                    a.header-links__icon.header-links__bag(href="/shopping-cart.html")
+                        div
+                        span.header-links__icon-counter (4)

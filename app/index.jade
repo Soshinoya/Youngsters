@@ -5,11 +5,12 @@ html(lang='ru')
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         title Youngsters
-        link(rel="stylesheet" href="css/style.min.css")
+        link(rel="stylesheet" href="css/main.min.css")
         script(src="js/minified/main.min.js" defer)
-        script(src="js/minified/index.min.js" defer)
     body
-        include ./components/organisms/Header.jade
+        include ./components/organisms/header.jade
+
+        +header('black')
 
 
     //- svg

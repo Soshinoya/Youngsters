@@ -11,6 +11,7 @@ menuItemDropdowns.forEach(dropdownElem => {
     dropdownElem.addEventListener('click', e => {
         const dropdownTargetValue = e.target.getAttribute('data-dropdown-target')
         const dropdownTargetList = document.querySelector(`[data-dropdown-list="${dropdownTargetValue}"]`)
+        if (!dropdownTargetList) return
         dropdownElem.classList.toggle('menu-item-dropdown--active')
         dropdownTargetList.classList.toggle('menu-dropdown-list--visible')
     })

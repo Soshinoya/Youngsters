@@ -12,7 +12,7 @@
     line-height: 18.9px;
     cursor: pointer;
     @extend %roboto-500;
-    transition: background-color $transitionDuration $transitionTimingFunc;
+    transition: background-color variables.$transitionDuration variables.$transitionTimingFunc;
 
     &-first {
         color: variables.$color-sixth;
