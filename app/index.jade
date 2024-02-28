@@ -14,6 +14,7 @@ html(lang='ru')
         script(src="js/minified/index.min.js" defer)
     body
         include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
         include ./components/organisms/headerSidebar.jade
 
         //- +header('black')
@@ -29,6 +30,7 @@ html(lang='ru')
                                 .hero-slider__slide
                                     img(src="#{heroSlide.imgSrc}", alt="#{heroSlide.alt}")
                 .hero-slider__pagination.swiper-pagination
+        +footer()
 
 
     //- svg

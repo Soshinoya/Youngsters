@@ -1,0 +1,152 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.footer {
+    padding: 40px 0;
+    background-color: variables.$color-first;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__logo {
+        svg {
+            width: 256px;
+            height: 25px;
+            fill: variables.$color-fourth;
+        }
+    }
+
+    &__separator,
+    .footer-links__social-separator {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(variables.$color-sixth, .3);
+    }
+}
+
+.footer-links {
+    display: flex;
+    max-width: 921px;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: auto;
+    
+    &__list-wrapper,
+    &__social {
+        max-width: calc((921px - (120px * 2)) / 3);
+    }
+
+    &__list-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__list-title {
+        color: variables.$color-fourth;
+        @extend %text-style;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__list-item__link {
+        @include mixins.font(16px, 22px, variables.$color-fourth) {
+            @extend %roboto-400;
+        }
+    }
+
+    &__social {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__social-description {
+        color: variables.$color-fourth;
+        @extend %text-style-first;
+    }
+
+    &__social-icons {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__social-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (min-width: 481px) {
+    .footer-links {
+        &__social-separator {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .footer {
+        &__logo svg {
+            width: 192px;
+            height: 19px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        max-width: 100%;
+
+        &__list-wrapper,
+        &__social {
+            max-width: calc(100% / 3);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 60px 0 30px;
+
+        &__logo {
+            margin: 0 auto;
+        }
+
+        &__inner {
+            gap: 60px;
+        }
+    }
+
+    .footer-links {
+        gap: inherit;
+        flex-wrap: wrap;
+
+        &__list-wrapper,
+        &__social {
+            max-width: 100%;
+        }
+
+        &__social {
+            max-width: 100%;
+            width: 100%;
+            gap: 30px;
+        }
+
+        &__social-description {
+            display: none;
+        }
+
+        &__social-icons {
+            margin: 0 auto;
+        }
+    }
+}
