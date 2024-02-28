@@ -1,10 +1,11 @@
 @use '../base/variables.scss';
+@use '../utils/mixins.scss';
 
 .header-sidebar {
     min-width: 498px;
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -200%;
     bottom: 0;
     display: flex;
     flex-direction: column;
@@ -18,6 +19,53 @@
         left: 0;
     }
 
+    .search {
+        gap: 20px;
+        padding-bottom: 15px;
+
+        &__clear,
+        &__separator,
+        &__close {
+            display: none;
+        }
+    }
+
+    .header-sidebar-main-page,
+    .header-sidebar-inner-page {
+        transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+    }
+
+    .header-sidebar-main-page {
+        display: inherit;
+        flex-direction: inherit;
+        gap: inherit;
+        opacity: 1;
+
+        &--hidden {
+            opacity: 0;
+        }
+    }
+
+    .header-sidebar-inner-page {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        opacity: 0;
+
+        &--visible {
+            opacity: 1;
+        }
+
+        .menu-dropdown-list {
+            gap: 25px;
+        }
+
+        &__title {
+            color: variables.$color-fourth;
+            @extend %text-style;
+        }
+    }
+
     &__list {
         display: flex;
         flex-direction: column;
@@ -25,6 +73,48 @@
 
         .menu-dropdown-list--visible {
             margin: 15px 0 0 20px;
+        }
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    &__links-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        &__icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        &__text {
+            color: variables.$color-fourth;
+
+            &--en {
+                letter-spacing: normal;
+                text-transform: uppercase;
+                @extend %libre-baskerville-400;
+            }
+
+            &--ru {
+                @extend %text-style;
+            }
+        }
+    }
+
+    &__list-item {
+        &__dropdown--md.menu-item-dropdown {
+            justify-content: space-between;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
         }
     }
 }
@@ -36,15 +126,99 @@
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(variables.$color-sixth, .3);
 
+    &__inner-page {
+        .header-sidebar-top {
+            &__text {
+                @include mixins.font(12px, 14px, rgba(variables.$color-fourth, .5));
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+    }
+
     &__text {
+        display: flex;
+        align-items: center;
+        gap: 5px;
         @extend %roboto-400;
         color: variables.$color-fourth;
         text-transform: uppercase;
+        cursor: pointer;
+
+        svg {
+            display: none;
+            width: 20px;
+            height: 20px;
+            transform: rotate(-180deg);
+        }
     }
 
     svg {
         width: 20px;
         height: 20px;
         cursor: pointer;
+    }
+}
+
+@media (min-width: 481px) {
+    .header-sidebar {
+        .search {
+            display: none;
+        }
+
+        &__links {
+            display: none;
+        }
+
+        &__list-item__dropdown--md.menu-item-dropdown {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .header-sidebar {
+        min-width: 468px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-sidebar {
+        min-width: 428px;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-sidebar {
+        min-width: 288px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-sidebar {
+        min-width: 90%;
+
+        &__list-item {
+            .menu-item-dropdown {
+                display: none;
+            }
+
+            &__dropdown--md.menu-item-dropdown {
+                display: flex;
+            }
+        }
+    }
+
+    .header-sidebar-top {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .header-sidebar {
+        padding: 17px 16px 0;
     }
 }

@@ -10,8 +10,15 @@ mixin header(variant)
                         .header-nav
                             a.header-nav__logo(href="/")
                                 svg
-                                    use(xlink:href="./images/sprite.svg#logo-youngsters-white")
+                                    use(xlink:href="./images/sprite.svg#logo-youngsters")
                             +menuItemDropdown('Меню', 'header-sidebar')
+                            .header-nav__menu--md(data-dropdown-target="header-sidebar")
+                                div
+                            .header-nav__search
+                                div
+                        .header__logo--md
+                            svg
+                                use(xlink:href="./images/sprite.svg#logo-youngsters")
                         .header-links
                             a.header-links__icon.header-links__user(href="/profile.html")
                                 div

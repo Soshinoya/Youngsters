@@ -20,6 +20,16 @@
     }
 }
 
+.header__logo--md svg {
+    width: 192px;
+    height: 36px;
+}
+
+.header__logo--md svg,
+.header-nav__logo svg {
+    fill: variables.$color-fourth;
+}
+
 .header-nav {
     display: flex;
     align-items: center;
@@ -29,9 +39,33 @@
         svg {
             width: 224px;
             height: 42px;
-            fill: variables.$color-fourth;
         }
     }
+
+    &__menu--md svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+.header-nav__menu--md div {
+    background-image: url('../images/sprite.svg#menu');
+}
+
+.header-nav__menu--md,
+.header-nav__search {
+    cursor: pointer;
+
+    div {
+        width: 22px;
+        height: 22px;
+        @include mixins.bg-img(null, null, null, no-repeat, cover, center);
+    }
+}
+
+.header-nav__search div,
+.header-links__search div {
+    background-image: url('../images/sprite.svg#search');
 }
 
 .header-links {
@@ -43,11 +77,6 @@
         width: 22px;
         height: 22px;
         @include mixins.bg-img(null, null, null, no-repeat, cover, center);
-    }
-
-    svg {
-        width: 22px;
-        height: 22px;
     }
 
     &__user {
@@ -107,6 +136,15 @@
             border-bottom: none;
         }
 
+        .header-nav__menu--md div {
+            background-image: url('../images/sprite.svg#menu');
+        }
+
+        .header-nav__search div,
+        .header-links__search div {
+            background-image: url('../images/sprite.svg#search');
+        }
+
         .header-links {
             &__user {
                 div {
@@ -133,13 +171,12 @@
             }
         }
 
-        .header-nav {
-            &__logo {
-                svg {
-                    fill: variables.$color-fourth;
-                }
-            }
+        .header__logo--md svg,
+        .header-nav__logo svg {
+            fill: variables.$color-fourth;
+        }
 
+        .header-nav {
             .menu-item-dropdown {
                 &__text {
                     color: variables.$color-fourth;
@@ -152,16 +189,19 @@
         border-bottom: 1px solid rgba(variables.$color-first, .15);
     }
 
+    .header-nav__menu--md div {
+        background-image: url('../images/sprite.svg#menu-black');
+    }
+
+    .header-nav__search div,
+    .header-links__search div {
+        background-image: url('../images/sprite.svg#search-black');
+    }
+
     .header-links {
         &__user {
             div {
                 background-image: url('../images/sprite.svg#male-user-black');
-            }
-        }
-
-        &__search {
-            div {
-                background-image: url('../images/sprite.svg#search-black');
             }
         }
 
@@ -182,17 +222,80 @@
         }
     }
 
-    .header-nav {
-        &__logo {
-            svg {
-                fill: variables.$color-first;
-            }
-        }
+    .header__logo--md svg,
+    .header-nav__logo svg {
+        fill: variables.$color-first;
+    }
 
+    .header-nav {
         .menu-item-dropdown {
             &__text {
                 color: variables.$color-first;
             }
         }
+    }
+}
+
+@media (min-width: 769px) {
+    .header__logo--md {
+        display: none;
+    }
+
+    .header-nav {
+        &__menu--md {
+            display: none;
+        }
+
+        &__search {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-nav {
+        gap: 40px;
+        
+        .menu-item-dropdown {
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+
+    .header-links {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav {
+        gap: 24px;
+
+        &__logo,
+        .menu-item-dropdown {
+            display: none;
+        }
+    }
+
+    .header-links {
+        &__search {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .header-nav__search,
+    .header-links__user,
+    .header-links__heart,
+    .header-links__icon-counter {
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .header__logo--md svg {
+        width: 173px;
+        height: 17px;
     }
 }
