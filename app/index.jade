@@ -11,12 +11,24 @@ html(lang='ru')
         title Youngsters
         link(rel="stylesheet" href="css/main.min.css")
         script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/index.min.js" defer)
     body
         include ./components/organisms/header.jade
         include ./components/organisms/headerSidebar.jade
 
-        +header('black')
+        //- +header('black')
+        +header()
         +headerSidebar()
+        main.main
+            section.hero-slider
+                .swiper
+                    .swiper-wrapper
+                        - var heroSlides = [{ imgSrc: './images/hero-slider/1.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/hero-slider/2.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/hero-slider/3.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/hero-slider/4.webp', alt: 'Мужчина позирует в одежде Youngsters' }]
+                        for heroSlide in heroSlides
+                            .swiper-slide
+                                .hero-slider__slide
+                                    img(src="#{heroSlide.imgSrc}", alt="#{heroSlide.alt}")
+                .hero-slider__pagination.swiper-pagination
 
 
     //- svg

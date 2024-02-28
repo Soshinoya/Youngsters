@@ -1,16 +1,19 @@
 const transitionDuration = 400;
 
-const setPaddingLeftFromContainerToElem = elem => {
+const setPaddingFromContainerToElem = (elem, property) => {
     if (!elem) return
     const container = document.querySelector('.container')
-    elem.style.paddingLeft = `${container.getBoundingClientRect().left + 20}px`
+    elem.style[property] = `${container.getBoundingClientRect().left + 20}px`
 }
 
 window.addEventListener('resize', () => {
-    !window.matchMedia('(max-width: 320px)').matches && setPaddingLeftFromContainerToElem(document.querySelector('aside.header-sidebar'))
+    !window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
+    setPaddingFromContainerToElem(document.querySelector('.hero-slider__pagination'), 'right')
 })
 
-!window.matchMedia('(max-width: 320px)').matches && setPaddingLeftFromContainerToElem(document.querySelector('aside.header-sidebar'))
+!window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
+
+setPaddingFromContainerToElem(document.querySelector('.hero-slider__pagination'), 'right')
 
 const toggleHeaderSidebarInnerPage = action => {
     const headerSidebarTop = document.querySelector('.header-sidebar-top')
@@ -36,7 +39,6 @@ const toggleHeaderSidebarInnerPage = action => {
 
 document.addEventListener('click', e => {
     // Toggle dropdowns
-    // const dropdownElem = e.target.closest('.menu-item-dropdown')
     const dropdownElem = e.target.closest('[data-dropdown-target]')
     if (dropdownElem) {
         const dropdownTargetValue = dropdownElem.getAttribute('data-dropdown-target')
@@ -79,12 +81,12 @@ document.addEventListener('click', e => {
     }
 
     // Opening / Closing search-overlay in the header
-    const header = document.querySelector('header.header')
+    const headerWrapper = document.querySelector('.header__wrapper')
     const searchOverlay = document.querySelector('.search-overlay')
     const searchBtn = document.querySelector('.header-links__search')
     if (searchOverlay.classList.contains('search-overlay--visible')) {
         if (!e.target.closest('.search-overlay') || e.target.closest('.search__close')) {
-            header.classList.remove('header-search')
+            headerWrapper.classList.remove('header-search__wrapper')
             searchOverlay.classList.remove('search-overlay--visible')
             searchBtn.classList.remove('header-links__search--active')
         }
@@ -92,7 +94,7 @@ document.addEventListener('click', e => {
         e.target.closest('.header-links__search')
         || e.target.closest('.header-nav__search')
     ) {
-        header.classList.add('header-search')
+        headerWrapper.classList.add('header-search__wrapper')
         searchOverlay.classList.add('search-overlay--visible')
         searchBtn.classList.add('header-links__search--active')
     }

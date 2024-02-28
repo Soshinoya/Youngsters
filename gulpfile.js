@@ -90,7 +90,8 @@ function scripts() {
   return gulp.src(['app/js/pages/*.js'])
     .pipe(uglify()) // Минифицировать каждый файл
     .pipe(rename({ suffix: '.min' })) // Добавить суффикс .min
-    .pipe(dest('app/js/minified')); // Переместить в папку app/js/minified
+    .pipe(dest('app/js/minified')) // Переместить в папку app/js/minified
+    .pipe(browserSync.stream())
 }
 
 function build() {
@@ -112,7 +113,7 @@ function cleanBuild() {
 function watching() {
   watch(['app/**/*.scss'], styles);
   watch(['app/js/main.js', '!app/js/main.min.js'], generalScripts);
-  watch(['app/js/pages/*.js', '!app/js/main.min.js'], scripts);
+  watch(['app/js/pages/*.js'], scripts);
   watch(['app/**/*.jade'], jadeCompiler).on('change', browserSync.reload);
 }
 

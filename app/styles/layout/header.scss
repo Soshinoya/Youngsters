@@ -17,6 +17,7 @@
         top: 0;
         right: 0;
         left: 0;
+        z-index: 1;
     }
 }
 
@@ -59,7 +60,9 @@
     div {
         width: 22px;
         height: 22px;
-        @include mixins.bg-img(null, null, null, no-repeat, cover, center);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     }
 }
 
@@ -116,75 +119,6 @@
 }
 
 .header.header-black {
-    color: variables.$color-first;
-
-    &.header-search {
-        transition: background-color variables.$transitionDuration variables.$transitionTimingFunc;
-
-        .header__inner {
-            border-bottom: none;
-        }
-    }
-
-    &.header-search,
-    &:hover {
-        color: variables.$color-fourth;
-        background-color: rgba(#000, .7);
-        backdrop-filter: blur(70px);
-
-        .header__inner {
-            border-bottom: none;
-        }
-
-        .header-nav__menu--md div {
-            background-image: url('../images/sprite.svg#menu');
-        }
-
-        .header-nav__search div,
-        .header-links__search div {
-            background-image: url('../images/sprite.svg#search');
-        }
-
-        .header-links {
-            &__user {
-                div {
-                    background-image: url('../images/sprite.svg#male-user');
-                }
-            }
-
-            &__search {
-                div {
-                    background-image: url('../images/sprite.svg#search');
-                }
-            }
-
-            &__heart {
-                div {
-                    background-image: url('../images/sprite.svg#heart');
-                }
-            }
-
-            &__bag {
-                div {
-                    background-image: url('../images/sprite.svg#shopping-bag');
-                }
-            }
-        }
-
-        .header__logo--md svg,
-        .header-nav__logo svg {
-            fill: variables.$color-fourth;
-        }
-
-        .header-nav {
-            .menu-item-dropdown {
-                &__text {
-                    color: variables.$color-fourth;
-                }
-            }
-        }
-    }
-
     .header__inner {
         border-bottom: 1px solid rgba(variables.$color-first, .15);
     }
@@ -236,6 +170,68 @@
     }
 }
 
+.header-search__wrapper {
+    background-color: rgba(#000, .7);
+    backdrop-filter: blur(70px);
+}
+
+.header.header-black:hover,
+.header__wrapper.header-search__wrapper {
+    color: variables.$color-fourth;
+
+    .header__inner {
+        border-bottom: none;
+    }
+
+    .header-nav__menu--md div {
+        background-image: url('../images/sprite.svg#menu');
+    }
+
+    .header-nav__search div,
+    .header-links__search div {
+        background-image: url('../images/sprite.svg#search');
+    }
+
+    .header-links {
+        &__user {
+            div {
+                background-image: url('../images/sprite.svg#male-user');
+            }
+        }
+
+        &__search {
+            div {
+                background-image: url('../images/sprite.svg#search');
+            }
+        }
+
+        &__heart {
+            div {
+                background-image: url('../images/sprite.svg#heart');
+            }
+        }
+
+        &__bag {
+            div {
+                background-image: url('../images/sprite.svg#shopping-bag');
+            }
+        }
+    }
+
+    .header__logo--md svg,
+    .header-nav__logo svg {
+        fill: variables.$color-fourth;
+    }
+
+    .header-nav {
+        .menu-item-dropdown {
+            &__text {
+                color: variables.$color-fourth;
+            }
+        }
+    }
+}
+
 @media (min-width: 769px) {
     .header__logo--md {
         display: none;
@@ -255,7 +251,7 @@
 @media (max-width: 1024px) {
     .header-nav {
         gap: 40px;
-        
+
         .menu-item-dropdown {
             font-size: 16px;
             line-height: 22px;
@@ -285,6 +281,7 @@
 }
 
 @media (max-width: 480px) {
+
     .header-nav__search,
     .header-links__user,
     .header-links__heart,

@@ -1,1 +1,27 @@
-// @forward 'library-headroom';
+@use '../base/variables.scss';
+@forward '../../../node_modules/swiper/swiper.scss';
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: variables.$color-fourth;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(variables.$color-first, .6);
+
+    &-active {
+        border: none;
+        background-color: variables.$color-third;
+    }
+}
+
+.hero-slider {
+    &__pagination {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+}
