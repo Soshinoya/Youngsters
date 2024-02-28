@@ -1,0 +1,42 @@
+@use '../base/variables.scss';
+
+.search-overlay {
+    padding: 30px 0 60px;
+    background-color: rgba(#000, .7);
+    backdrop-filter: blur(70px);
+    transition: transform variables.$transitionDuration variables.$transitionTimingFunc;
+    transform: translateY(-200%);
+    overflow: hidden;
+
+    &--visible {
+        transform: translateY(0);
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+}
+
+.search-overlay-popular {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    &__title {
+        color: variables.$color-fourth;
+        @extend %text-style;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__list-item__link {
+        @extend %text-style-first;
+        color: variables.$color-fourth;
+    }
+}

@@ -1,3 +1,5 @@
+@use '../utils/mixins.scss';
+
 $color-first: #141318;
 $color-second: #003125;
 $color-third: #A0061F;
@@ -55,4 +57,21 @@ $transitionDuration: .4s;
     font-family: 'Roboto';
     font-weight: 500;
     font-style: normal;
+}
+
+%text-style {
+    @include mixins.font(14px, 19px) {
+        letter-spacing: 0.035em;
+        text-align: left;
+        text-transform: uppercase;
+        @extend %roboto-400;
+    }
+}
+
+%text-style-first {
+    @include mixins.font(14px, 16px) {
+        letter-spacing: 0.035em;
+        text-align: left;
+        @extend %roboto-400;
+    }
 }

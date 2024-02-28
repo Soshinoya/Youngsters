@@ -1,0 +1,9 @@
+mixin search()
+    .search
+        svg.search__icon.search__magnifying
+            use(xlink:href="./images/sprite.svg#search")
+        input.search__input(type="text", name="search" placeholder="Поиск...")
+        p.search__clear Очистить
+        div.search__separator
+        svg.search__icon.search__close
+            use(xlink:href="./images/sprite.svg#close")

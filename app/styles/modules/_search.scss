@@ -1,0 +1,47 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid rgba(variables.$color-sixth, .3);
+
+    svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    &__icon {
+        cursor: pointer;
+    }
+
+    &__input {
+        flex-grow: 1;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        color: variables.$color-fourth;
+
+        &::placeholder {
+            color: rgba(variables.$color-fourth, .5);
+        }
+    }
+    
+    &__clear {
+        color: rgba(variables.$color-fourth, .5);
+        cursor: pointer;
+    }
+    
+    &__input,
+    &__clear {
+        @extend %roboto-400;
+    }
+
+    &__separator {
+        width: 1px;
+        height: 20px;
+        background-color: variables.$color-fourth;
+    }
+}

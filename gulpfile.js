@@ -97,7 +97,7 @@ function build() {
   src([
     'app/**/*.html',
     'app/css/**/*.css',
-    'app/js/main.min.js'
+    'app/js/minified/*.js'
   ], { base: 'app' })
     .pipe(dest('build'));
   src('app/fonts/**/*.*').pipe(dest('build/fonts/'));

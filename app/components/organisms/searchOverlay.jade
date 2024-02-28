@@ -1,0 +1,20 @@
+include ../molecules/search.jade
+
+mixin searchOverlay()
+    .search-overlay
+        .container
+            .search-overlay__inner
+                +search()
+                .search-overlay-popular
+                    p.search-overlay-popular__title Популярные запросы
+                    ul.search-overlay-popular__list
+                        li.search-overlay-popular__list-item
+                            a.search-overlay-popular__list-item__link(href="/") Кольцо
+                        li.search-overlay-popular__list-item
+                            a.search-overlay-popular__list-item__link(href="/") Кольцо
+                        li.search-overlay-popular__list-item
+                            a.search-overlay-popular__list-item__link(href="/") Кольцо
+                        li.search-overlay-popular__list-item
+                            a.search-overlay-popular__list-item__link(href="/") Кольцо
+                        li.search-overlay-popular__list-item
+                            a.search-overlay-popular__list-item__link(href="/") Кольцо

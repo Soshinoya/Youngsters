@@ -39,4 +39,20 @@ document.addEventListener('click', e => {
         dropdownTarget?.classList.remove('menu-item-dropdown--active')
         dropdownList?.classList.remove(dropdownCloseValue === 'header-sidebar' ? 'header-sidebar--visible' : 'menu-dropdown-list--visible')
     }
+
+    // Opening / Closing search-overlay in the header
+    const header = document.querySelector('header.header')
+    const searchOverlay = document.querySelector('.search-overlay')
+    const searchBtn = document.querySelector('.header-links__search')
+    if (searchOverlay.classList.contains('search-overlay--visible')) {
+        if (!e.target.closest('.search-overlay') || e.target.closest('.search__close')) {
+            header.classList.remove('header-search')
+            searchOverlay.classList.remove('search-overlay--visible')
+            searchBtn.classList.remove('header-links__search--active')
+        }
+    } else if (e.target.closest('.header-links__search')) {
+        header.classList.add('header-search')
+        searchOverlay.classList.add('search-overlay--visible')
+        searchBtn.classList.add('header-links__search--active')
+    }
 })
