@@ -98,4 +98,11 @@ document.addEventListener('click', e => {
         searchOverlay.classList.add('search-overlay--visible')
         searchBtn.classList.add('header-links__search--active')
     }
+
+    // Size Button
+    const sizeButton = e.target.closest('.size-button')
+    if (sizeButton && !sizeButton?.classList?.contains('size-button--disabled')) {
+        document.querySelectorAll('.size-button').forEach(elem => elem.classList.remove('size-button--active'))
+        sizeButton.classList.add('size-button--active')
+    }
 })

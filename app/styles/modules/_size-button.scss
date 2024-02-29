@@ -1,0 +1,32 @@
+@use '../base/variables.scss';
+
+.size-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 21px;
+    color: variables.$color-first;
+    background-color: transparent;
+    cursor: pointer;
+    transition-property: color;
+    transition-property: background-color;
+    transition-duration: variables.$transitionDuration;
+    transition-timing-function: variables.$transitionTimingFunc;
+
+    &--active {
+        color: variables.$color-sixth;
+        background-color: variables.$color-first;
+    }
+
+    &--disabled {
+        color: variables.$color-third;
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__text {
+        @extend %text-style-first;
+    }
+}
