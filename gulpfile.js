@@ -78,6 +78,7 @@ function styles() {
 function generalScripts() {
   return src([
     'node_modules/swiper/swiper-bundle.js',
+    'app/js/service/*.js',
     'app/js/main.js'
   ])
     .pipe(concat('main.min.js'))

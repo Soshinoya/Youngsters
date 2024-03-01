@@ -1,0 +1,23 @@
+@use '../base/variables.scss';
+
+.breadcrumbs {
+    &__inner {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__item {
+        position: relative;
+        color: rgba(variables.$color-first, .7);
+        @extend %roboto-400;
+        font-size: 12px;
+        line-height: 14px;
+
+        &:not(:first-child)::before {
+            content: '/';
+            position: absolute;
+            left: -13px;
+        }
+    }
+}

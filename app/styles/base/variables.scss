@@ -60,6 +60,30 @@ $transitionDuration: .4s;
     font-style: normal;
 }
 
+%roboto-700 {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-style: normal;
+}
+
+%cormorant-500 {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 500;
+}
+
+%cormorant-600 {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 600;
+}
+
+%cormorant-700 {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 700;
+}
+
 %text-style {
     @include mixins.font(14px, 19px) {
         letter-spacing: 0.035em;

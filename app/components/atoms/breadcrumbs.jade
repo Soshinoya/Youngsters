@@ -1,0 +1,5 @@
+mixin breadcrumbs(pages)
+    .breadcrumbs
+        .breadcrumbs__inner
+            for page in pages
+                a.breadcrumbs__item(href="#{page.href}")= page.title

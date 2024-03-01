@@ -2,11 +2,62 @@
     .container {
         max-width: calc(1320px + 40px);
     }
+
+    .catalog {
+        padding-bottom: 90px;
+
+        &__items-banner {
+            height: 696px;
+        }
+    }
+
+    .catalog-hero {
+        &__title {
+            font-size: 120px;
+            line-height: 90px;
+
+            span {
+                padding-left: 86px;
+            }
+        }
+
+        &__img {
+            height: 590px;
+        }
+    }
 }
 
 @media (max-width: 1024px) {
     .container {
         max-width: calc(944px + 40px);
+    }
+
+    .catalog {
+        padding-bottom: 80px;
+
+        &__items {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        &__items-holder {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    .catalog-hero {
+        &__title {
+            font-size: 90px;
+            line-height: 70px;
+
+            span {
+                padding-left: 65px;
+            }
+        }
+
+        &__img {
+            margin-top: 15px;
+            height: 405px;
+        }
     }
 }
 
@@ -14,10 +65,89 @@
     .container {
         max-width: calc(708px + 40px);
     }
+
+    .catalog {
+        padding-top: 40px;
+
+        &__items {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__items-banner {
+            display: none;
+        }
+    }
+
+    .catalog-hero {
+        &__title {
+            font-size: 90px;
+            line-height: 70px;
+        }
+
+        &__img {
+            height: 379px;
+        }
+    }
+}
+
+@media (max-width: 670px) {
+    .catalog-hero {
+        &__title {
+            font-size: 54px;
+            line-height: 40px;
+
+            span {
+                padding-left: 38px;
+            }
+        }
+
+        &__img {
+            height: 495px;
+        }
+    }
 }
 
 @media (max-width: 414px) {
     .container {
         max-width: 100%;
+    }
+
+    .catalog {
+        padding-bottom: 70px;
+    }
+
+    .catalog-hero {
+        &__img {
+            margin-top: 30px;
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    .catalog-hero {
+        &__title {
+            font-size: 41px;
+            line-height: 30px;
+
+            span {
+                padding-left: 30px;
+            }
+        }
+
+        &__img {
+            height: 318px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .catalog-hero {
+        &__img {
+            margin-top: 20px;
+        }
     }
 }
