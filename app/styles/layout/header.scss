@@ -18,7 +18,16 @@
         right: 0;
         left: 0;
         z-index: 1;
+
+        &:hover {
+            background-color: rgba(#000, .7);
+            backdrop-filter: blur(70px);
+        }
     }
+}
+
+.header-black__wrapper {
+    background-color: variables.$white-color;
 }
 
 .header__logo--md svg {

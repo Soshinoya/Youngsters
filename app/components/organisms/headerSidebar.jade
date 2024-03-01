@@ -45,7 +45,6 @@ mixin headerSidebar()
                     .header-sidebar__links-item__text.header-sidebar__links-item__text--ru Избранное
         .header-sidebar-inner-page
             p.header-sidebar-inner-page__title Каталог
-            //- ul.menu-dropdown-list(data-dropdown-list='header-sidebar-catalog')
             ul.menu-dropdown-list.menu-dropdown-list--visible
                 - var menuDropdownList = [{ text: 'Кольца', link: '/' },{ text: 'Серьги', link: '/' },{ text: 'Браслеты', link: '/' },{ text: 'Цепи', link: '/' },{ text: 'Ожерелья', link: '/' },{ text: 'Аксессуары', link: '/' },{ text: 'Все', link: '/' }]
                 for menuDropdownItem in menuDropdownList

@@ -3,7 +3,7 @@ include ../atoms/menuItems/menuItemDropdown.jade
 include ./searchOverlay.jade
 
 mixin header(variant)
-    .header__wrapper
+    div(class=(variant == 'black' ? 'header__wrapper header-black__wrapper' : 'header__wrapper'))
         header(class=(variant == 'black' ? 'header header-black' : 'header'))
             .container
                 .header__holder

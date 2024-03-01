@@ -17,14 +17,13 @@ html(lang='ru')
         include ./components/organisms/footer.jade
         include ./components/organisms/headerSidebar.jade
 
-        //- +header('black')
         +header()
         +headerSidebar()
         main.main
             section.hero-slider
                 .swiper
                     .swiper-wrapper
-                        - var heroSlides = [{ imgSrc: './images/hero-slider/1.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/hero-slider/2.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/hero-slider/3.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/hero-slider/4.webp', alt: 'Мужчина позирует в одежде Youngsters' }]
+                        - var heroSlides = [{ imgSrc: './images/content/hero-slider/1.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/content/hero-slider/2.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/content/hero-slider/3.webp', alt: 'Мужчина позирует в одежде Youngsters' },{ imgSrc: './images/content/hero-slider/4.webp', alt: 'Мужчина позирует в одежде Youngsters' }]
                         for heroSlide in heroSlides
                             .swiper-slide
                                 .hero-slider__slide

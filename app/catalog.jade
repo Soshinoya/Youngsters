@@ -1,0 +1,35 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='apple-touch-icon' sizes='180x180' href='./assets/apple-touch-icon.png')
+        link(rel='icon' type='image/png' sizes='32x32' href='./assets/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='./assets/favicon-16x16.png')
+        link(rel='manifest' href='./assets/site.webmanifest')
+        title Youngsters - Каталог
+        link(rel="stylesheet" href="css/main.min.css")
+        script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/catalog.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/molecules/card.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            section.catalog
+                .container
+                    .catalog__inner
+                        - var catalogItemsList=[{imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"},{imgSrc:"./images/content/products/bracelet.png",imgAlt:"Браслет",title:"Браслет YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"bracelet",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/necklace.png",imgAlt:"Колье",title:"Колье YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"necklace",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/cuff.png",imgAlt:"Кафф",title:"Кафф YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"cuff",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"}];
+                        for cardInfo in catalogItemsList
+                            +card(cardInfo)
+        +footer()
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

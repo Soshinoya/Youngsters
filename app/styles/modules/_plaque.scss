@@ -1,0 +1,60 @@
+@use '../base/variables.scss';
+
+.plaque {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.plaque-top,
+.plaque-bottom {
+    width: 114px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 0;
+
+    &__text {
+        @extend %text-style-first;
+    }
+}
+
+.plaque-top {
+    background-color: variables.$color-third;
+
+    &__text {
+        color: variables.$color-fourth;
+    }
+}
+
+.plaque-bottom {
+    background-color: variables.$color-sixth;
+
+    &__text {
+        color: variables.$color-third;
+    }
+}
+
+@media (max-width: 414px) {
+    .plaque-top,
+    .plaque-bottom {
+        width: 77px;
+
+        &__text {
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .plaque-top,
+    .plaque-bottom {
+        width: 66px;
+        
+        &__text {
+            font-size: 10px;
+            line-height: 12px;
+        }
+    }
+}

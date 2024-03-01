@@ -1,0 +1,18 @@
+include ../atoms/plaque.jade
+
+mixin card(cardInfo)
+    a(class="card card--#{cardInfo.type}" + (cardInfo.isFavorite ? " card--favorite" : '') href="#{cardInfo.href}")
+        if cardInfo.isFavorite
+            .card__icon
+                svg
+                    use(xlink:href="./images/sprite.svg#close")
+        else
+            .card__icon
+                svg
+                    use(xlink:href="./images/sprite.svg#heart-black")
+        if cardInfo.isPlaque
+            +plaque(cardInfo.plaqueTopText, cardInfo.plaqueBottomText)
+        .card__img(style="background-image: url(#{cardInfo.imgSrc});")
+        .card__info
+            .card__info-title= cardInfo.title
+            .card__info-price= cardInfo.price
