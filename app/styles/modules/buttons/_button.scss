@@ -6,12 +6,13 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
-    width: max-content;
-    padding: 17px 0;
+    width: 100%;
+    padding: 13px 0;
     border: none;
     line-height: 18.9px;
     cursor: pointer;
     @extend %roboto-500;
+    text-transform: uppercase;
     transition: background-color variables.$transitionDuration variables.$transitionTimingFunc;
 
     &-first {
@@ -28,7 +29,7 @@
         background-color: variables.$bg-color;
 
         @include mixins.hover() {
-            background-color: #E1E0E0;
+            background-color: rgba(#E1E0E0, .6);
         }
     }
 

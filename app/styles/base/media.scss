@@ -69,6 +69,10 @@
     .catalog {
         padding-top: 40px;
 
+        &__holder {
+            gap: 20px;
+        }
+
         &__items {
             grid-template-columns: repeat(2, 1fr);
         }

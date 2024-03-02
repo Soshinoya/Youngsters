@@ -1,4 +1,4 @@
-mixin sizeButton(value, label, variant)
-    label(class="size-button" + (variant ? " size-button--" + variant : ''))
-        input.size-button__input(type="radio" name="product-size-button" value=value)
+mixin sizeButton(value, label, name, state)
+    label(class="size-button" + (state ? " size-button--" + state : ''))
+        input.size-button__input(type="radio" name=name value=value)
         div.size-button__text= label

@@ -1,0 +1,69 @@
+include ../atoms/buttons/buttonFirst.jade
+include ../atoms/buttons/buttonSecond.jade
+include ../atoms/checkbox.jade
+include ../atoms/colorPick.jade
+include ../atoms/rangeSlider.jade
+
+mixin catalogFilter()
+    aside.catalog-filter(data-dropdown-list="catalog-filter")
+        .catalog-filter-top
+            .catalog-filter-top__inner
+                p.catalog-filter-top__text Фильтр
+                svg(data-dropdown-close="catalog-filter")
+                    use(xlink:href="./images/sprite.svg#close-black")
+        .catalog-filter__inner
+            .catalog-filter-section.catalog-filter-section--sort
+                h3.catalog-filter-section__title Сортировать
+                .catalog-filter-section__inner
+                    +checkbox('default', 'По умолчанию', 'radio', 'catalog-sort')
+                    +checkbox('bestseller', 'Бестселлер', 'radio', 'catalog-sort')
+                    +checkbox('asc', 'По возрастанию цены', 'radio', 'catalog-sort')
+                    +checkbox('desc', 'По убыванию цены', 'radio', 'catalog-sort')
+                    +checkbox('newest', 'Новинки', 'radio', 'catalog-sort')
+            .catalog-filter-section.catalog-filter-section--category
+                h3.catalog-filter-section__title Украшения
+                .catalog-filter-section__inner
+                    +checkbox('rings', 'Кольца', 'checkbox', 'catalog-category')
+                    +checkbox('earrings', 'Серьги', 'checkbox', 'catalog-category')
+                    +checkbox('bracelets', 'Браслеты', 'checkbox', 'catalog-category')
+                    +checkbox('chains', 'Цепи', 'checkbox', 'catalog-category')
+                    +checkbox('necklaces', 'Ожерелья', 'checkbox', 'catalog-category')
+                    +checkbox('accessories', 'Аксессуары', 'checkbox', 'catalog-category')
+            .catalog-filter-section.catalog-filter-section--insert
+                h3.catalog-filter-section__title Вставка
+                .catalog-filter-section__inner
+                    +checkbox('diamond', 'Бриллиант', 'checkbox', 'catalog-insert')
+                    +checkbox('pearl', 'Жемчуг', 'checkbox', 'catalog-insert')
+                    +checkbox('garnet', 'Гранат', 'checkbox', 'catalog-insert')
+                    +checkbox('topaz', 'Топаз', 'checkbox', 'catalog-insert')
+                    +checkbox('emerald', 'Изумруд', 'checkbox', 'catalog-insert')
+                    +checkbox('sapphire', 'Сапфир', 'checkbox', 'catalog-insert')
+                    +checkbox('amethyst', 'Аметист', 'checkbox', 'catalog-insert')
+                    +checkbox('citrine', 'Цитрин', 'checkbox', 'catalog-insert')
+            .catalog-filter-section.catalog-filter-section--material
+                h3.catalog-filter-section__title Материал
+                .catalog-filter-section__inner
+                    +checkbox('gold', 'Золото', 'checkbox', 'catalog-material')
+                    +checkbox('silver', 'Серебро', 'checkbox', 'catalog-material')
+                    +checkbox('blackening', 'Чернение', 'checkbox', 'catalog-material')
+                    +checkbox('platinum', 'Платина', 'checkbox', 'catalog-material')
+                    +checkbox('ceramic', 'Керамика', 'checkbox', 'catalog-material')
+                    +checkbox('steel', 'Сталь', 'checkbox', 'catalog-material')
+                    +checkbox('rubber', 'Каучук', 'checkbox', 'catalog-material')
+                    +checkbox('other coatings', 'Прочие покрытия', 'checkbox', 'catalog-material')
+            .catalog-filter-section.catalog-filter-section--color
+                h3.catalog-filter-section__title Цвет
+                .catalog-filter-section__colors
+                    +colorPick('#E9D590', 'beige', 'catalog-color', 'active')
+                    +colorPick('#C8C8C8', 'gray', 'catalog-color')
+                    +colorPick('#141318', 'black', 'catalog-color')
+            .catalog-filter-section.catalog-filter-section--price
+                h3.catalog-filter-section__title Стоимость
+                +rangeSlider('filter-price')
+                .catalog-filter-section--price__info
+                    p.catalog-filter-section__text(id="filter-price--from")
+                    |   -
+                    p.catalog-filter-section__text(id="filter-price--to")
+        .catalog-filter-bottom
+            +buttonSecond('Очистить', 'catalog-filter-clear')
+            +buttonFirst('Применить', 'catalog-filter-submit')

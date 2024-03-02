@@ -1,0 +1,4 @@
+mixin colorPick(bgColor, value, name, state)
+    label(class="color-pick" + (state ? " color-pick--" + state : ''))
+        input.color-pick__input(type="radio" name=name value=value)
+        div.color-pick__color(style="background-color: #{bgColor};")

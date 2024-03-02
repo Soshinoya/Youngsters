@@ -26,16 +26,19 @@
         }
     }
 
-    svg {
+    &__icon {
         width: 24px;
         height: 24px;
         fill: variables.$color-third;
 
         transition: transform variables.$transitionDuration variables.$transitionTimingFunc;
     }
+}
 
-    &--active {
-        p {
+.load-more .menu-item-dropdown:hover,
+.menu-item-dropdown--active {
+    .menu-item-dropdown {
+        &__text {
             padding: 0 18px 0 9px;
 
             &::before {
@@ -43,8 +46,31 @@
             }
         }
 
-        svg {
+        &__icon {
             transform: rotate(45deg);
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .menu-item-dropdown {
+        &__text {
+            font-size: 16px;
+            left: 22px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .menu-item-dropdown {
+        &__text {
+            font-size: 12px;
+            left: 16px;
+        }
+
+        &__icon {
+            width: 20px;
+            height: 20px;
         }
     }
 }

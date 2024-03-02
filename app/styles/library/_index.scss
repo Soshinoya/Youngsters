@@ -1,5 +1,6 @@
 @use '../base/variables.scss';
 @forward '../../../node_modules/swiper/swiper.scss';
+@forward '../../../node_modules/ion-rangeslider/css/ion.rangeSlider';
 
 .swiper-pagination-bullet {
     width: 8px;

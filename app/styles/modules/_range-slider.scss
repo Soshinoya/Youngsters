@@ -1,0 +1,56 @@
+@use '../base/variables.scss';
+
+.range-slider {
+    .irs--flat {
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 13px;
+            height: 13px;
+            background-color: #C2C0C1;
+            z-index: 2;
+            border-radius: 50%;
+        }
+        
+        &::before {
+            left: -4px;
+        }
+        
+        &::after {
+            right: -4px;
+        }
+
+        .irs-handle>i:first-child {
+            display: none;
+        }
+        
+        .irs-line,
+        .irs-bar {
+            height: 4px;
+        }
+        
+        .irs-line {
+            background-color: rgba(variables.$color-first, .2);
+        }
+
+        .irs-bar {
+            background-color: variables.$color-third;
+        }
+    }
+
+    .irs-single,
+    .irs-min,
+    .irs-max {
+        display: none;
+    }
+
+    .irs-handle {
+        height: 4px;
+        top: 25px;
+        background-color: variables.$color-third;
+        cursor: pointer;
+    }
+}

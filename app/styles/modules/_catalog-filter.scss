@@ -1,0 +1,144 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.catalog-filter {
+    min-width: 436px;
+    position: fixed;
+    top: 0;
+    right: -200%;
+    bottom: 0;
+    background-color: variables.$color-sixth;
+    z-index: 3;
+    transition: right variables.$transitionDuration variables.$transitionTimingFunc;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__inner {
+        display: flex;
+        margin-top: 40px;
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 30px;
+    }
+}
+
+.catalog-filter-top,
+.catalog-filter-bottom {
+    position: sticky;
+    background-color: variables.$color-sixth;
+    padding: 20px 30px;
+    z-index: 2;
+}
+
+.catalog-filter-top {
+    top: 0;
+    padding-bottom: 0;
+}
+
+.catalog-filter-bottom {
+    bottom: 0;
+    padding-top: 0;
+}
+
+.catalog-filter.menu-dropdown-list--visible {
+    right: 0;
+}
+
+.catalog-filter-top {
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(variables.$color-first, .15);
+    }
+
+    svg {
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+
+    &__text {
+        @extend %text-style;
+    }
+}
+
+.catalog-filter-section {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__colors {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+        @extend %text-style;
+    }
+
+    &__text {
+        @extend %text-style-first;
+    }
+
+    &--price {
+        .catalog-filter-section {
+            &__title {
+                margin-bottom: 0;
+            }
+
+            &__text {
+                position: relative;
+                margin-top: 10px;
+                padding-right: 20px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    @include mixins.bg-img(18px, 18px, '../images/sprite.svg#rub-black', no-repeat, cover, center)
+                }
+            }
+
+            &--price__info {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    }
+}
+
+.catalog-filter-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+@media (max-width: 1024px) {
+    .catalog-filter {
+        min-width: 376px;
+    }
+}
+
+@media (max-width: 414px) {
+    .catalog-filter {
+        min-width: 350px;
+    }
+}
+
+@media (max-width: 380px) {
+    .catalog-filter {
+        min-width: 280px;
+    }
+}

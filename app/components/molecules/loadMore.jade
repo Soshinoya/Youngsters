@@ -1,0 +1,10 @@
+include ../atoms/menuItems/menuItemDropdown.jade
+
+mixin loadMore()
+    .load-more
+        .load-more__btn
+            +menuItemDropdown('Загрузить еще', '')
+        .load-more__count
+            p.load-more__smalltext
+            .load-more__line
+                .load-more__loaded

@@ -1,0 +1,4 @@
+mixin checkbox(value, label, type, name, state)
+    label(class="checkbox" + (state ? " checkbox--" + state : ''))
+        input.checkbox__input(type=type name=name value=value)
+        div.checkbox__text= label

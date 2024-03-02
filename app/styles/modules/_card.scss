@@ -129,7 +129,7 @@
 
 @media (max-width: 768px) {
     .card {
-        max-width: 310px;
+        max-width: unset;
 
         &__icon,
         &__info {
@@ -140,7 +140,6 @@
 
 @media (max-width: 414px) {
     .card {
-        max-width: 204px;
         height: 277px;
         padding: 0;
         align-items: center;
@@ -194,9 +193,8 @@
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 350px) {
     .card {
-        max-width: 157px;
         height: 237px;
 
         &__icon {

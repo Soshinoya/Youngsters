@@ -6,6 +6,31 @@ const setPaddingFromContainerToElem = (elem, property) => {
     elem.style[property] = `${container.getBoundingClientRect().left + 20}px`
 }
 
+const toggleBackgroundBlur = action => {
+    const currentBlur = document.querySelector('.background-blur')
+
+    if (currentBlur) {
+        currentBlur.classList[action]('background-blur--active')
+    } else if (action !== 'remove') {
+        const newBlur = document.createElement('div')
+        newBlur.classList.add('background-blur', 'background-blur--active')
+        document.body.insertAdjacentElement('afterbegin', newBlur)
+    }
+}
+
+const closeDropdown = dropdownValue => {
+    const dropdownTarget = document.querySelector(`[data-dropdown-target="${dropdownValue}"]`)
+    const dropdownList = document.querySelector(`[data-dropdown-list="${dropdownValue}"]`)
+
+    dropdownTarget?.classList.remove('menu-item-dropdown--active')
+    dropdownList?.classList.remove(dropdownValue === 'header-sidebar' ? 'header-sidebar--visible' : 'menu-dropdown-list--visible')
+
+    toggleBackgroundBlur('remove')
+
+    // If an internal page is open - close it too
+    if (document.querySelector('.header-sidebar-top__inner-page')) toggleHeaderSidebarInnerPage('close')
+}
+
 window.addEventListener('resize', () => {
     !window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
     setPaddingFromContainerToElem(document.querySelector('.hero-slider__pagination'), 'right')
@@ -49,7 +74,10 @@ document.addEventListener('click', e => {
                 toggleHeaderSidebarInnerPage('open')
                 return
             }
+
         }
+
+        dropdownTargetValue === 'catalog-filter' && toggleBackgroundBlur('add')
 
         dropdownElem.classList.toggle('menu-item-dropdown--active')
         dropdownTargetList?.classList.toggle(dropdownTargetValue === 'header-sidebar' ? 'header-sidebar--visible' : 'menu-dropdown-list--visible')
@@ -66,19 +94,16 @@ document.addEventListener('click', e => {
         if (document.querySelector('.header-sidebar-top__inner-page')) toggleHeaderSidebarInnerPage('close')
     }
 
+    if (!e.target.closest('[data-dropdown-target="catalog-filter"], [data-dropdown-list="catalog-filter"]')) {
+        const catalogFilter = document.querySelector('[data-dropdown-list="catalog-filter"]')
+        if (catalogFilter?.classList.contains('menu-dropdown-list--visible')) {
+            closeDropdown('catalog-filter')
+        }
+    }
+
     // Close dropdowns with data-dropdown-close attribute
     const dropdownClose = e.target.closest('[data-dropdown-close]')
-    if (dropdownClose) {
-        const dropdownCloseValue = dropdownClose.getAttribute('data-dropdown-close')
-        const dropdownTarget = document.querySelector(`[data-dropdown-target="${dropdownCloseValue}"]`)
-        const dropdownList = document.querySelector(`[data-dropdown-list="${dropdownCloseValue}"]`)
-
-        dropdownTarget?.classList.remove('menu-item-dropdown--active')
-        dropdownList?.classList.remove(dropdownCloseValue === 'header-sidebar' ? 'header-sidebar--visible' : 'menu-dropdown-list--visible')
-
-        // If an internal page is open - close it too
-        if (document.querySelector('.header-sidebar-top__inner-page')) toggleHeaderSidebarInnerPage('close')
-    }
+    if (dropdownClose) closeDropdown(dropdownClose.getAttribute('data-dropdown-close'))
 
     // Opening / Closing search-overlay in the header
     const headerWrapper = document.querySelector('.header__wrapper')
@@ -104,5 +129,12 @@ document.addEventListener('click', e => {
     if (sizeButton && !sizeButton?.classList?.contains('size-button--disabled')) {
         document.querySelectorAll('.size-button').forEach(elem => elem.classList.remove('size-button--active'))
         sizeButton.classList.add('size-button--active')
+    }
+
+    // Color pick
+    const colorPick = e.target.closest('.color-pick')
+    if (colorPick && !colorPick?.classList?.contains('color-pick--disabled')) {
+        document.querySelectorAll('.color-pick').forEach(elem => elem.classList.remove('color-pick--active'))
+        colorPick.classList.add('color-pick--active')
     }
 })

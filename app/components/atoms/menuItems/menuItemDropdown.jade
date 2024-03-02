@@ -1,5 +1,5 @@
 mixin menuItemDropdown(text, dataDropdownTarget)
     .menu-item.menu-item-dropdown(data-dropdown-target="#{dataDropdownTarget}")
         p.menu-item-dropdown__text= text
-        svg
+        svg.menu-item-dropdown__icon
             use(xlink:href="./images/sprite.svg#plus-math")

@@ -1,3 +1,17 @@
+const resultPriceFormatter = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 })
+
+$('#range-slider--filter-price').ionRangeSlider({
+    min: 10000,
+    max: 500000,
+    step: 10000,
+    from: 50000,
+    onStart: data => {
+        $('#filter-price--from').text(resultPriceFormatter.format(data.from))
+        $('#filter-price--to').text(resultPriceFormatter.format(data.to))
+    },
+    onChange: data => $('#filter-price--to').text(resultPriceFormatter.format(data.from))
+})
+
 // Инициализация переменных
 let allProducts = 70;
 let renderedProducts = 0;
@@ -161,9 +175,37 @@ const renderProduct = data => {
         }
     } else {
         root.insertAdjacentHTML('beforeend', productCardTemplate)
+        renderedProducts++
     }
 }
 
-for (let i = 0; i < stepRenderProducts; i++) {
-    renderProduct(singleProductData)
+const loadMore = document.querySelector('.load-more')
+
+const setLoadMoreData = () => {
+    document.querySelector('.load-more .menu-item-dropdown').classList.remove('menu-item-dropdown--active')
+    loadMore.querySelector('.load-more__smalltext').textContent = `Показано ${renderedProducts} из ${allProducts} изделий`
+    loadMore.querySelector('.load-more__loaded').style.width = `${renderedProducts * 100 / allProducts}%`
 }
+
+const renderProducts = () => {
+    const productsToRender = (stepRenderProducts + renderedProducts) > allProducts ? allProducts - renderedProducts : stepRenderProducts
+
+    for (let i = 0; i < productsToRender; i++) {
+        renderProduct(singleProductData)
+    }
+
+    if (renderedProducts >= allProducts) {
+        loadMore.classList.add('d-none')
+        return
+    }
+
+    setLoadMoreData()
+}
+
+loadMore.addEventListener('click', renderProducts)
+
+document.addEventListener('click', () => {
+    document.querySelector('.load-more .menu-item-dropdown').classList.remove('menu-item-dropdown--active')
+})
+
+renderProducts()

@@ -1,0 +1,49 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    &__input {
+        position: relative;
+        display: flex;
+        width: 20px;
+        height: 20px;
+        align-items: center;
+        gap: 10px;
+        color: variables.$color-first;
+        background-color: variables.$color-sixth;
+        border: 1px solid rgba(variables.$black-color, .3);
+        transition-property: color;
+        transition-property: background-color;
+        transition-duration: variables.$transitionDuration;
+        transition-timing-function: variables.$transitionTimingFunc;
+        cursor: pointer;
+
+        &:checked {
+            background-color: variables.$color-third;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                @include mixins.bg-img(13px, 10px, '../images/sprite.svg#done-white', no-repeat, cover, center)
+            }
+        }
+
+        &--disabled {
+            color: variables.$color-third;
+            cursor: default;
+        }
+    }
+
+    &__text {
+        @extend %text-style-first;
+    }
+}

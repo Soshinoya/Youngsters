@@ -1,0 +1,62 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.load-more {
+    display: flex;
+    max-width: 244px;
+    width: 100%;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 10px;
+
+    .menu-item-dropdown {
+        color: variables.$color-first;
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    &__text {
+        @extend %text-style;
+    }
+
+    &__icon,
+    &__icon svg {
+        width: 22px;
+        height: 22px;
+        fill: variables.$color-third;
+    }
+
+    &__count {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__smalltext {
+        @include mixins.font(12px, 14px, rgba(variables.$color-first, .6)) {
+            @extend %roboto-400;
+        }
+    }
+
+    &__line,
+    &__loaded {
+        height: 2px;
+    }
+    
+    &__line {
+        position: relative;
+        width: 100%;
+        background-color: rgba(variables.$color-first, .2);
+    }
+
+    &__loaded {
+        position: absolute;
+        background-color: variables.$color-third;
+    }
+}
