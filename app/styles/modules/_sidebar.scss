@@ -1,0 +1,132 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.sidebar {
+    max-width: 436px;
+    width: 100%;
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    right: -200%;
+    bottom: 0;
+    background-color: variables.$color-sixth;
+    z-index: 3;
+    transition: right variables.$transitionDuration variables.$transitionTimingFunc;
+    overflow-y: auto;
+    cursor: default;
+
+    &.sidebar--nested {
+        .sidebar-top {
+            &__back {
+                display: block;
+            }
+
+            &__text {
+                display: none;
+            }
+        }
+    }
+
+    &.sidebar--nested-second {
+        .sidebar-top {
+            &__back {
+                display: block;
+            }
+        }
+    }
+
+    &--visible {
+        right: 0;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__text {
+        @include mixins.font(14px, 16px);
+        @extend %roboto-400;
+    }
+
+    & ul.sidebar__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: circle;
+        padding-left: 16px;
+    }
+
+    &__list-item {
+        list-style-type: disc;
+        @extend %text-style-first;
+    }
+}
+
+.sidebar-top,
+.sidebar-bottom {
+    position: sticky;
+    background-color: variables.$color-sixth;
+    padding: 20px 0;
+    z-index: 2;
+}
+
+.sidebar-top {
+    top: 0;
+    padding-bottom: 0;
+    margin-bottom: 40px;
+}
+
+.sidebar-bottom {
+    bottom: 0;
+    padding-top: 0;
+}
+
+.sidebar-top {
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(variables.$color-first, .15);
+    }
+
+    &__back {
+        display: none;
+    }
+
+    &__back,
+    &__close {
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+
+    &__text {
+        @extend %text-style;
+    }
+}
+
+.sidebar-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        max-width: 376px;
+    }
+}
+
+@media (max-width: 414px) {
+    .sidebar {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 380px) {
+    .sidebar {
+        max-width: 280px;
+    }
+}

@@ -9,6 +9,11 @@ body {
 
 .main {
     flex-grow: 1;
+    padding-top: 85px;
+
+    &--index {
+        padding-top: 0;
+    }
 }
 
 body {

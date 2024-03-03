@@ -44,7 +44,7 @@ const singleProductData = {
     imgAlt: "Кольцо",
     title: "Кольцо YOUNGSTERS",
     price: "35 000,00",
-    href: "/catalog.html",
+    href: "/youngsters/product.html",
     isFavorite: false,
     type: "ring",
     isPlaque: true,

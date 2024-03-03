@@ -1,0 +1,98 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.product-images-slider {
+    width: 870px;
+    z-index: 0;
+
+    &__close {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    &__pagination {
+        top: 50%;
+        transform: translateY(-50%);
+        justify-content: center;
+    }
+
+    &__close,
+    &__pagination {
+        display: none;
+        position: absolute;
+        right: 30px;
+        z-index: 1;
+    }
+
+    &--fullscreen {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: variables.$color-fourth;
+        z-index: 2;
+
+        .product-images-slider {
+            &__close {
+                top: 30px;
+                display: block;
+            }
+
+            &__pagination {
+                display: flex;
+            }
+        }
+
+        .product-images-slider-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100dvh;
+
+            &__icon {
+                display: none;
+            }
+        }
+    }
+}
+
+.product-images-slider-slide {
+    position: relative;
+
+    &__img {
+        width: 870px;
+        height: 858px;
+
+        img {
+            @include mixins.image-default();
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+        cursor: pointer;
+
+        &,
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &:hover {
+        .product-images-slider-slide {
+            &__icon {
+                opacity: 1;
+            }
+        }
+    }
+}

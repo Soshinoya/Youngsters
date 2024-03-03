@@ -1,0 +1,30 @@
+@use '../base/variables.scss';
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &__icon {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        fill: variables.$color-first;
+
+        &--disabled {
+            opacity: .35;
+        }
+    }
+
+    &__input {
+        width: 90px;
+        padding: 13px 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid variables.$color-sixth;
+        @extend %text-style;
+        outline: none;
+    }
+}

@@ -62,6 +62,18 @@ const toggleHeaderSidebarInnerPage = action => {
     }
 }
 
+const toggleSidebar = (action, value) => {
+    const sidebar = document.querySelector(`[data-sidebar-page="${value}"]`)
+    sidebar.classList[action]('sidebar--visible')
+    toggleBackgroundBlur(action)
+}
+
+const toggleProductImagesSliderZoom = action => {
+    const productImagesSlider = document.querySelector('.product-images-slider')
+    productImagesSlider.classList[action]('product-images-slider--fullscreen')
+    document.body.classList[action]('no-scroll')
+}
+
 document.addEventListener('click', e => {
     // Toggle dropdowns
     const dropdownElem = e.target.closest('[data-dropdown-target]')
@@ -137,4 +149,86 @@ document.addEventListener('click', e => {
         document.querySelectorAll('.color-pick').forEach(elem => elem.classList.remove('color-pick--active'))
         colorPick.classList.add('color-pick--active')
     }
+
+    // Sidebar
+    const sidebarClose = e.target.closest('[data-sidebar-close]')
+    const sidebarPage = e.target.closest('[data-sidebar-page]')
+    const visibleSidebar = document.querySelector('.sidebar--visible')
+    if (sidebarClose || (!sidebarPage && visibleSidebar)) {
+        const visibleSidebars = document.querySelectorAll('.sidebar--visible')
+        visibleSidebars.forEach(sidebar => sidebar.classList.remove('sidebar--visible'))
+        toggleBackgroundBlur('remove')
+    }
+
+    const sidebarTarget = e.target.closest('[data-sidebar-target]')
+    if (sidebarTarget) toggleSidebar('add', sidebarTarget.getAttribute('data-sidebar-target'))
+
+    const sidebarBack = e.target.closest('[data-sidebar-back]')
+    if (sidebarBack) toggleSidebar('remove', sidebarBack.getAttribute('data-sidebar-back'))
+
+    // Product Images Slider
+    const productImagesSliderZoomIcon = e.target.closest('.product-images-slider-slide__icon')
+    if (productImagesSliderZoomIcon) toggleProductImagesSliderZoom('add')
+
+    const productImagesSliderClose = e.target.closest('.product-images-slider__close')
+    if (productImagesSliderClose) toggleProductImagesSliderZoom('remove')
+
+    // Like Buttons
+    const likeBtn = e.target.closest('.like-button')
+    if (likeBtn) likeBtn.classList.toggle('like-button--active')
 })
+
+const counters = document.querySelectorAll('.counter')
+
+if (counters.length > 0) {
+    counters.forEach(counter => {
+        const minusElem = counter.querySelector('.counter__icon--minus')
+        const plusElem = counter.querySelector('.counter__icon--plus')
+        const input = counter.querySelector('.counter__input')
+
+        const minValue = input.getAttribute('min')
+        const maxValue = input.getAttribute('max')
+
+        const updateButtonState = () => {
+            if (input.value <= minValue) {
+                minusElem.classList.add('counter__icon--disabled')
+            } else {
+                minusElem.classList.remove('counter__icon--disabled')
+            }
+
+            if (input.value >= maxValue) {
+                plusElem.classList.add('counter__icon--disabled')
+            } else {
+                plusElem.classList.remove('counter__icon--disabled')
+            }
+        }
+
+        // Обновление состояния кнопки минус при инициализации
+        updateButtonState()
+
+        minusElem.addEventListener('click', () => {
+            const minValue = parseInt(input.getAttribute('min'), 10)
+            if (input.value > minValue) {
+                input.value -= 1
+            }
+            updateButtonState()
+        })
+
+        plusElem.addEventListener('click', () => {
+            const maxValue = parseInt(input.getAttribute('max'), 10)
+            if (input.value < maxValue) {
+                input.value = parseInt(input.value, 10) + 1
+            }
+            updateButtonState()
+        })
+
+        input.addEventListener('blur', () => {
+            if (input.value < minValue) {
+                input.value = minValue
+            } if (input.value > maxValue) {
+                input.value = maxValue
+            }
+            updateButtonState()
+        })
+    })
+}

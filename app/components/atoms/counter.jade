@@ -1,0 +1,7 @@
+mixin counter(startValue, min, max, name)
+    .counter
+        svg.counter__icon.counter__icon--minus
+            use(xlink:href="./images/sprite.svg#subtract")
+        input.counter__input(type="number", name=name min=min max=max value=startValue)
+        svg.counter__icon.counter__icon--plus
+            use(xlink:href="./images/sprite.svg#plus-math")

@@ -1,0 +1,10 @@
+mixin sidebar(dataSidebarPage, title)
+    aside.sidebar(data-sidebar-page=dataSidebarPage)
+        .sidebar-top
+            .sidebar-top__inner
+                svg.sidebar-top__back(data-sidebar-back=dataSidebarPage)
+                    use(xlink:href="./images/sprite.svg#forward")
+                p.sidebar-top__text= title
+                svg.sidebar-top__close(data-sidebar-close=dataSidebarPage)
+                    use(xlink:href="./images/sprite.svg#close-black")
+        block

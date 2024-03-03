@@ -1,0 +1,34 @@
+@use '../base/variables.scss';
+
+.categories-header {
+    &__inner {
+        padding: 10px 0;
+        background-color: variables.$color-first;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.categories-header-nav {
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+    }
+
+    &__link {
+        color: variables.$color-fourth;
+        @extend %text-style-first;
+        transition: color variables.$transitionDuration variables.$transitionTimingFunc;
+
+        &:hover {
+            color: variables.$color-third;
+        }
+    }
+}

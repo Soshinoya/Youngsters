@@ -1,0 +1,20 @@
+@use '../base/variables.scss';
+
+.like-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background-color: variables.$color-first;
+    transition: background-color variables.$transitionDuration variables.$transitionTimingFunc;
+    cursor: pointer;
+
+    &--active {
+        background-color: variables.$color-third;
+    }
+
+    svg {
+        width: 22px;
+        height: 22px;
+    }
+}

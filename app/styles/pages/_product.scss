@@ -1,0 +1,155 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.product {
+    &__inner {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: 100px;
+    }
+}
+
+.product-info {
+    max-width: 572px;
+    width: 100%;
+
+    &__holder {
+        margin: 60px 0 190px;
+    }
+
+    & ul.product-info__features {
+        margin-bottom: 40px;
+        list-style: circle;
+        padding-left: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__features-item {
+        @extend %text-style-breadcrumbs;
+        list-style-type: disc;
+    }
+}
+
+.product-info-top {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    &__subtitle {
+        @extend %text-style-breadcrumbs;
+        color: rgba(variables.$color-first, .5);
+    }
+
+    &__title {
+        max-width: 326px;
+
+        @include mixins.font(25px, 25px, variables.$color-first) {
+            @extend %cormorant-600;
+            letter-spacing: 0.015em;
+            text-transform: uppercase;
+        }
+        
+        span {
+            @extend %baskerville-400;
+            color: variables.$color-third;
+        }
+    }
+}
+
+.product-info-config {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    &__item-title {
+        @extend %text-style-breadcrumbs;
+    }
+
+    &__item-colors {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+}
+
+.product-info-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__btns {
+        display: flex;
+        gap: 6px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+    }
+
+    &__item-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    &__item-text {
+        @extend %text-style-breadcrumbs;
+        color: variables.$color-first;
+    }
+}
+
+.product-info-benefits {
+    display: flex;
+    justify-content: space-between;
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    &__item {
+        cursor: pointer;
+    }
+
+    &__item-inner {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    &__icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    &__title {
+        @extend %text-style-first;
+    }
+}
+
+.product-info-benefits-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

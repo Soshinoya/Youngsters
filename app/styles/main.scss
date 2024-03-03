@@ -16,6 +16,9 @@
 // Modules
 @import 'modules';
 
+// Pages
+@import 'pages';
+
 // Utilities
 @import 'utils/functions';
 @import 'utils/mixins';
@@ -68,8 +71,6 @@
 }
 
 .catalog-hero {
-    padding-top: 77px;
-
     &__title {
         display: flex;
         flex-direction: column;
