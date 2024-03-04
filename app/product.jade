@@ -3,21 +3,23 @@ html(lang='ru')
     head
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        link(rel='apple-touch-icon' sizes='180x180' href='./assets/apple-touch-icon.png')
-        link(rel='icon' type='image/png' sizes='32x32' href='./assets/favicon-32x32.png')
-        link(rel='icon' type='image/png' sizes='16x16' href='./assets/favicon-16x16.png')
-        link(rel='manifest' href='./assets/site.webmanifest')
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href='./assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180')
+        link(type='image/png' href='./assets/favicon-32x32.png' rel='icon' sizes='32x32')
+        link(type='image/png' href='./assets/favicon-16x16.png' rel='icon' sizes='16x16')
+        link(href='./assets/site.webmanifest' rel='manifest')
         title Youngsters - Кольцо Green Stone
-        link(rel="stylesheet" href="css/main.min.css")
+        link(href="css/main.min.css" rel="stylesheet")
         script(src="js/minified/main.min.js" defer)
         script(src="js/minified/product.min.js" defer)
     body
         include ./components/templates/sidebar.jade
-    
+
         include ./components/organisms/header.jade
         include ./components/organisms/footer.jade
         include ./components/organisms/headerSidebar.jade
+        include ./components/organisms/sidebarCompositions/sidebarProductCharacteristics.jade
+        include ./components/organisms/sidebarCompositions/sidebarProductSize.jade
 
         include ./components/molecules/categoriesHeader.jade
         include ./components/molecules/productImagesSlider.jade
@@ -62,7 +64,12 @@ html(lang='ru')
                                             +colorPick('#141318', 'black', 'product-color')
                                     .product-info-config__item.product-info-config__item--size
                                         p.product-info-config__item-title Размер
-                                        .product-info-config__item-size
+                                        .product-info-config__item-size(data-sidebar-target="product-size")
+                                            .product-info-config__item-text__wrapper
+                                                p.product-info-config__item-text 29,5
+                                            svg.product-info-config__item-icon
+                                                use(xlink:href="./images/sprite.svg#triangle")
+                                        +sidebarProductSize()
                                     .product-info-config__item.product-info-config__item--count
                                         p.product-info-config__item-title Количество
                                         +counter(1, 1, 5, 'product-count')
@@ -85,16 +92,7 @@ html(lang='ru')
                                             svg.product-info-benefits__icon
                                                 use(xlink:href="./images/sprite.svg#plus-math")
                                             p.product-info-benefits__title Характеристики изделия
-                                        +sidebar('product-characteristics', 'Характеристики изделия')
-                                            .product-info-benefits-sidebar.product-info-benefits-sidebar--characteristics
-                                                p.sidebar__text Мужской перстень из чистейшего высококачественного серебра 925 пробы в классической форме и узором. Перстень украшен круглым индийским ониксом. Классика всегда в моде для любого возраста мужчины.
-                                                ul.sidebar__list
-                                                    li.sidebar__list-item Серебро 925 проба 
-                                                    li.sidebar__list-item Цвет металла - Белый
-                                                    li.sidebar__list-item Средний вес 9,30 гр
-                                                    li.sidebar__list-item Вставка - Оникс 28 ct
-                                                    li.sidebar__list-item Коллекция - Stone
-                                                    li.sidebar__list-item Бренд Youngsters
+                                        +sidebarProductCharacteristics()
                                     .product-info-benefits__item
                                         .product-info-benefits__item-inner(data-sidebar-target="")
                                             svg.product-info-benefits__icon

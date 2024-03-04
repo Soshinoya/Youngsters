@@ -1,0 +1,99 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.input {
+    width: 100%;
+    padding: 15px 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(variables.$color-first, .15);
+    outline: none;
+
+    &,
+    &__placeholder {
+        @extend %text-style-first;
+    }
+
+    &__placeholder {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(variables.$color-first, .6);
+        transition-property: font-size;
+        transition-property: top;
+        transition-duration: variables.$transitionDuration;
+        transition-timing-function: variables.$transitionTimingFunc;
+    }
+
+    &__icon {
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+
+    &__icon-hidden,
+    &__icon-show {
+        margin-left: auto;
+    }
+
+    &__icon-magnifying {
+        display: none;
+        margin-right: 15px;
+    }
+
+    &__icon-hidden {
+        display: none;
+    }
+
+    &__icon-show {
+        display: none;
+    }
+
+    &__wrapper:has(.input--active) {
+        .input {
+            &__placeholder {
+                top: 0;
+                @include mixins.font(10px, 12px);
+            }
+        }
+    }
+
+    &--error {
+        border-bottom-color: variables.$color-third;
+        color: variables.$color-third;
+    }
+
+    &__wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        &--address {
+            .input {
+                &__icon-magnifying {
+                    display: block;
+                }
+            }
+        }
+
+        &--password {
+            .input {
+                &__icon-hidden {
+                    display: block;
+                }
+
+                &-password--visible {
+                    .input {
+                        &__icon-hidden {
+                            display: none;
+                        }
+
+                        &__icon-show {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

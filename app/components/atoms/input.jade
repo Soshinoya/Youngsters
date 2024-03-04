@@ -1,0 +1,10 @@
+mixin input(type, placeholder, name, dataType, required)
+    div(class="input__wrapper " + (type !== '' ? 'input__wrapper--' + type : ''))
+        svg.input__icon.input__icon-magnifying
+            use(xlink:href="./images/sprite.svg#search")
+        input.input(type=(type == 'password' ? 'password' : 'text'), name=name, data-type=dataType, required=required ? 'required' : null)
+        .input__placeholder= placeholder
+        svg.input__icon.input__icon-hidden
+            use(xlink:href="./images/sprite.svg#hidden")
+        svg.input__icon.input__icon-show
+            use(xlink:href="./images/sprite.svg#show")

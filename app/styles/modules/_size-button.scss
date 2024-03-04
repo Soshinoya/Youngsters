@@ -19,7 +19,7 @@
     }
 
     &--disabled {
-        color: variables.$color-third;
+        opacity: .35;
         cursor: default;
     }
 

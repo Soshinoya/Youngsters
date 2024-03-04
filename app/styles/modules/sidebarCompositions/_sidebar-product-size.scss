@@ -1,0 +1,38 @@
+.sidebar-product-size {
+    height: 100%;
+    
+    &__sizes {
+        display: grid;
+        margin-bottom: 40px;
+        grid-template-columns: repeat(6, 1fr);
+    }
+    &__links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar-product-size {
+        &__sizes {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .sidebar-product-size {
+        &__links {
+            gap: 15px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .sidebar-product-size {
+        &__sizes {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

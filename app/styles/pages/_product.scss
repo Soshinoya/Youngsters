@@ -78,6 +78,36 @@
     &__item-title {
         @extend %text-style-breadcrumbs;
     }
+    
+    &__item-text {
+        @extend %text-style;
+    }
+
+    &__item-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    &__item-size {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+
+        .product-info-config {
+            &__item-text {
+                margin: 0 auto;
+
+                &__wrapper {
+                    display: flex;
+                    width: 90px;
+                    align-items: center;
+                    padding: 13px 0;
+                    border: 1px solid rgba(variables.$color-first, .35);
+                }
+            }
+        }
+    }
 
     &__item-colors {
         display: flex;

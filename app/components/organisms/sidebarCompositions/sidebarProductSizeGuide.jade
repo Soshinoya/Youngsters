@@ -1,0 +1,19 @@
+include ../../templates/sidebar.jade
+
+mixin sidebarProductSizeGuide()
+    +sidebar('product-size-guide', '', 'nested')
+        .sidebar-product-size-guide
+            h3.sidebar__title Гид по размерам
+            .sidebar-product-size-guide__items
+                .sidebar-product-size-guide__item
+                    svg
+                        use(xlink:href="./images/sprite.svg#bobbin")
+                    p.sidebar-product-size-guide__item-text Обмотайте нужный палец ниткой, шнурком или бумажной лентой
+                .sidebar-product-size-guide__item
+                    svg
+                        use(xlink:href="./images/sprite.svg#sewing-tape-measure")
+                    p.sidebar-product-size-guide__item-text Линейкой замерьте полученную длину нитки
+                .sidebar-product-size-guide__item
+                    svg
+                        use(xlink:href="./images/sprite.svg#puzzle-matching")
+                    p.sidebar-product-size-guide__item-text Введите результат в миллиметрах

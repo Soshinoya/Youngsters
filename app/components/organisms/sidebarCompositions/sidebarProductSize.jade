@@ -1,0 +1,43 @@
+include ../../templates/sidebar.jade
+
+include ./sidebarProductSizeGuide.jade
+include ./sidebarProductSizeOrder.jade
+
+
+include ../../atoms/buttons/buttonFirst.jade
+include ../../atoms/buttons/buttonSecond.jade
+
+include ../../atoms/sizeButton.jade
+
+mixin sidebarProductSize()
+    +sidebar('product-size', 'Размер')
+        .sidebar-product-size
+            .sidebar-product-size__sizes
+                +sizeButton(16, 16, 'product-size', 'disabled')
+                +sizeButton(16.5, 16.5, 'product-size', '')
+                +sizeButton(17, 17, 'product-size', 'disabled')
+                +sizeButton(17.5, 17.5, 'product-size', '')
+                +sizeButton(18, 18, 'product-size', 'active')
+                +sizeButton(18.5, 18.5, 'product-size', '')
+                +sizeButton(19, 19, 'product-size', '')
+                +sizeButton(19.5, 19.5, 'product-size', '')
+                +sizeButton(20, 20, 'product-size', 'disabled')
+                +sizeButton(20.5, 20.5, 'product-size', '')
+                +sizeButton(21, 21, 'product-size', 'disabled')
+                +sizeButton(21.5, 21.5, 'product-size', 'disabled')
+                +sizeButton(22, 22, 'product-size', 'disabled')
+                +sizeButton(22.5, 22.5, 'product-size', '')
+                +sizeButton(23, 23, 'product-size', '')
+                +sizeButton(23.5, 23.5, 'product-size', 'disabled')
+                +sizeButton(24, 24, 'product-size', '')
+                +sizeButton(24.5, 24.5, 'product-size', 'disabled')
+                +sizeButton(25, 25, 'product-size', '')
+                +sizeButton(25.5, 25.5, 'product-size', '')
+            .sidebar-product-size__links
+                p.sidebar__link(data-sidebar-target="product-size-guide") Гид по размерам
+                p.sidebar__link(data-sidebar-target="product-size-order") Заказать нужный размер
+        +sidebarProductSizeGuide()
+        +sidebarProductSizeOrder()
+        .sidebar-bottom
+            +buttonSecond('Очистить', 'sidebar-product-size-clear')
+            +buttonFirst('Применить', 'sidebar-product-size-submit')

@@ -1,0 +1,48 @@
+include ../../templates/sidebar.jade
+
+include ../../molecules/card.jade
+
+include ../../atoms/sizeButton.jade
+include ../../atoms/input.jade
+include ../../atoms/checkbox.jade
+
+mixin sidebarProductSizeOrder()
+    +sidebar('product-size-order', 'Заказать нужный размер')
+        .sidebar-product-size-order
+            +card({imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"})
+            .sidebar-product-size-order__sizes-inner
+                p.sidebar-product-size-order__title Выберите размер
+                .sidebar-product-size__sizes
+                    +sizeButton(16, 16, 'product-size-order', '')
+                    +sizeButton(16.5, 16.5, 'product-size-order', '')
+                    +sizeButton(17, 17, 'product-size-order', '')
+                    +sizeButton(17.5, 17.5, 'product-size-order', '')
+                    +sizeButton(18, 18, 'product-size-order', 'active')
+                    +sizeButton(18.5, 18.5, 'product-size-order', '')
+                    +sizeButton(19, 19, 'product-size-order', '')
+                    +sizeButton(19.5, 19.5, 'product-size-order', '')
+                    +sizeButton(20, 20, 'product-size-order', '')
+                    +sizeButton(20.5, 20.5, 'product-size-order', '')
+                    +sizeButton(21, 21, 'product-size-order', '')
+                    +sizeButton(21.5, 21.5, 'product-size-order', '')
+                    +sizeButton(22, 22, 'product-size-order', '')
+                    +sizeButton(22.5, 22.5, 'product-size-order', '')
+                    +sizeButton(23, 23, 'product-size-order', '')
+                    +sizeButton(23.5, 23.5, 'product-size-order', '')
+                    +sizeButton(24, 24, 'product-size-order', '')
+                    +sizeButton(24.5, 24.5, 'product-size-order', '')
+                    +sizeButton(25, 25, 'product-size-order', '')
+                    +sizeButton(25.5, 25.5, 'product-size-order', '')
+            .sidebar-product-size-order-data
+                p.sidebar-product-size-order__title Контактные данные
+                .sidebar-product-size-order-data__inputs
+                    +input('text', 'Имя*', 'product-size-order-data', 'name', true)
+                    +input('text', 'Телефон*', 'product-size-order-data', 'phone', true)
+            .sidebar-product-size-order-contacts
+                p.sidebar-product-size-order__title Предпочтительный способ связи
+                .sidebar-product-size-order-contacts__variants
+                    +checkbox('telegram', 'Telegram', 'checkbox', 'product-size-order-data')
+                    +checkbox('whatsapp', 'Whatsapp', 'checkbox', 'product-size-order-data')
+        .sidebar-bottom
+            +buttonSecond('Очистить', 'sidebar-product-size-order-clear')
+            +buttonFirst('Применить', 'sidebar-product-size-order-submit')

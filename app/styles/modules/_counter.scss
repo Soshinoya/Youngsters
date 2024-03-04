@@ -23,7 +23,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid variables.$color-sixth;
+        border: 1px solid rgba(variables.$color-first, .35);
         @extend %text-style;
         outline: none;
     }

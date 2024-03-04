@@ -43,6 +43,10 @@
         display: none;
     }
 
+    &__title {
+        @extend %text-style;
+    }
+
     &__text {
         @include mixins.font(14px, 16px);
         @extend %roboto-400;
@@ -59,6 +63,13 @@
     &__list-item {
         list-style-type: disc;
         @extend %text-style-first;
+    }
+
+    &__link {
+        @extend %text-style-first;
+        color: variables.$color-first;
+        text-decoration: underline;
+        cursor: pointer;
     }
 }
 
@@ -92,6 +103,7 @@
 
     &__back {
         display: none;
+        transform: rotate(180deg);
     }
 
     &__back,
