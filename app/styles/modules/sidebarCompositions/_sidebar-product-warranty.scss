@@ -1,0 +1,10 @@
+.sidebar-product-warranty,
+.sidebar-product-refund {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-product-warranty {
+    margin-bottom: 40px;
+}

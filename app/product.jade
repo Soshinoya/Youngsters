@@ -20,6 +20,9 @@ html(lang='ru')
         include ./components/organisms/headerSidebar.jade
         include ./components/organisms/sidebarCompositions/sidebarProductCharacteristics.jade
         include ./components/organisms/sidebarCompositions/sidebarProductSize.jade
+        include ./components/organisms/sidebarCompositions/sidebarProductMenu.jade
+        include ./components/organisms/sidebarCompositions/sidebarProductWarranty.jade
+        include ./components/organisms/sidebarCompositions/sidebarProductCare.jade
 
         include ./components/molecules/categoriesHeader.jade
         include ./components/molecules/productImagesSlider.jade
@@ -94,27 +97,24 @@ html(lang='ru')
                                             p.product-info-benefits__title Характеристики изделия
                                         +sidebarProductCharacteristics()
                                     .product-info-benefits__item
-                                        .product-info-benefits__item-inner(data-sidebar-target="")
+                                        .product-info-benefits__item-inner(data-sidebar-target="product-menu")
                                             svg.product-info-benefits__icon
                                                 use(xlink:href="./images/sprite.svg#plus-math")
                                             p.product-info-benefits__title Доставка и оплата
-                                        .product-info-benefits-sidebar
-                                            +sidebar()
+                                        +sidebarProductMenu()
                                 .product-info-benefits__col
                                     .product-info-benefits__item
-                                        .product-info-benefits__item-inner(data-sidebar-target="")
+                                        .product-info-benefits__item-inner(data-sidebar-target="product-warranty")
                                             svg.product-info-benefits__icon
                                                 use(xlink:href="./images/sprite.svg#plus-math")
                                             p.product-info-benefits__title Гарантия и возврат
-                                        .product-info-benefits-sidebar
-                                            +sidebar()
+                                        +sidebarProductWarranty()
                                     .product-info-benefits__item
-                                        .product-info-benefits__item-inner(data-sidebar-target="")
+                                        .product-info-benefits__item-inner(data-sidebar-target="product-care")
                                             svg.product-info-benefits__icon
                                                 use(xlink:href="./images/sprite.svg#plus-math")
                                             p.product-info-benefits__title Уход за изделием
-                                        .product-info-benefits-sidebar
-                                            +sidebar()
+                                        +sidebarProductCare()
         +footer()
 
 

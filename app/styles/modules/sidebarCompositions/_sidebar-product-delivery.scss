@@ -1,0 +1,46 @@
+.sidebar-product-delivery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__items-item {
+        display: flex;
+        gap: 20px;
+
+        .sidebar {
+            &__list {
+                margin-top: 10px;
+            }
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        &__icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        &__content-wrapper {
+            display: flex;
+            width: fit-content;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &__list-wrapper {
+            margin-top: 20px;
+        }
+        
+        &:last-child {
+            .sidebar-product-delivery {
+                &__items-item__list-wrapper {
+                    margin: 10px 0;
+                }
+            }
+        }
+    }
+}

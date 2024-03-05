@@ -1,0 +1,27 @@
+mixin sidebarProductPayment()
+    +sidebar('product-payment', 'Оплата', 'nested-second')
+        .sidebar-product-payment
+            .sidebar-product-payment-item
+                svg.sidebar-product-payment-item__icon
+                    use(xlink:href="./images/sprite.svg#mobile-shop-payment")
+                .sidebar-product-payment-item__content
+                    p.sidebar__title Банковской картой на сайте
+                    p.sidebar__text Оплата на сайте онлайн сразу после оформления заказа.
+            .sidebar-product-payment-item
+                svg.sidebar-product-payment-item__icon
+                    use(xlink:href="./images/sprite.svg#cash-in-hand")
+                .sidebar-product-payment-item__content
+                    p.sidebar__title Наличными при получении заказа
+                    p.sidebar__text Оплата наличными производится при получении заказа.
+            .sidebar-product-payment-item
+                svg.sidebar-product-payment-item__icon
+                    use(xlink:href="./images/sprite.svg#diploma")
+                .sidebar-product-payment-item__content
+                    p.sidebar__title Подарочным сертификатом при получении заказа
+                    p.sidebar__text Оплата до 100% стоимости заказа подарочным сертификатом. Выбрать подарочный сертификат.
+            .sidebar-product-payment-item
+                svg.sidebar-product-payment-item__icon
+                    use(xlink:href="./images/sprite.svg#online-payment-with-a-credit-card")
+                .sidebar-product-payment-item__content
+                    p.sidebar__title Безналичным переводом
+                    p.sidebar__text Перечисление денежных средств по счету или реквизитам организациии.

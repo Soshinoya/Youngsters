@@ -10,6 +10,10 @@
         @extend %text-style;
         margin-bottom: 20px;
     }
+
+    &__button-first__wrapper {
+        width: 100%;
+    }
 }
 
 .sidebar-product-size-order-data {

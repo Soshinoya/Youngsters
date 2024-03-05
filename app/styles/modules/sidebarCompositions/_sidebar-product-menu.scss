@@ -1,0 +1,29 @@
+.sidebar-product-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+    }
+
+    &__icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    &__icon-forward {
+        width: 20px;
+        height: 20px;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+}

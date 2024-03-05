@@ -1,0 +1,47 @@
+mixin sidebarProductDelivery()
+    +sidebar('product-delivery', 'Доставка', 'nested-second')
+        .sidebar-product-delivery
+            .sidebar-product-delivery__items-item
+                svg.sidebar-product-delivery__items-item__icon
+                    use(xlink:href="./images/sprite.svg#delivery")
+                .sidebar-product-delivery__items-item__content-wrapper
+                    p.sidebar__title.sidebar-product-delivery__items-item__title Доставка курьерскими службами 
+                    .sidebar-product-delivery__items-item__content
+                        p.sidebar__text Срок доставки 1 - 7 дней
+                        p.sidebar__text Доставка заказов осуществляется домой, в офис, а также в постаматы в отделениях Сбербанка.
+                        p.sidebar__text Доставка осуществляется только после полной предоплаты.
+                        ul.sidebar__list
+                            li.sidebar__list-item Бесплатно при сумме выкупа от 10 000₽
+                            li.sidebar__list-item При меньшей сумме выкупа - 1 000₽
+            .sidebar-product-delivery__items-item
+                svg.sidebar-product-delivery__items-item__icon
+                    use(xlink:href="./images/sprite.svg#logistics-delivery-packages")
+                .sidebar-product-delivery__items-item__content-wrapper
+                    p.sidebar__title.sidebar-product-delivery__items-item__title Пункт выдачи
+                    .sidebar-product-delivery__items-item__content
+                        p.sidebar__text Срок доставки 1 - 3 дня
+                        p.sidebar__text Перед оплатой заказа вы можете вскрыть посылку, проверить её содержимое и выкупить только те украшения, которые вам подошли
+                        .sidebar-product-delivery__items-item__list-wrapper
+                            p.sidebar__text Бесплатно:
+                            ul.sidebar__list
+                                li.sidebar__list-item При сумме выкупа от 4 000₽
+                        .sidebar-product-delivery__items-item__list-wrapper
+                            p.sidebar__text При меньшей сумме выкупа:
+                            ul.sidebar__list
+                                li.sidebar__list-item В пределах МКАД и КАД - 250₽
+                                li.sidebar__list-item По МО - 290₽
+            .sidebar-product-delivery__items-item
+                svg.sidebar-product-delivery__items-item__icon
+                    use(xlink:href="./images/sprite.svg#shop")
+                .sidebar-product-delivery__items-item__content-wrapper
+                    p.sidebar__title.sidebar-product-delivery__items-item__title Забрать в салоне
+                    .sidebar-product-delivery__items-item__content
+                        p.sidebar__text Срок доставки 1 - 5 дней
+                        p.sidebar__text Выберите салон, в котором украшение есть в наличии, или оформите доставку в более удобный. Согласуйте дату приезда с менеджером Интернет-магазина.
+                        p.sidebar__text Срок хранения заказа 3 дня
+                        .sidebar-product-delivery__items-item__list-wrapper
+                            p.sidebar__text Бесплатно
+                            ul.sidebar__list
+                                li.sidebar__list-item При любой сумме заказа при наличии в выбранном салоне
+                                li.sidebar__list-item Перемещение заказов в другой салон, при сумме выкупа от - 4 000₽
+                        p.sidebar__text Перемещение заказов в другой салон, при меньшей сумме выкупа - 250₽

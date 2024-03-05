@@ -1,0 +1,23 @@
+include ./sidebarProductDelivery.jade
+include ./sidebarProductPayment.jade
+
+
+mixin sidebarProductMenu()
+    +sidebar('product-menu', 'Доставка и оплата')
+        .sidebar-product-menu
+            .sidebar-product-menu__link(data-sidebar-target="product-delivery")
+                svg.sidebar-product-menu__icon
+                    use(xlink:href="./images/sprite.svg#delivery")
+                .sidebar-product-menu__inner
+                    p.sidebar__text Доставка
+                    svg.sidebar-product-menu__icon-forward
+                        use(xlink:href="./images/sprite.svg#forward-black")
+            .sidebar-product-menu__link(data-sidebar-target="product-payment")
+                svg.sidebar-product-menu__icon
+                    use(xlink:href="./images/sprite.svg#mobile-shop-payment")
+                .sidebar-product-menu__inner
+                    p.sidebar__text Оплата
+                    svg.sidebar-product-menu__icon-forward
+                        use(xlink:href="./images/sprite.svg#forward-black")
+            +sidebarProductDelivery()
+            +sidebarProductPayment()

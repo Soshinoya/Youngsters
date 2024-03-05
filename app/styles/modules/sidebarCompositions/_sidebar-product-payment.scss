@@ -1,0 +1,22 @@
+.sidebar-product-payment {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sidebar-product-payment-item {
+    display: flex;
+    gap: 15px;
+
+    &__icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    &__content {
+        display: flex;
+        width: fit-content;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

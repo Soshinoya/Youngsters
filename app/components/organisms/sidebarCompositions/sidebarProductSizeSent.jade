@@ -1,0 +1,11 @@
+include ../../templates/sidebar.jade
+
+include ../../atoms/buttons/buttonFirst.jade
+
+mixin sidebarProductSizeSent()
+    +sidebar('product-size-sent', 'Заказать нужный размер')
+        .sidebar-product-size-sent
+            p.sidebar__title Ваш заказ успешно отправлен!
+            p.sidebar__text В ближайшее время наш сотрудник свяжется с вами для подтверждения деталей.
+        .sidebar-bottom(data-sidebar-close='product-size-sent')
+            +buttonFirst('Продолжить шоппинг', 'sidebar-product-size-sent-submit')

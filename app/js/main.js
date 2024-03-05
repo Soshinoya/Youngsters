@@ -245,8 +245,6 @@ inputs.forEach(input => {
     const phoneMaskOptions = { mask: '+{7} (000) 000-00-00' }
     const dateMaskOptions = { mask: Date, lazy: false }
 
-    console.log(type, isRequired)
-
     switch (type) {
         case 'password':
             const hiddenIcon = wrapper.querySelector('.input__icon-hidden')
@@ -255,11 +253,6 @@ inputs.forEach(input => {
             showIcon.addEventListener('click', () => input.classList.remove('input-password--visible'))
             break;
         case 'phone':
-            // input.addEventListener('input', e => {
-            //     if (input.value.startsWith('8')) {
-            //         e.target.value = '+7' + input.value.slice(1)
-            //     }
-            // })
             IMask(input, phoneMaskOptions)
         default:
             break;

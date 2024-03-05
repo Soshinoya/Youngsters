@@ -1,5 +1,7 @@
 include ../../templates/sidebar.jade
 
+include ./sidebarProductSizeSent.jade
+
 include ../../molecules/card.jade
 
 include ../../atoms/sizeButton.jade
@@ -43,6 +45,8 @@ mixin sidebarProductSizeOrder()
                 .sidebar-product-size-order-contacts__variants
                     +checkbox('telegram', 'Telegram', 'checkbox', 'product-size-order-data')
                     +checkbox('whatsapp', 'Whatsapp', 'checkbox', 'product-size-order-data')
+        +sidebarProductSizeSent()
         .sidebar-bottom
             +buttonSecond('Очистить', 'sidebar-product-size-order-clear')
-            +buttonFirst('Применить', 'sidebar-product-size-order-submit')
+            .sidebar-product-size-order__button-first__wrapper(data-sidebar-target='product-size-sent')
+                +buttonFirst('Применить', 'sidebar-product-size-order-submit')
