@@ -29,6 +29,14 @@
         }
     }
 
+    &--earrings {
+        .card {
+            &__img {
+                height: 224px;
+            }
+        }
+    }
+
     &__icon {
         position: absolute;
         top: 20px;

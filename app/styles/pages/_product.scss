@@ -42,7 +42,7 @@
         display: flex;
         justify-content: space-between;
     }
-    
+
     &__subtitle {
         @extend %text-style-breadcrumbs;
         color: rgba(variables.$color-first, .5);
@@ -56,7 +56,7 @@
             letter-spacing: 0.015em;
             text-transform: uppercase;
         }
-        
+
         span {
             @extend %baskerville-400;
             color: variables.$color-third;
@@ -78,7 +78,7 @@
     &__item-title {
         @extend %text-style-breadcrumbs;
     }
-    
+
     &__item-text {
         @extend %text-style;
     }
@@ -182,4 +182,79 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.goods-slider {
+    padding-bottom: 100px;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        @include mixins.font(32px, 39px, variables.$color-first) {
+            @extend %cormorant-600;
+            letter-spacing: 0em;
+            text-transform: uppercase;
+        }
+    }
+
+    .card {
+        height: calc(460px - 227px);
+
+        &--necklace {
+            height: calc(460px - 120px);
+        }
+    }
+
+    &__nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 65px;
+
+        .swiper-pagination {
+            align-items: baseline;
+            bottom: unset;
+            top: 50%;
+            right: 37px;
+            gap: 3px;
+            transform: translateY(-50%);
+
+            .swiper-pagination-total {
+                @extend %text-style;
+            }
+
+            .swiper-pagination-current {
+                @include mixins.font(30px, 36px, variables.$color-third) {
+                    @extend %cormorant-700;
+                    letter-spacing: 0em;
+                }
+            }
+        }
+
+        .swiper-button-prev {
+            transform: rotate(180deg);
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+        }
+
+        .swiper-button-disabled {
+            opacity: 0;
+        }
+    }
 }

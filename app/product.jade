@@ -3,7 +3,7 @@ html(lang='ru')
     head
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(href='./assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180')
         link(type='image/png' href='./assets/favicon-32x32.png' rel='icon' sizes='32x32')
         link(type='image/png' href='./assets/favicon-16x16.png' rel='icon' sizes='16x16')
@@ -26,6 +26,7 @@ html(lang='ru')
 
         include ./components/molecules/categoriesHeader.jade
         include ./components/molecules/productImagesSlider.jade
+        include ./components/molecules/card.jade
 
         include ./components/atoms/buttons/buttonFirst.jade
         include ./components/atoms/breadcrumbs.jade
@@ -115,6 +116,25 @@ html(lang='ru')
                                                 use(xlink:href="./images/sprite.svg#plus-math")
                                             p.product-info-benefits__title Уход за изделием
                                         +sidebarProductCare()
+            .goods-slider
+                .container
+                    .goods-slider__inner
+                        .goods-slider__header
+                            h2.goods-slider__title Вам может понравиться
+                            .goods-slider__nav
+                                svg.swiper-button-prev
+                                    use(xlink:href="./images/sprite.svg#right")
+                                .swiper-pagination
+                                svg.swiper-button-next
+                                    use(xlink:href="./images/sprite.svg#right")
+                        .goods-slider__cards
+                            .swiper
+                                .swiper-wrapper
+                                    - var cardsData = [{imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"},{imgSrc:"./images/content/products/bracelet.png",imgAlt:"Браслет",title:"Браслет YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"bracelet",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/necklace.png",imgAlt:"Колье",title:"Колье YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"necklace",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/cuff.png",imgAlt:"Кафф",title:"Кафф YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"cuff",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"},{imgSrc:"./images/content/products/bracelet.png",imgAlt:"Браслет",title:"Браслет YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"bracelet",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/necklace.png",imgAlt:"Колье",title:"Колье YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"necklace",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/cuff.png",imgAlt:"Кафф",title:"Кафф YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"cuff",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"}];
+                                    for cardInfo in cardsData
+                                        .swiper-slide
+                                            .goods-slider-slide
+                                                +card(cardInfo)
         +footer()
 
 
