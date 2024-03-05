@@ -30,13 +30,10 @@ h1 {
 }
 
 h2 {
-    &.title--en {
-        @extend %libre-baskerville-400;
-    }
-    
-    &.title--ru {
-        @extend %baskerville-400;
-        line-height: 24px;
+    @include mixins.font(32px, 39px, variables.$color-first) {
+        @extend %cormorant-600;
+        letter-spacing: 0em;
+        text-transform: uppercase;
     }
 }
 
@@ -44,9 +41,23 @@ h3 {
     &.title--en {
         @extend %libre-baskerville-400-italic;
     }
-    
+
     &.title--ru {
         @extend %baskerville-400-italic;
         line-height: 24px;
+    }
+}
+
+@media (max-width: 1024px) {
+    h2 {
+        @include mixins.font(25px, 25px) {
+            letter-spacing: 0.015em;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    h2 {
+        @include mixins.font(20px, 20px);
     }
 }

@@ -124,7 +124,7 @@ html(lang='ru')
                             .goods-slider__nav
                                 svg.swiper-button-prev
                                     use(xlink:href="./images/sprite.svg#right")
-                                .swiper-pagination
+                                .goods-slider-pagination--md.swiper-pagination
                                 svg.swiper-button-next
                                     use(xlink:href="./images/sprite.svg#right")
                         .goods-slider__cards
@@ -135,6 +135,37 @@ html(lang='ru')
                                         .swiper-slide
                                             .goods-slider-slide
                                                 +card(cardInfo)
+                        .goods-slider-pagination--sm.swiper-pagination
+            .product-social
+                .container
+                    .product-social__inner
+                        h2.product-social__title
+                            span @
+                            | YOUNGSTERS
+                        .product-social__items
+                            .product-social__img
+                                img(src="./images/content/banners/catalog/1.jpg", alt="Мужчина позирует в одежде Youngsters")
+                            .product-social__info
+                                p.product-social__info-text Наши подписчики выбирают самые классные украшения
+                                .product-social__info-icons
+                                    a.product-social__info-icon(href="/")
+                                        svg
+                                            use(xlink:href="./images/sprite.svg#facebook-black")
+                                    a.product-social__info-icon(href="/")
+                                        svg
+                                            use(xlink:href="./images/sprite.svg#instagram-black")
+                                    a.product-social__info-icon(href="/")
+                                        svg
+                                            use(xlink:href="./images/sprite.svg#vk-black")
+                                    a.product-social__info-icon(href="/")
+                                        svg
+                                            use(xlink:href="./images/sprite.svg#telegram-black")
+                            .product-social__img
+                                img(src="./images/content/banners/catalog/3.jpg", alt="Украшения Youngsters")
+                            .product-social__img.product-social__img--sm
+                                img(src="./images/content/banners/catalog/3.jpg", alt="Украшения Youngsters")
+                            .product-social__img
+                                img(src="./images/content/banners/catalog/2.jpg", alt="Мужчина позирует в одежде Youngsters")
         +footer()
 
 

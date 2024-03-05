@@ -27,7 +27,8 @@
     gap: 15px;
 }
 
-.product-images-slider__pagination {
+.product-images-slider__pagination,
+.goods-slider-pagination--sm {
     flex-direction: column;
 
     .swiper-pagination-bullet {
