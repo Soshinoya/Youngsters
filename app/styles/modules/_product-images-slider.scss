@@ -184,3 +184,13 @@
         }
     }
 }
+
+@media (max-width: 414px) {
+    .product {
+        .product-images-slider-slide {
+            &__img {
+                height: 510px;
+            }
+        }
+    }
+}

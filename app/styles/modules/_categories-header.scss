@@ -34,17 +34,23 @@
 }
 
 @media (max-width: 768px) {
+    .categories-header {
+        &__inner {
+            padding: 10px 20px;
+        }
+    }
     .categories-header-nav {
         &__list {
             overflow-x: auto;
             white-space: nowrap;
             overflow-y: auto;
-            // scrollbar-width: none;
-            // -ms-overflow-style: none;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            justify-content: flex-start;
 
-            // &::-webkit-scrollbar {
-            //     display: none;
-            // }
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
 
         &__link {

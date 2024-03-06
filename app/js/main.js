@@ -300,3 +300,8 @@ categoriesHeaderNavList.addEventListener('wheel', e => {
     e.preventDefault()
     categoriesHeaderNavList.scrollLeft += e.deltaY
 })
+
+window.addEventListener('resize', () => {
+    console.clear()
+    console.log(window.innerWidth)
+})

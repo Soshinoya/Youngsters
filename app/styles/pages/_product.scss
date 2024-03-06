@@ -519,6 +519,29 @@
 
 @media (max-width: 414px) {
 
+    .product-info {
+        &__holder {
+            margin: 30px 0;
+        }
+    }
+
+    .product-info-top {
+        &__inner {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+
+    .product-info-config {
+        &__item--color {
+            width: 100%;
+        }
+    }
+
+    .product-info-benefits {
+        flex-direction: column;
+    }
+
     .product-social,
     .goods-slider,
     .product__inner {
