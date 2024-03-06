@@ -60,7 +60,7 @@ html(lang='ru')
                                     li.product-info__features-item Средний вес 9,30 гр
                                     li.product-info__features-item Вставка - Оникс 28 ct
                                 .product-info-config
-                                    .product-info-config__item.product-info-config__item
+                                    .product-info-config__item.product-info-config__item--color
                                         p.product-info-config__item-title Цвет: Позолоченное серебро
                                         .product-info-config__item-colors
                                             +colorPick('#E9D590', 'beige', 'product-color', 'active')
@@ -81,14 +81,15 @@ html(lang='ru')
                                     .product-info-actions__btns
                                         +buttonFirst('Добавить в корзину')
                                         +likeButton()
-                                    a.product-info-actions__item(href="#")
-                                        svg.product-info-actions__item-icon
-                                            use(xlink:href="./images/sprite.svg#whatsapp")
-                                        .product-info-actions__item-text Начать чат со стилистом в WhatsApp
-                                    a.product-info-actions__item(href="#")
-                                        svg.product-info-actions__item-icon
-                                            use(xlink:href="./images/sprite.svg#delivery")
-                                        .product-info-actions__item-text Доставка по РФ 2 - 3 дня
+                                    .product-info-actions__items
+                                        a.product-info-actions__item(href="#")
+                                            svg.product-info-actions__item-icon
+                                                use(xlink:href="./images/sprite.svg#whatsapp")
+                                            .product-info-actions__item-text Начать чат со стилистом в WhatsApp
+                                        a.product-info-actions__item(href="#")
+                                            svg.product-info-actions__item-icon
+                                                use(xlink:href="./images/sprite.svg#delivery")
+                                            .product-info-actions__item-text Доставка по РФ 2 - 3 дня
                             .product-info-benefits
                                 .product-info-benefits__col
                                     .product-info-benefits__item

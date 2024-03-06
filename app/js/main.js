@@ -284,7 +284,7 @@ inputs.forEach(input => {
                     input.value += ' (Некорректный ввод данных)'
                     input.classList.add('input--active')
                     break;
-            
+
                 default:
                     break;
             }
@@ -292,4 +292,11 @@ inputs.forEach(input => {
             input.classList.remove('input--error')
         }
     })
+})
+
+// Footer links scroll with mouse
+const categoriesHeaderNavList = document.querySelector('.categories-header-nav__list')
+categoriesHeaderNavList.addEventListener('wheel', e => {
+    e.preventDefault()
+    categoriesHeaderNavList.scrollLeft += e.deltaY
 })

@@ -7,6 +7,7 @@
         align-items: flex-end;
         justify-content: space-between;
         padding-bottom: 100px;
+        gap: 30px;
     }
 }
 
@@ -126,15 +127,17 @@
         gap: 6px;
     }
 
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
     &__item {
         display: flex;
         align-items: center;
         gap: 15px;
         cursor: pointer;
-
-        &:not(:last-child) {
-            margin-bottom: 5px;
-        }
     }
 
     &__item-icon {
@@ -341,6 +344,34 @@
 
 @media (max-width: 1440px) {
 
+    .product {
+        &__inner {
+            align-items: flex-start;
+        }
+    }
+
+    .product-info {
+        &__holder {
+            margin: 40px 0 83px;
+        }
+
+        & ul.product-info__features {
+            margin-bottom: 30px;
+        }
+    }
+
+    .product-info-top {
+        gap: 30px;
+    }
+
+    .product-info-config {
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        column-gap: 30px;
+        justify-content: unset;
+    }
+
     .product-social,
     .goods-slider,
     .product__inner {
@@ -361,6 +392,32 @@
 }
 
 @media (max-width: 1024px) {
+
+    .product-info {
+        &__holder {
+            margin-bottom: 100px;
+        }
+
+        & ul.product-info__features {
+            margin-bottom: 20px;
+        }
+    }
+
+    .product-info-top {
+        gap: 20px;
+
+        &__title {
+            @include mixins.font(20px, 20px) {
+                letter-spacing: 0.015em;
+            }
+        }
+    }
+
+    .product-info-config {
+        &__item--color {
+            width: 100%;
+        }
+    }
 
     .product-social,
     .goods-slider,
@@ -384,7 +441,71 @@
     }
 }
 
+@media (max-width: 991px) {
+    .product-info-top {
+        &__inner {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+
+    .product-info-benefits {
+        flex-direction: column;
+
+        &,
+        &__col {
+            gap: 10px;
+        }
+    }
+}
+
 @media (max-width: 768px) {
+    .product {
+        &__inner {
+            flex-direction: column;
+        }
+    }
+
+    .product-info {
+        max-width: unset;
+
+        &__holder {
+            margin-bottom: 40px;
+        }
+    }
+
+    .product-info-top {
+        &__inner {
+            flex-direction: row;
+            gap: unset;
+        }
+
+        &__title {
+            max-width: 100%;
+        }
+
+        .price {
+            min-width: fit-content;
+        }
+    }
+
+    .product-info-config {
+        justify-content: space-between;
+        margin-bottom: 40px;
+
+        &__item--color {
+            width: unset;
+        }
+    }
+
+    .product-info-benefits {
+        flex-direction: row;
+
+        &__col {
+            gap: 7px;
+        }
+    }
+
     .product-social {
         &__items {
             grid-template-columns: repeat(2, 1fr);
