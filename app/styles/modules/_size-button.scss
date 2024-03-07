@@ -31,3 +31,9 @@
         @extend %text-style-first;
     }
 }
+
+@media (max-width: 1024px) {
+    .size-button {
+        padding: 12px 15px;
+    }
+}

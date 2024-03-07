@@ -294,14 +294,16 @@ inputs.forEach(input => {
     })
 })
 
-// Footer links scroll with mouse
+// Categories Header scroll with mouse
 const categoriesHeaderNavList = document.querySelector('.categories-header-nav__list')
 categoriesHeaderNavList.addEventListener('wheel', e => {
     e.preventDefault()
     categoriesHeaderNavList.scrollLeft += e.deltaY
 })
 
-window.addEventListener('resize', () => {
-    console.clear()
-    console.log(window.innerWidth)
+// Breadcrumbs scroll with mouse
+const breadcrumbsInner = document.querySelector('.breadcrumbs__inner')
+breadcrumbsInner.addEventListener('wheel', e => {
+    e.preventDefault()
+    breadcrumbsInner.scrollLeft += e.deltaY
 })

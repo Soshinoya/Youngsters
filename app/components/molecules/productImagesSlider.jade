@@ -2,11 +2,11 @@ mixin productImagesSlider(images)
     .product-images-slider
         .swiper
             .swiper-wrapper
-                for imgSrc in images
+                for imgInfo in images
                     .swiper-slide
                         .product-images-slider-slide
-                            .product-images-slider-slide__img
-                                img(src="#{imgSrc.src}", srcset="#{imgSrc.srcset}", alt="#{imgSrc.alt}")
+                            div(class='product-images-slider-slide__img ' + (imgInfo.class ? imgInfo.class : ''))
+                                img(src="#{imgInfo.src}", srcset="#{imgInfo.srcset}", alt="#{imgInfo.alt}")
                             .product-images-slider-slide__icon
                                 svg
                                     use(xlink:href="./images/sprite.svg#zoom-in")

@@ -519,6 +519,12 @@
 
 @media (max-width: 414px) {
 
+    .product {
+        &__inner {
+            gap: 20px;
+        }
+    }
+
     .product-info {
         &__holder {
             margin: 30px 0;
@@ -529,6 +535,12 @@
         &__inner {
             flex-direction: column;
             gap: 15px;
+        }
+
+        &__title {
+            @include mixins.font(25px, 25px) {
+                letter-spacing: 0.015em;
+            }
         }
     }
 
@@ -585,6 +597,16 @@
 }
 
 @media (max-width: 320px) {
+    .product-info {
+        &__holder {
+            margin: 30px 0 20px;
+        }
+    }
+
+    .product-info-top {
+        gap: 15px;
+    }
+
     .product-social {
 
         &__img,
