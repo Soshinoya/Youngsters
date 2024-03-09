@@ -1,2 +1,2 @@
 mixin buttonSecond(text, id)
-    button.button.button-second(id="#{id}")= text
+    button.button.button-second(id=(id ? id : ''))= text

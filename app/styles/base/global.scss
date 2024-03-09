@@ -11,6 +11,10 @@ body {
     flex-grow: 1;
     padding-top: 85px;
 
+    &__inner--cart {
+        margin: 15px 0 100px;
+    }
+
     &--index {
         padding-top: 0;
     }
@@ -43,10 +47,34 @@ body {
     bottom: 0;
     left: 0;
     z-index: -1;
-    
+
     &--active {
         background-color: rgba($color-first, .3);
         backdrop-filter: blur(2px);
         z-index: 2;
+    }
+}
+
+@media (max-width: 1440px) {
+    .main {
+        &__inner--cart {
+            margin-bottom: 90px;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .main {
+        &__inner--cart {
+            margin-bottom: 80px;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .main {
+        &__inner--cart {
+            margin-bottom: 70px;
+        }
     }
 }

@@ -1,2 +1,2 @@
 mixin price(value, state)
-    p(class="price price--#{state}")= value
+    p(class='price ' + (state ? 'price--#{state}' : ''))= value

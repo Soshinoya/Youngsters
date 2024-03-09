@@ -1,0 +1,133 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.chosen-decorations {
+    &__title {
+        span {
+            color: variables.$color-third;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
+
+    &__img,
+    &__info {
+        height: 420px;
+    }
+
+    &__img {
+        img {
+            @include mixins.image-default();
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    &__info-text {
+        @extend %text-style;
+    }
+
+    &__info-icons {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__info-icon {
+
+        &,
+        svg {
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+
+@media (min-width: 415px) {
+    .chosen-decorations {
+        &__img--sm {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .chosen-decorations {
+
+        &__img,
+        &__info {
+            height: 345px;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .chosen-decorations {
+        &__items {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        &__img:last-child {
+            display: none;
+        }
+
+        &__inner {
+            gap: 20px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .chosen-decorations {
+        &__items {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__img:last-child {
+            display: block;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .chosen-decorations {
+
+        &__img,
+        &__info {
+            height: 204px;
+        }
+
+        &__info {
+            display: none;
+        }
+
+        &__inner {
+            gap: 15px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .chosen-decorations {
+
+        &__img,
+        &__info {
+            height: 157px;
+        }
+    }
+}

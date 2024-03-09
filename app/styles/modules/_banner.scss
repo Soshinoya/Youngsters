@@ -1,0 +1,43 @@
+@use '../utils/mixins.scss';
+
+.banner {
+    &__img {
+        height: 328px;
+
+        img {
+            @include mixins.image-default();
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .banner {
+        &__img {
+            height: 269px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        &__img {
+            height: 193px;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .banner {
+        .container {
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .banner {
+        &__img {
+            height: 162px;
+        }
+    }
+}

@@ -1,0 +1,208 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.card-small {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: variables.$color-first;
+}
+
+.card-small-main {
+    display: flex;
+    justify-content: space-between;
+
+    &__img,
+    &__title {
+        cursor: pointer;
+    }
+
+    &__info,
+    &__right {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    &__img {
+        display: flex;
+        width: 150px;
+        height: 150px;
+        align-items: center;
+        justify-content: center;
+        background-color: variables.$color-fourth;
+
+        img {
+            @include mixins.image-default(null, 110px);
+        }
+    }
+
+    &__subtitle {
+        color: rgba(variables.$color-first, .5);
+        margin-bottom: 10px;
+    }
+
+    &__subtitle-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__subtitle,
+    &__feature,
+    &__size {
+        @extend %text-style-first;
+    }
+
+    &__title {
+        @extend %text-style;
+        margin-bottom: 5px;
+    }
+
+    &__features {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        column-gap: 15px;
+        row-gap: 5px;
+        margin-bottom: 5px;
+    }
+
+    &__price {
+        display: flex;
+        width: 120px;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+
+        .price {
+            text-align: right;
+        }
+    }
+}
+
+.card-small-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+    }
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__text {
+        @extend %text-style-breadcrumbs;
+        color: rgba(variables.$color-first, .5);
+    }
+}
+
+@media (min-width: 601px) {
+
+    .card-small-main__info,
+    .card-small-main__right {
+        .card-small-actions__item--sm {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .card-small-main {
+        &__info {
+            gap: 15px;
+        }
+
+        &__img {
+            width: 100px;
+            height: 100px;
+
+            img {
+                width: 60px;
+            }
+        }
+
+        &__subtitle {
+            margin-bottom: 5px;
+        }
+
+        &__title {
+            @include mixins.font(14px, 16px) {
+                letter-spacing: 0.035em;
+                text-align: left;
+                text-transform: none;
+            }
+        }
+
+        &__right {
+            gap: 15px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .card-small-main {
+        flex-direction: column;
+        gap: 15px;
+
+        &__subtitle {
+            margin-bottom: 0;
+        }
+
+        &__subtitle-wrapper {
+            margin-bottom: 15px;
+        }
+
+        &__info {
+            gap: 6px;
+        }
+
+        &__info-inner {
+            flex-grow: 1;
+        }
+
+        &__right {
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        &__subtitle,
+        &__feature,
+        &__size,
+        &__title {
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        .counter {
+            &__input {
+                width: 60px;
+                height: 40px;
+            }
+        }
+    }
+
+    .card-small-actions {
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .card-small-main {
+        &__info-inner {
+            flex-grow: 0;
+            max-width: 165px;
+        }
+
+        &__subtitle-wrapper {
+            margin-bottom: 5px;
+        }
+    }
+}

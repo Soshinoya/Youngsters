@@ -1,0 +1,48 @@
+include ../atoms/price.jade
+include ../atoms/counter.jade
+
+mixin cardSmall(cardType, productData)
+    .card-small(data-product-id=productData.id)
+        .card-small-main
+            .card-small-main__info
+                .card-small-main__img
+                    img(src=productData.image.src, alt=productData.image.alt)
+                .card-small-main__info-inner
+                    .card-small-main__subtitle-wrapper
+                        p.card-small-main__subtitle
+                            |   Артикул 
+                            =   productData.id
+                        .card-small-actions__item.card-small-actions__item--sm
+                            svg.card-small-actions__icon
+                                use(xlink:href="./images/sprite.svg#close-black")
+                    p.card-small-main__title= productData.title
+                    .card-small-main__features
+                        p.card-small-main__feature= productData.features.material
+                        p.card-small-main__feature= productData.features.insert
+                        p.card-small-main__feature= productData.features.weight
+                    p.card-small-main__size
+                        |   Размер: 
+                        =   productData.size
+            .card-small-main__right
+                .card-small-actions__item.card-small-actions__item--sm
+                    svg.card-small-actions__icon
+                        use(xlink:href="./images/sprite.svg#heart-black-filled")
+                if cardType == 'config'
+                    +counter(productData.amount, 1, productData.maxAmount, 'product-counter')
+                else
+                    p.card-small-main__amount= productData.amount
+                .card-small-main__price
+                    +price(productData.price.value, productData.price.state)
+                    if productData.priceOld.value
+                        +price(productData.priceOld.value, productData.priceOld.state)
+        if cardType == 'config'
+            .card-small-actions
+                .card-small-actions__item
+                    svg.card-small-actions__icon
+                        use(xlink:href="./images/sprite.svg#close-black")
+                    p.card-small-actions__text Удалить
+                .card-small-actions__item
+                    svg.card-small-actions__icon
+                        use(xlink:href="./images/sprite.svg#heart-black-filled")
+                    p.card-small-actions__text Добавить в избранное
+//- Данный компонент может быть одним из двух: config (используется в корзине) или static (используется в секции "Купленные товары")

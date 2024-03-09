@@ -188,8 +188,8 @@ if (counters.length > 0) {
         const plusElem = counter.querySelector('.counter__icon--plus')
         const input = counter.querySelector('.counter__input')
 
-        const minValue = input.getAttribute('min')
-        const maxValue = input.getAttribute('max')
+        const minValue = +input.getAttribute('min')
+        const maxValue = +input.getAttribute('max')
 
         const updateButtonState = () => {
             if (input.value <= minValue) {
@@ -205,7 +205,7 @@ if (counters.length > 0) {
             }
         }
 
-        // Обновление состояния кнопки минус при инициализации
+        // Обновление состояния кнопок при инициализации
         updateButtonState()
 
         minusElem.addEventListener('click', () => {
@@ -271,7 +271,6 @@ inputs.forEach(input => {
     })
 
     input.addEventListener('blur', () => {
-        console.log(input.value)
         if ((isRequired && input.value.trim() === '') || input.value === 'Обязательное поле' || input.value === '+7 (000) 000-00-00') {
             input.classList.add('input--error')
 

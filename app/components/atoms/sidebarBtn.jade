@@ -1,0 +1,7 @@
+mixin sidebarBtn(text, dataSidebarTarget)
+    .sidebar-btn
+        .sidebar-btn__inner(data-sidebar-target=dataSidebarTarget)
+            svg.sidebar-btn__icon
+                use(xlink:href="./images/sprite.svg#plus-math")
+            p.sidebar-btn__title= text
+        block

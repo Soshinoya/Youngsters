@@ -27,6 +27,7 @@ html(lang='ru')
         include ./components/molecules/categoriesHeader.jade
         include ./components/molecules/productImagesSlider.jade
         include ./components/molecules/card.jade
+        include ./components/molecules/chosenDecorations.jade
 
         include ./components/atoms/buttons/buttonFirst.jade
         include ./components/atoms/breadcrumbs.jade
@@ -34,6 +35,7 @@ html(lang='ru')
         include ./components/atoms/colorPick.jade
         include ./components/atoms/counter.jade
         include ./components/atoms/likeButton.jade
+        include ./components/atoms/sidebarBtn.jade
 
         +header('black')
         +headerSidebar()
@@ -92,30 +94,14 @@ html(lang='ru')
                                             .product-info-actions__item-text Доставка по РФ 2 - 3 дня
                             .product-info-benefits
                                 .product-info-benefits__col
-                                    .product-info-benefits__item
-                                        .product-info-benefits__item-inner(data-sidebar-target="product-characteristics")
-                                            svg.product-info-benefits__icon
-                                                use(xlink:href="./images/sprite.svg#plus-math")
-                                            p.product-info-benefits__title Характеристики изделия
+                                    +sidebarBtn('Характеристики изделия', 'product-characteristics')
                                         +sidebarProductCharacteristics()
-                                    .product-info-benefits__item
-                                        .product-info-benefits__item-inner(data-sidebar-target="product-menu")
-                                            svg.product-info-benefits__icon
-                                                use(xlink:href="./images/sprite.svg#plus-math")
-                                            p.product-info-benefits__title Доставка и оплата
+                                    +sidebarBtn('Доставка и оплата', 'product-menu')
                                         +sidebarProductMenu()
                                 .product-info-benefits__col
-                                    .product-info-benefits__item
-                                        .product-info-benefits__item-inner(data-sidebar-target="product-warranty")
-                                            svg.product-info-benefits__icon
-                                                use(xlink:href="./images/sprite.svg#plus-math")
-                                            p.product-info-benefits__title Гарантия и возврат
+                                    +sidebarBtn('Гарантия и возврат', 'product-warranty')
                                         +sidebarProductWarranty()
-                                    .product-info-benefits__item
-                                        .product-info-benefits__item-inner(data-sidebar-target="product-care")
-                                            svg.product-info-benefits__icon
-                                                use(xlink:href="./images/sprite.svg#plus-math")
-                                            p.product-info-benefits__title Уход за изделием
+                                    +sidebarBtn('Уход за изделием', 'product-care')
                                         +sidebarProductCare()
             .goods-slider
                 .container
@@ -137,36 +123,7 @@ html(lang='ru')
                                             .goods-slider-slide
                                                 +card(cardInfo)
                         .goods-slider-pagination--sm.swiper-pagination
-            .product-social
-                .container
-                    .product-social__inner
-                        h2.product-social__title
-                            span @
-                            | YOUNGSTERS
-                        .product-social__items
-                            .product-social__img
-                                img(src="./images/content/banners/catalog/1.jpg", alt="Мужчина позирует в одежде Youngsters")
-                            .product-social__info
-                                p.product-social__info-text Наши подписчики выбирают самые классные украшения
-                                .product-social__info-icons
-                                    a.product-social__info-icon(href="/")
-                                        svg
-                                            use(xlink:href="./images/sprite.svg#facebook-black")
-                                    a.product-social__info-icon(href="/")
-                                        svg
-                                            use(xlink:href="./images/sprite.svg#instagram-black")
-                                    a.product-social__info-icon(href="/")
-                                        svg
-                                            use(xlink:href="./images/sprite.svg#vk-black")
-                                    a.product-social__info-icon(href="/")
-                                        svg
-                                            use(xlink:href="./images/sprite.svg#telegram-black")
-                            .product-social__img
-                                img(src="./images/content/banners/catalog/3.jpg", alt="Украшения Youngsters")
-                            .product-social__img.product-social__img--sm
-                                img(src="./images/content/banners/catalog/3.jpg", alt="Украшения Youngsters")
-                            .product-social__img
-                                img(src="./images/content/banners/catalog/2.jpg", alt="Мужчина позирует в одежде Youngsters")
+            +chosenDecorations()
         +footer()
 
 
