@@ -13,10 +13,6 @@
 
 .cart-section {
     &__title {
-        width: 100%;
-        @extend %text-style;
-        padding: 10px 15px;
-        background-color: variables.$color-fourth;
         margin-bottom: 30px;
     }
 }
@@ -32,7 +28,9 @@
 }
 
 .cart-amount {
-    flex-grow: 1;
+    &__wrapper {
+        flex-grow: 1;
+    }
 
     &__info {
         display: flex;

@@ -23,6 +23,7 @@
         transition-property: top;
         transition-duration: variables.$transitionDuration;
         transition-timing-function: variables.$transitionTimingFunc;
+        cursor: auto;
     }
 
     &__icon {
@@ -70,7 +71,17 @@
 
         &--address {
             .input {
+                width: 100%;
+                padding-left: 35px;
+
+                &__placeholder {
+                    left: 35px;
+                }
+
                 &__icon-magnifying {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
                     display: block;
                 }
             }

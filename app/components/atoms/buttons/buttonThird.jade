@@ -1,5 +1,5 @@
-mixin buttonThird(text, id)
-    button.button.button-third(id=(id ? id : ''))
+mixin buttonThird(text, id, btnType)
+    button.button.button-third(id=(id ? id : '') type=(btnType ? btnType : ''))
         svg
             use(xlink:href="./images/sprite.svg#logo-white")
         |   #{text}

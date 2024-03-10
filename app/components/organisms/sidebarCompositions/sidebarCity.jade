@@ -1,0 +1,16 @@
+include ../../templates/sidebar.jade
+
+include ../../atoms/buttons/buttonFirst.jade
+include ../../atoms/checkbox.jade
+include ../../atoms/input.jade
+
+mixin sidebarCity()
+    +sidebar('city-pick', 'Ваш населённый пункт')
+        .sidebar-city
+            .sidebar-city__input
+                +input('text', 'Ваш населённый пункт', 'city-input', 'address', false)
+            .sidebar-city__items
+                - for (let i = 0; i < 30; i++)
+                    +checkbox('moscow', 'Москва', 'radio', 'city')
+        .sidebar-bottom
+            +buttonFirst('Выбрать', 'city-pick-btn', 'button')

@@ -23,6 +23,7 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    background-color: $color-sixth;
 }
 
 .container {
@@ -53,6 +54,13 @@ body {
         backdrop-filter: blur(2px);
         z-index: 2;
     }
+}
+
+.form-title {
+    width: 100%;
+    @extend %text-style;
+    padding: 10px 15px;
+    background-color: $color-fourth;
 }
 
 @media (max-width: 1440px) {

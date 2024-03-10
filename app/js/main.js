@@ -76,6 +76,65 @@ const toggleProductImagesSliderZoom = action => {
     document.body.classList[action]('no-scroll')
 }
 
+const inputHandler = input => {
+    const wrapper = input.closest('.input__wrapper')
+    const type = input.getAttribute('data-type')
+    const isRequired = input.getAttribute('required') ?? false
+
+    const phoneMaskOptions = { mask: '+{7} (000) 000-00-00' }
+    const dateMaskOptions = { mask: Date, lazy: false }
+
+    switch (type) {
+        case 'password':
+            const hiddenIcon = wrapper.querySelector('.input__icon-hidden')
+            const showIcon = wrapper.querySelector('.input__icon-show')
+            hiddenIcon.addEventListener('click', () => input.classList.add('input-password--visible'))
+            showIcon.addEventListener('click', () => input.classList.remove('input-password--visible'))
+            break;
+        case 'phone':
+            IMask(input, phoneMaskOptions)
+        default:
+            break;
+    }
+
+    if (type === 'date') {
+        IMask(input, dateMaskOptions)
+    }
+
+    input.addEventListener('input', () => {
+        if (input.value.trim() === '') {
+            input.classList.remove('input--active')
+        } else {
+            input.classList.add('input--active')
+        }
+    })
+
+    input.addEventListener('blur', () => {
+        if ((isRequired && input.value.trim() === '')
+            || input.value === 'Обязательное поле'
+            || input.value === '+7 (000) 000-00-00') {
+            input.classList.add('input--error')
+
+            if (type !== 'phone') {
+                input.value = 'Обязательное поле'
+                input.classList.add('input--active')
+            } else {
+                input.value += ' (Некорректный ввод данных)'
+                input.classList.add('input--active')
+            }
+        } else {
+            input.classList.remove('input--error')
+        }
+    })
+
+    input.addEventListener('focus', () => {
+        if (input.classList.contains('input--error')) {
+            input.classList.remove('input--error')
+            input.value = ''
+        }
+    })
+}
+
 document.addEventListener('click', e => {
     // Toggle dropdowns
     const dropdownElem = e.target.closest('[data-dropdown-target]')
@@ -178,6 +237,10 @@ document.addEventListener('click', e => {
     // Like Buttons
     const likeBtn = e.target.closest('.like-button')
     if (likeBtn) likeBtn.classList.toggle('like-button--active')
+
+    // inputs
+    const input = e.target.closest('.input')
+    if (input) inputHandler(input)
 })
 
 const counters = document.querySelectorAll('.counter')
@@ -234,64 +297,6 @@ if (counters.length > 0) {
         })
     })
 }
-
-const inputs = document.querySelectorAll('.input')
-
-inputs.forEach(input => {
-    const wrapper = input.closest('.input__wrapper')
-    const type = input.getAttribute('data-type')
-    const isRequired = input.getAttribute('required') ?? false
-
-    const phoneMaskOptions = { mask: '+{7} (000) 000-00-00' }
-    const dateMaskOptions = { mask: Date, lazy: false }
-
-    switch (type) {
-        case 'password':
-            const hiddenIcon = wrapper.querySelector('.input__icon-hidden')
-            const showIcon = wrapper.querySelector('.input__icon-show')
-            hiddenIcon.addEventListener('click', () => input.classList.add('input-password--visible'))
-            showIcon.addEventListener('click', () => input.classList.remove('input-password--visible'))
-            break;
-        case 'phone':
-            IMask(input, phoneMaskOptions)
-        default:
-            break;
-    }
-
-    if (type === 'date') {
-        IMask(input, dateMaskOptions)
-    }
-
-    input.addEventListener('input', () => {
-        if (input.value.trim() === '') {
-            input.classList.remove('input--active')
-        } else {
-            input.classList.add('input--active')
-        }
-    })
-
-    input.addEventListener('blur', () => {
-        if ((isRequired && input.value.trim() === '') || input.value === 'Обязательное поле' || input.value === '+7 (000) 000-00-00') {
-            input.classList.add('input--error')
-
-            switch (type) {
-                case 'name':
-                    input.value = 'Обязательное поле'
-                    input.classList.add('input--active')
-                    break;
-                case 'phone':
-                    input.value += ' (Некорректный ввод данных)'
-                    input.classList.add('input--active')
-                    break;
-
-                default:
-                    break;
-            }
-        } else {
-            input.classList.remove('input--error')
-        }
-    })
-})
 
 // Categories Header scroll with mouse
 const categoriesHeaderNavList = document.querySelector('.categories-header-nav__list')

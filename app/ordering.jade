@@ -1,0 +1,129 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='apple-touch-icon' sizes='180x180' href='./assets/apple-touch-icon.png')
+        link(rel='icon' type='image/png' sizes='32x32' href='./assets/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='./assets/favicon-16x16.png')
+        link(rel='manifest' href='./assets/site.webmanifest')
+        title Youngsters - Оформление заказа
+        link(rel="stylesheet" href="css/main.min.css")
+        script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/ordering.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/organisms/sidebarCompositions/sidebarCity.jade
+
+        include ./components/molecules/categoriesHeader.jade
+
+        include ./components/atoms/breadcrumbs.jade
+        include ./components/atoms/price.jade
+        include ./components/atoms/buttons/buttonFirst.jade
+        include ./components/atoms/buttons/buttonThird.jade
+        include ./components/atoms/banner.jade
+        include ./components/atoms/input.jade
+        include ./components/atoms/checkbox.jade
+        include ./components/atoms/radio.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+                - var breadcrumbsPages = [{title: 'Главная',href: '#'},{title: 'Каталог',href: '#'},{title: 'Кольца',href: '#'},{title: 'Серебряное массивное кольцо Green Stone ',href: '#'}]
+                .container
+                    +breadcrumbs(breadcrumbsPages)
+            .main__inner--cart
+                +banner('./images/content/banners/ordering/ordering.jpg', 'Украшение Youngsters')
+                section.ordering
+                    .container
+                        form.ordering-form
+                            .ordering-form__main
+                                .ordering-form-section.ordering-form-section--contacts
+                                    .form-title.ordering-form-section__title Контактные данные
+                                    .ordering-form-section__fields
+                                        +input('text', 'Имя*', 'contacts-name', 'name', true)
+                                        +input('text', 'Фамилия*', 'contacts-lastname', 'lastname', true)
+                                        +input('phone', 'Телефон*', 'contacts-phone', 'phone', true)
+                                        +input('email', 'E-mail*', 'contacts-email', 'email', true)
+                                    .ordering-form-section--other-recipient__wrapper
+                                        +checkbox('other-recipient', 'Другой получатель', 'checkbox', 'is-other-recipient')
+                                        .ordering-form-section--other-recipient__fields
+                                            +input('text', 'Имя*', 'other-recipient-name', 'name', true)
+                                            +input('phone', 'Телефон*', 'other-recipient-phone', 'phone', true)
+                                .ordering-form-section.ordering-form-section--receipt-method
+                                    .form-title.ordering-form-section__title Способ получения
+                                    .ordering-form-section__toggle-sidebar(data-sidebar-target="city-pick")
+                                        svg.ordering-form-section__toggle-sidebar__icon
+                                            use(xlink:href="./images/sprite.svg#marker")
+                                        p.ordering-form-section__text.ordering-form-section__toggle-sidebar__title Выберите город
+                                        svg.ordering-form-section__toggle-sidebar__open
+                                            use(xlink:href="./images/sprite.svg#triangle")
+                                    +sidebarCity()
+                                    .ordering-form-section__radio-btns__wrapper
+                                        .ordering-form-section__radio-btns
+                                            .ordering-form-section__radio-btns__btn.ordering-form-section__radio-btns__btn--delivery
+                                                +radio('delivery', 'Доставка', 'receipt-method')
+                                                    p.ordering-form-section__text Бесплатно
+                                                    p.ordering-form-section__text 2 - 3 дня
+                                            .ordering-form-section__radio-btns__btn.ordering-form-section__radio-btns__btn--delivery-point
+                                                +radio('delivery-point', 'Пункт выдачи', 'receipt-method')
+                                                    p.ordering-form-section__text Бесплатно
+                                                    p.ordering-form-section__text 3 - 5 дней
+                                                +buttonThird('Выбрать ПВЗ', 'ordering-form-choose-delivery-point', 'button')
+                                            .ordering-form-section__radio-btns__btn.ordering-form-section__radio-btns__btn--shop
+                                                +radio('shop', 'Магазин', 'receipt-method')
+                                                    p.ordering-form-section__text Бесплатно
+                                                    p.ordering-form-section__text 1 - 2 дня
+                                                +buttonThird('Выбрать магазин', 'ordering-form-choose-shop', 'button')
+                                        template#ordering-form-delivery__desc
+                                            p.ordering-form-section__desc
+                                                |   Бесплатная доставка при покупке от 20 000 ₽. Доставка 390₽ при покупке на сумму менее 20 000 ₽ или при полном отказе от товаров.
+                                                br   
+                                                |   Возможна примерка украшений. Курьер свяжется с вами за час.
+                                        template#ordering-form-delivery-point__desc
+                                            p.ordering-form-section__desc
+                                                |   Доставка в ПВЗ бесплатна. Необходима оплата онлайн. 
+                                                a(href="#") Условия возврата товара.
+                                        template#ordering-form-shop__desc
+                                            p.ordering-form-section__desc
+                                                |   Доставка в магазин бесплатна. Возможна примерка украшений. 
+                                                a(href="#") Условия возврата товара.
+                                    template#ordering-form-address
+                                        .ordering-form-section__address
+                                            +input('text', 'Адрес (Район, улица)*', 'address-street', 'street', true)
+                                            .ordering-form-address__fields
+                                                +input('text', 'Квартира*', 'address-apartment', 'apartment', true)
+                                                +input('text', 'Домофон*', 'address-intercom', 'intercom', true)
+                                                +input('text', 'Подъезд*', 'address-approach', 'approach', true)
+                                                +input('text', 'Этаж*', 'address-floor', 'floor', true)
+                            .ordering-form-amount
+                                .form-title.cart-section__title Сумма заказа
+                                .ordering-form-amount__info
+                                    .ordering-form-amount__item
+                                        p.ordering-form-amount__text Товары на сумму
+                                        +price('35 000,00')
+                                    .ordering-form-amount__item
+                                        p.ordering-form-amount__text Скидка
+                                        +price('35 000,00', 'old')
+                                    .ordering-form-amount__item
+                                        p.ordering-form-amount__text Доставка
+                                        p.ordering-form-amount__price Бесплатно
+                                    .ordering-form-amount__item
+                                        p.ordering-form-amount__text Итого
+                                        +price('35 000,00')
+                                +buttonFirst('Перейти к оплате', 'ordering-form-submit', 'submit')
+                                p.ordering-form-amount__desc
+                                    |   Оформляя заказ, я принимаю 
+                                    a(href="#") условия конфиденциальности персональной информации
+                                    |   в том числе в части обработки и использования моих персональных данных
+        +footer()
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

@@ -1,0 +1,14 @@
+.sidebar-city {
+    min-height: 100%;
+
+    &__input {
+        margin-top: 40px;
+    }
+
+    &__items {
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+}

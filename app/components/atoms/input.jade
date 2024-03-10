@@ -1,9 +1,9 @@
 mixin input(type, placeholder, name, dataType, required)
-    div(class="input__wrapper " + (type !== '' ? 'input__wrapper--' + type : ''))
+    div(class="input__wrapper " + (dataType !== '' ? 'input__wrapper--' + dataType : ''))
         svg.input__icon.input__icon-magnifying
-            use(xlink:href="./images/sprite.svg#search")
-        input.input(type=(type == 'password' ? 'password' : 'text'), name=name, data-type=dataType, required=required ? 'required' : null)
-        .input__placeholder= placeholder
+            use(xlink:href="./images/sprite.svg#search-black")
+        input.input(id=name type=(type == 'password' ? 'password' : 'text'), name=name, data-type=dataType, required=required ? 'required' : null)
+        label.input__placeholder(for=name)= placeholder
         svg.input__icon.input__icon-hidden
             use(xlink:href="./images/sprite.svg#hidden")
         svg.input__icon.input__icon-show
