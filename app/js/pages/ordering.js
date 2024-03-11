@@ -1,9 +1,12 @@
+let deliveryPointAddress = 'г. Москва, м. Текстильщики, 8-я улица Текстильщиков, д. 10'
+let shopAddress = 'г. Москва, м. Текстильщики, 8-я улица Текстильщиков, д. 610'
+
 // Other recipient
 const otherRecipientFields = document.querySelector('.ordering-form-section--other-recipient__fields')
 const otherRecipientCheckbox = document.querySelector('.ordering-form-section--other-recipient__wrapper .checkbox__input')
 
 otherRecipientCheckbox.addEventListener('click', () => {
-    otherRecipientFields.classList.toggle('ordering-form-section--other-recipient__fields--active')
+    otherRecipientFields.classList.toggle('ordering-form-section--other-recipient__fields--active') 
 })
 
 // Receipt city
@@ -25,44 +28,111 @@ cityPickBtn.addEventListener('click', () => {
 // Receipt radio buttons
 const receiptMethodSection = document.querySelector('.ordering-form-section--receipt-method')
 
-const toggleReceiptMethod = value => {
+// Selecting a pick-up point or store
+const setTextAndBtnTextContentToReceiptMethod = () => {
+    // Define active radio
+    const activeRadio = [...document.querySelectorAll('.ordering-form-section__radio-btns__btn .radio__input')].filter(input => input.checked)[0]
+
+    // Buttons
+    const deliveryPointBtn = document.getElementById('ordering-form-choose-delivery-point')
+    const shopBtn = document.getElementById('ordering-form-choose-shop')
+
+    // Delete current address if he exist
+    const currentAddress = document.querySelector('ordering-form-section__text--address')
+    if (currentAddress) currentAddress.remove()
+
+    // Current elems
+    const root = receiptMethodSection.querySelector('#ordering-form-section-additional')
+
+    // Create paragraph element
+    const paragraph = document.createElement('p')
+    paragraph.classList.add('ordering-form-section__text', 'ordering-form-section__text--address')
+
+    // Set content
+    if (deliveryPointAddress && activeRadio.value === 'delivery-point') {
+        paragraph.textContent = `ПУНКТ ВЫДАЧИ: ${deliveryPointAddress}`
+        deliveryPointBtn.querySelector('p').textContent = 'Изменить ПВЗ'
+        root.insertAdjacentElement('beforeend', paragraph)
+    } else if (!deliveryPointAddress) {
+        deliveryPointBtn.querySelector('p').textContent = 'Выбрать ПВЗ'
+    }
+
+    if (shopAddress && activeRadio.value === 'shop') {
+        paragraph.textContent = `МАГАЗИН: ${shopAddress}`
+        shopBtn.querySelector('p').textContent = 'Изменить магазин'
+        root.insertAdjacentElement('beforeend', paragraph)
+    } else if (!shopAddress) {
+        shopBtn.querySelector('p').textContent = 'Выбрать магазин'
+    }
+}
+
+const toggleReceiptMethodContent = value => {
     // Templates
     const deliveryDescTemplate = document.importNode(document.getElementById('ordering-form-delivery__desc').content, true)
     const deliveryFormAddressTemplate = document.importNode(document.getElementById('ordering-form-address').content, true)
-
     const deliveryPointDescTemplate = document.importNode(document.getElementById('ordering-form-delivery-point__desc').content, true)
-
     const shopDescTemplate = document.importNode(document.getElementById('ordering-form-shop__desc').content, true)
 
     // Current elems
-    const deliveryDesc = receiptMethodSection.querySelectorAll('.ordering-form-section__desc');
-    const deliveryFormAddress = receiptMethodSection.querySelectorAll('.ordering-form-section__address');
+    const root = receiptMethodSection.querySelector('#ordering-form-section-additional')
 
     // Removing all imported elements
-    [...deliveryDesc, ...deliveryFormAddress].forEach(elem => elem?.remove())
+    root.innerHTML = ''
 
-    document.querySelector('.ordering-form-section__radio-btns__btn--active')?.classList?.remove('ordering-form-section__radio-btns__btn--active')
+    // Deleting active classes
+    receiptMethodSection.querySelectorAll('.ordering-form-section__radio-btns__btn').forEach(btn => {
+        btn.classList.remove('ordering-form-section__radio-btns__btn--active')
 
-    document.querySelector(`.ordering-form-section__radio-btns__btn--${value}`).classList.add('ordering-form-section__radio-btns__btn--active')
+        // Added active class to button
+        if (btn.classList.contains(`ordering-form-section__radio-btns__btn--${value}`)) {
+            btn.classList.add('ordering-form-section__radio-btns__btn--active')
+        }
+    })
 
     switch (value) {
         case 'delivery':
-            document.querySelector('.ordering-form-section__radio-btns').insertAdjacentElement('afterend', deliveryDescTemplate.querySelector('.ordering-form-section__desc'))
-            document.querySelector('.ordering-form-section__radio-btns__wrapper').insertAdjacentElement('afterend', deliveryFormAddressTemplate.querySelector('.ordering-form-section__address'))
+            root.insertAdjacentElement('beforeend', deliveryDescTemplate.querySelector('.ordering-form-section__desc'))
+            root.insertAdjacentElement('beforeend', deliveryFormAddressTemplate.querySelector('.ordering-form-section__address'))
             break;
         case 'delivery-point':
-            document.querySelector('.ordering-form-section__radio-btns').insertAdjacentElement('afterend', deliveryPointDescTemplate.querySelector('.ordering-form-section__desc'))
+            root.insertAdjacentElement('beforeend', deliveryPointDescTemplate.querySelector('.ordering-form-section__desc'))
             break;
         case 'shop':
-            document.querySelector('.ordering-form-section__radio-btns').insertAdjacentElement('afterend', shopDescTemplate.querySelector('.ordering-form-section__desc'))
+            root.insertAdjacentElement('beforeend', shopDescTemplate.querySelector('.ordering-form-section__desc'))
             break;
         default:
             break;
     }
 }
 
-const receiptMethodsRadioBtns = document.querySelectorAll('.ordering-form-section__radio-btns [name="receipt-method"]')
+const receiptMethodsRadioBtns = document.querySelectorAll('.ordering-form-section__radio-btns__btn')
 
-receiptMethodsRadioBtns.forEach(radio => {
-    radio.addEventListener('click', () => toggleReceiptMethod(radio.getAttribute('value')))
+receiptMethodsRadioBtns.forEach(btn => {
+    const radio = btn.querySelector('[name="receipt-method"]')
+    if (radio.checked) {
+        toggleReceiptMethodContent(radio.value)
+        setTextAndBtnTextContentToReceiptMethod()
+    }
+
+    btn.addEventListener('click', () => {
+        toggleReceiptMethodContent(radio.value)
+        setTextAndBtnTextContentToReceiptMethod()
+    })
 })
+
+// Submit button textContent
+const submitBtn = document.querySelector('.ordering-form-amount .button-first[type="submit"]')
+
+const paymentMethodsBtns = document.querySelectorAll('[name="payment-method"]')
+
+const setSubmitBtnTextContent = () => {
+    const paymentMethod = [...paymentMethodsBtns].filter(elem => elem.checked)[0]?.value
+
+    if (paymentMethod === 'online') {
+        submitBtn.textContent = 'Перейти к оплате'
+    } else if (paymentMethod === 'upon') {
+        submitBtn.textContent = 'Создать заказ'
+    }
+}
+
+paymentMethodsBtns.forEach(btn => btn.addEventListener('click', setSubmitBtnTextContent))

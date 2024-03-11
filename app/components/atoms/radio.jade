@@ -1,6 +1,6 @@
 mixin radio(value, label, name, state)
     label(class="radio" + (state ? " radio--" + state : ""))
-        input.radio__input(type="radio" name=name value=value)
+        input.radio__input(type="radio" name=name value=value checked=(state == 'active' ? true : false))
         .radio__inner
             p.radio__text= label
             block

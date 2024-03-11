@@ -68,7 +68,7 @@ html(lang='ru')
                                     .ordering-form-section__radio-btns__wrapper
                                         .ordering-form-section__radio-btns
                                             .ordering-form-section__radio-btns__btn.ordering-form-section__radio-btns__btn--delivery
-                                                +radio('delivery', 'Доставка', 'receipt-method')
+                                                +radio('delivery', 'Доставка', 'receipt-method', 'active')
                                                     p.ordering-form-section__text Бесплатно
                                                     p.ordering-form-section__text 2 - 3 дня
                                             .ordering-form-section__radio-btns__btn.ordering-form-section__radio-btns__btn--delivery-point
@@ -94,6 +94,7 @@ html(lang='ru')
                                             p.ordering-form-section__desc
                                                 |   Доставка в магазин бесплатна. Возможна примерка украшений. 
                                                 a(href="#") Условия возврата товара.
+                                    #ordering-form-section-additional
                                     template#ordering-form-address
                                         .ordering-form-section__address
                                             +input('text', 'Адрес (Район, улица)*', 'address-street', 'street', true)
@@ -102,6 +103,21 @@ html(lang='ru')
                                                 +input('text', 'Домофон*', 'address-intercom', 'intercom', true)
                                                 +input('text', 'Подъезд*', 'address-approach', 'approach', true)
                                                 +input('text', 'Этаж*', 'address-floor', 'floor', true)
+                                .ordering-form-section.ordering-form-section--confirmation-order
+                                    .form-title.ordering-form-section__title Подтверждение заказа
+                                    .ordering-form-section__fields
+                                        +radio('phone-call', 'Звонок по телефону', 'confirmation-order-method', 'active')
+                                        +radio('whatsapp-message', 'Сообщение в Whatsapp', 'confirmation-order-method')
+                                .ordering-form-section.ordering-form-section--payment
+                                    .form-title.ordering-form-section__title Способ оплаты
+                                    .ordering-form-section__fields
+                                        +radio('online', 'Оплата онлайн', 'payment-method', 'active')
+                                            p.ordering-form-section__text Картой
+                                        +radio('upon', 'Оплата при получении', 'payment-method')
+                                            p.ordering-form-section__text Картой, наличные
+                                .ordering-form-section.ordering-form-section--comment
+                                    .form-title.ordering-form-section__title Комментарий к заказу
+                                    +input('text', 'Комментарий', 'comment', 'comment', false)
                             .ordering-form-amount
                                 .form-title.cart-section__title Сумма заказа
                                 .ordering-form-amount__info

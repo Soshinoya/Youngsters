@@ -68,6 +68,10 @@
     &__text {
         @extend %text-style-first;
         color: variables.$color-first;
+
+        &--address {
+            margin-top: 15px;
+        }
     }
 
     &__desc {
@@ -116,7 +120,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin: 40px 0;
+            margin: 40px 0 15px;
         }
 
         &__btn {
@@ -135,21 +139,25 @@
                 }
             }
         }
+    }
 
-        .radio {
-            &__inner .ordering-form-section__text {
-                opacity: .6;
-                transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
-                margin-top: 10px;
+    &__address {
+        margin-top: 40px;
+    }
 
-                &:last-child {
-                    margin-top: 5px;
-                }
+    .radio {
+        &__inner .ordering-form-section__text {
+            opacity: .6;
+            transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+            margin-top: 10px;
+
+            &:last-child {
+                margin-top: 5px;
             }
+        }
 
-            &__input:checked+.radio__inner .ordering-form-section__text {
-                opacity: 1;
-            }
+        &__input:checked+.radio__inner .ordering-form-section__text {
+            opacity: 1;
         }
     }
 
@@ -174,6 +182,15 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+        }
+    }
+
+    &--confirmation-order,
+    &--payment {
+        .ordering-form-section {
+            &__fields {
+                margin-bottom: 0;
+            }
         }
     }
 }
