@@ -1,7 +1,7 @@
 @use '../base/variables.scss';
 
 .ordering {
-    padding: 30px 0 100px;
+    padding: 30px 0 0 0;
 }
 
 .ordering-form {
@@ -205,39 +205,120 @@
 }
 
 @media (max-width: 1440px) {
-    .ordering {
-        padding-bottom: 90px;
-    }
-
     .ordering-form {
+        gap: 40px;
+
         &__main {
             width: 894px;
+        }
+    }
+
+    .ordering-form-amount {
+        max-width: 386px;
+    }
+
+    .ordering-form-section {
+        &__toggle-sidebar {
+            width: 50%;
         }
     }
 }
 
 @media (max-width: 1024px) {
-    .ordering {
-        padding-bottom: 80px;
-    }
-
     .ordering-form {
+        flex-direction: column;
+
         &__main {
             width: 100%;
+            gap: 40px;
+        }
+    }
+
+    .ordering-form-section {
+        &__title {
+            margin-bottom: 20px;
+        }
+    }
+
+    .ordering-form-amount {
+        max-width: calc(50% - 30px);
+        margin-left: auto;
+
+        .form-title {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .ordering-form-amount {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .ordering-form-section {
+        &__radio-btns {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 30px;
+        }
+
+        &__fields {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        &__toggle-sidebar {
+            max-width: unset;
+            width: auto;
+        }
+
+        .radio-additional {
+            &__text {
+                display: flex;
+                align-items: baseline;
+                gap: 5px;
+            }
+        }
+    }
+
+    .ordering-form-address {
+        &__fields {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
     }
 }
 
 @media (max-width: 414px) {
+
+    .ordering-form-section__fields,
+    .ordering-form-section--other-recipient__wrapper,
+    .ordering-form-section__radio-btns__wrapper,
+    #ordering-form-section-additional,
+    .ordering-form-section--comment .input__wrapper,
+    .ordering-form-amount {
+        padding: 0 16px;
+    }
+
+    .ordering-form-section__toggle-sidebar {
+        margin: 0 16px;
+    }
+
     .ordering {
-        padding-bottom: 70px;
+        .container {
+            padding: 0;
+        }
     }
 }
 
 @media (max-width: 320px) {
+    .ordering {
+        padding-top: 20px;
+    }
+
     .ordering-form-section {
         &__title {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
     }
 }
