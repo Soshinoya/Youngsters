@@ -221,6 +221,14 @@
         &__toggle-sidebar {
             width: 50%;
         }
+
+        &--other-recipient__fields {
+            gap: 60px;
+        }
+
+        &__radio-btns {
+            gap: 60px;
+        }
     }
 }
 
@@ -258,9 +266,18 @@
 
 @media (max-width: 650px) {
     .ordering-form-section {
+        &--other-recipient__fields {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
         &__radio-btns {
             grid-template-columns: repeat(1, 1fr);
             gap: 30px;
+
+            &__btn--delivery-point .ordering-form-section__desc,
+            &__btn--shop .ordering-form-section__desc {
+                margin-top: 10px;
+            }
         }
 
         &__fields {
@@ -270,6 +287,10 @@
         &__toggle-sidebar {
             max-width: unset;
             width: auto;
+        }
+
+        &__desc {
+            margin-top: 15px;
         }
 
         .radio-additional {
@@ -289,7 +310,7 @@
     }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 600px) {
 
     .ordering-form-section__fields,
     .ordering-form-section--other-recipient__wrapper,
@@ -319,6 +340,10 @@
     .ordering-form-section {
         &__title {
             margin-bottom: 20px;
+        }
+
+        &__desc {
+            margin-top: 10px;
         }
     }
 }

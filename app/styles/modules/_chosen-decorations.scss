@@ -104,6 +104,15 @@
     }
 }
 
+@media (max-width: 600px) {
+    .chosen-decorations {
+        &__info-icons {
+            gap: unset;
+            justify-content: space-between;
+        }
+    }
+}
+
 @media (max-width: 414px) {
     .chosen-decorations {
 

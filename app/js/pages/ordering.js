@@ -6,7 +6,7 @@ const otherRecipientFields = document.querySelector('.ordering-form-section--oth
 const otherRecipientCheckbox = document.querySelector('.ordering-form-section--other-recipient__wrapper .checkbox__input')
 
 otherRecipientCheckbox.addEventListener('click', () => {
-    otherRecipientFields.classList.toggle('ordering-form-section--other-recipient__fields--active') 
+    otherRecipientFields.classList.toggle('ordering-form-section--other-recipient__fields--active')
 })
 
 // Receipt city
@@ -30,19 +30,22 @@ const receiptMethodSection = document.querySelector('.ordering-form-section--rec
 
 // Selecting a pick-up point or store
 const setTextAndBtnTextContentToReceiptMethod = () => {
-    // Define active radio
+    // Search active radio
     const activeRadio = [...document.querySelectorAll('.ordering-form-section__radio-btns__btn .radio__input')].filter(input => input.checked)[0]
 
     // Buttons
     const deliveryPointBtn = document.getElementById('ordering-form-choose-delivery-point')
     const shopBtn = document.getElementById('ordering-form-choose-shop')
 
-    // Delete current address if he exist
-    const currentAddress = document.querySelector('ordering-form-section__text--address')
+    // Delete the current address if it exists
+    const currentAddress = document.querySelector('.ordering-form-section__text--address')
     if (currentAddress) currentAddress.remove()
 
     // Current elems
     const root = receiptMethodSection.querySelector('#ordering-form-section-additional')
+
+    const rootSmDeliveryPointAddress = document.getElementById('ordering-form-section-additional--sm-delivery-point-address')
+    const rootSmShopAddress = document.getElementById('ordering-form-section-additional--sm-shop-address')
 
     // Create paragraph element
     const paragraph = document.createElement('p')
@@ -50,17 +53,29 @@ const setTextAndBtnTextContentToReceiptMethod = () => {
 
     // Set content
     if (deliveryPointAddress && activeRadio.value === 'delivery-point') {
-        paragraph.textContent = `ПУНКТ ВЫДАЧИ: ${deliveryPointAddress}`
-        deliveryPointBtn.querySelector('p').textContent = 'Изменить ПВЗ'
-        root.insertAdjacentElement('beforeend', paragraph)
+        if (window.matchMedia('(max-width: 414px)').matches) {
+            paragraph.textContent = deliveryPointAddress
+            deliveryPointBtn.querySelector('p').textContent = 'Изменить ПВЗ'
+            rootSmDeliveryPointAddress.insertAdjacentElement('beforeend', paragraph)
+        } else {
+            paragraph.textContent = `ПУНКТ ВЫДАЧИ: ${deliveryPointAddress}`
+            deliveryPointBtn.querySelector('p').textContent = 'Изменить ПВЗ'
+            root.insertAdjacentElement('beforeend', paragraph)
+        }
     } else if (!deliveryPointAddress) {
         deliveryPointBtn.querySelector('p').textContent = 'Выбрать ПВЗ'
     }
 
     if (shopAddress && activeRadio.value === 'shop') {
-        paragraph.textContent = `МАГАЗИН: ${shopAddress}`
-        shopBtn.querySelector('p').textContent = 'Изменить магазин'
-        root.insertAdjacentElement('beforeend', paragraph)
+        if (window.matchMedia('(max-width: 414px)').matches) {
+            paragraph.textContent = shopAddress
+            shopBtn.querySelector('p').textContent = 'Изменить ПВЗ'
+            rootSmShopAddress.insertAdjacentElement('beforeend', paragraph)
+        } else {
+            paragraph.textContent = `МАГАЗИН: ${shopAddress}`
+            shopBtn.querySelector('p').textContent = 'Изменить магазин'
+            root.insertAdjacentElement('beforeend', paragraph)
+        }
     } else if (!shopAddress) {
         shopBtn.querySelector('p').textContent = 'Выбрать магазин'
     }
@@ -76,8 +91,15 @@ const toggleReceiptMethodContent = value => {
     // Current elems
     const root = receiptMethodSection.querySelector('#ordering-form-section-additional')
 
+    const rootSmDeliveryDesc = document.getElementById('ordering-form-section-additional--sm-delivery-desc')
+    const rootSmDeliveryPointDesc = document.getElementById('ordering-form-section-additional--sm-delivery-point-desc')
+    const rootSmShopDesc = document.getElementById('ordering-form-section-additional--sm-shop-desc')
+
     // Removing all imported elements
     root.innerHTML = ''
+    rootSmDeliveryDesc.innerHTML = ''
+    rootSmDeliveryPointDesc.innerHTML = ''
+    rootSmShopDesc.innerHTML = ''
 
     // Deleting active classes
     receiptMethodSection.querySelectorAll('.ordering-form-section__radio-btns__btn').forEach(btn => {
@@ -91,14 +113,14 @@ const toggleReceiptMethodContent = value => {
 
     switch (value) {
         case 'delivery':
-            root.insertAdjacentElement('beforeend', deliveryDescTemplate.querySelector('.ordering-form-section__desc'))
+            (window.matchMedia('(max-width: 414px)').matches ? rootSmDeliveryDesc : root).insertAdjacentElement('beforeend', deliveryDescTemplate.querySelector('.ordering-form-section__desc'))
             root.insertAdjacentElement('beforeend', deliveryFormAddressTemplate.querySelector('.ordering-form-section__address'))
             break;
         case 'delivery-point':
-            root.insertAdjacentElement('beforeend', deliveryPointDescTemplate.querySelector('.ordering-form-section__desc'))
+            (window.matchMedia('(max-width: 414px)').matches ? rootSmDeliveryPointDesc : root).insertAdjacentElement('beforeend', deliveryPointDescTemplate.querySelector('.ordering-form-section__desc'))
             break;
         case 'shop':
-            root.insertAdjacentElement('beforeend', shopDescTemplate.querySelector('.ordering-form-section__desc'))
+            (window.matchMedia('(max-width: 414px)').matches ? rootSmShopDesc : root).insertAdjacentElement('beforeend', shopDescTemplate.querySelector('.ordering-form-section__desc'))
             break;
         default:
             break;

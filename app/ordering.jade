@@ -71,16 +71,21 @@ html(lang='ru')
                                                 +radio('delivery', 'Доставка', 'receipt-method', 'active')
                                                     p.ordering-form-section__text Бесплатно
                                                     p.ordering-form-section__text 2 - 3 дня
+                                                #ordering-form-section-additional--sm-delivery-desc
                                             .ordering-form-section__radio-btns__btn.ordering-form-section__radio-btns__btn--delivery-point
                                                 +radio('delivery-point', 'Пункт выдачи', 'receipt-method')
                                                     p.ordering-form-section__text Бесплатно
                                                     p.ordering-form-section__text 3 - 5 дней
+                                                #ordering-form-section-additional--sm-delivery-point-address
                                                 +buttonThird('Выбрать ПВЗ', 'ordering-form-choose-delivery-point', 'button')
+                                                #ordering-form-section-additional--sm-delivery-point-desc
                                             .ordering-form-section__radio-btns__btn.ordering-form-section__radio-btns__btn--shop
                                                 +radio('shop', 'Магазин', 'receipt-method')
                                                     p.ordering-form-section__text Бесплатно
                                                     p.ordering-form-section__text 1 - 2 дня
+                                                #ordering-form-section-additional--sm-shop-address
                                                 +buttonThird('Выбрать магазин', 'ordering-form-choose-shop', 'button')
+                                                #ordering-form-section-additional--sm-shop-desc
                                         template#ordering-form-delivery__desc
                                             p.ordering-form-section__desc
                                                 |   Бесплатная доставка при покупке от 20 000 ₽. Доставка 390₽ при покупке на сумму менее 20 000 ₽ или при полном отказе от товаров.

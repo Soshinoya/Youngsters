@@ -300,14 +300,14 @@ if (counters.length > 0) {
 
 // Categories Header scroll with mouse
 const categoriesHeaderNavList = document.querySelector('.categories-header-nav__list')
-categoriesHeaderNavList.addEventListener('wheel', e => {
+categoriesHeaderNavList?.addEventListener('wheel', e => {
     e.preventDefault()
     categoriesHeaderNavList.scrollLeft += e.deltaY
 })
 
 // Breadcrumbs scroll with mouse
 const breadcrumbsInner = document.querySelector('.breadcrumbs__inner')
-breadcrumbsInner.addEventListener('wheel', e => {
+breadcrumbsInner?.addEventListener('wheel', e => {
     e.preventDefault()
     breadcrumbsInner.scrollLeft += e.deltaY
 })
