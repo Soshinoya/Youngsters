@@ -21,6 +21,13 @@ body {
         margin-top: 200px;
     }
 
+    &__inner--guest-favorites {
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        margin-top: 30px;
+    }
+
     &--index {
         padding-top: 0;
     }
@@ -90,6 +97,10 @@ body {
             margin-bottom: 90px;
         }
 
+        &__inner--guest-favorites {
+            gap: 90px;
+        }
+
         &__inner--thanks,
         &__inner--order-paid,
         &__inner--order-created {
@@ -102,6 +113,10 @@ body {
     .main {
         &__inner--cart {
             margin-bottom: 80px;
+        }
+
+        &__inner--guest-favorites {
+            gap: 80px;
         }
 
         &__inner--thanks,
@@ -126,6 +141,10 @@ body {
     .main {
         &__inner--cart {
             margin-bottom: 70px;
+        }
+
+        &__inner--guest-favorites {
+            gap: 70px;
         }
 
         &__inner--thanks,

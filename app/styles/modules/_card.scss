@@ -2,6 +2,7 @@
 @use '../utils/mixins.scss';
 
 .card {
+    box-sizing: border-box;
     position: relative;
     max-width: 430px;
     height: 460px;
@@ -135,14 +136,18 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .card {
-        max-width: unset;
-
         &__icon,
         &__info {
             opacity: 1;
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        max-width: unset;
     }
 }
 

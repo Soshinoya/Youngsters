@@ -1,0 +1,23 @@
+include ../molecules/card.jade
+
+mixin goodsSlider()
+    .goods-slider
+        .container
+            .goods-slider__inner
+                .goods-slider__header
+                    h2.goods-slider__title Вам может понравиться
+                    .goods-slider__nav
+                        svg.swiper-button-prev
+                            use(xlink:href="./images/sprite.svg#right")
+                        .goods-slider-pagination--md.swiper-pagination
+                        svg.swiper-button-next
+                            use(xlink:href="./images/sprite.svg#right")
+                .goods-slider__cards
+                    .swiper
+                        .swiper-wrapper
+                            - var cardsData = [{imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"},{imgSrc:"./images/content/products/bracelet.png",imgAlt:"Браслет",title:"Браслет YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"bracelet",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/necklace.png",imgAlt:"Колье",title:"Колье YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"necklace",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/cuff.png",imgAlt:"Кафф",title:"Кафф YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"cuff",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"},{imgSrc:"./images/content/products/bracelet.png",imgAlt:"Браслет",title:"Браслет YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"bracelet",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/necklace.png",imgAlt:"Колье",title:"Колье YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"necklace",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/cuff.png",imgAlt:"Кафф",title:"Кафф YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"cuff",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!1,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"}];
+                            for cardInfo in cardsData
+                                .swiper-slide
+                                    .goods-slider-slide
+                                        +card(cardInfo)
+                .goods-slider-pagination--sm.swiper-pagination
