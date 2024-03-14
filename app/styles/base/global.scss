@@ -15,6 +15,10 @@ body {
         margin: 15px 0 100px;
     }
 
+    &__inner--thanks {
+        margin-top: 200px;
+    }
+
     &--index {
         padding-top: 0;
     }
@@ -63,10 +67,21 @@ body {
     background-color: $color-fourth;
 }
 
+.thanks,
+.order-paid,
+.order-created {
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
 @media (max-width: 1440px) {
     .main {
         &__inner--cart {
             margin-bottom: 90px;
+        }
+
+        &__inner--thanks {
+            margin-top: 120px;
         }
     }
 }
@@ -76,6 +91,18 @@ body {
         &__inner--cart {
             margin-bottom: 80px;
         }
+
+        &__inner--thanks {
+            margin-top: 130px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        &__inner--thanks {
+            margin-top: 190px;
+        }
     }
 }
 
@@ -83,6 +110,25 @@ body {
     .main {
         &__inner--cart {
             margin-bottom: 70px;
+        }
+
+        &__inner--thanks {
+            margin-top: 60px;
+        }
+    }
+
+    .thanks,
+    .order-paid,
+    .order-created {
+        max-width: 100%;
+    }
+
+}
+
+@media (max-width: 320px) {
+    .main {
+        &__inner--thanks {
+            margin-top: 50px;
         }
     }
 }

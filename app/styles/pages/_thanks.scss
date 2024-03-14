@@ -1,0 +1,48 @@
+@use '../base/variables.scss';
+
+.thanks {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    &__btn {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__subtitle {
+        @extend %text-style-first;
+    }
+}
+
+.thanks-detailed {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__field-title {
+        @extend %text-style-first;
+    }
+
+    &__field-text {
+        text-align: right;
+        @extend %text-style;
+    }
+
+    &__field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &--order {
+            .thanks-detailed {
+                &__field-text {
+                    @extend %text-style-first;
+                }
+            }
+        }
+    }
+}

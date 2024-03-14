@@ -53,7 +53,7 @@ const setTextAndBtnTextContentToReceiptMethod = () => {
 
     // Set content
     if (deliveryPointAddress && activeRadio.value === 'delivery-point') {
-        if (window.matchMedia('(max-width: 414px)').matches) {
+        if (window.matchMedia('(max-width: 650px)').matches) {
             paragraph.textContent = deliveryPointAddress
             deliveryPointBtn.querySelector('p').textContent = 'Изменить ПВЗ'
             rootSmDeliveryPointAddress.insertAdjacentElement('beforeend', paragraph)
@@ -67,7 +67,7 @@ const setTextAndBtnTextContentToReceiptMethod = () => {
     }
 
     if (shopAddress && activeRadio.value === 'shop') {
-        if (window.matchMedia('(max-width: 414px)').matches) {
+        if (window.matchMedia('(max-width: 650px)').matches) {
             paragraph.textContent = shopAddress
             shopBtn.querySelector('p').textContent = 'Изменить ПВЗ'
             rootSmShopAddress.insertAdjacentElement('beforeend', paragraph)
@@ -113,14 +113,14 @@ const toggleReceiptMethodContent = value => {
 
     switch (value) {
         case 'delivery':
-            (window.matchMedia('(max-width: 414px)').matches ? rootSmDeliveryDesc : root).insertAdjacentElement('beforeend', deliveryDescTemplate.querySelector('.ordering-form-section__desc'))
+            (window.matchMedia('(max-width: 650px)').matches ? rootSmDeliveryDesc : root).insertAdjacentElement('beforeend', deliveryDescTemplate.querySelector('.ordering-form-section__desc'))
             root.insertAdjacentElement('beforeend', deliveryFormAddressTemplate.querySelector('.ordering-form-section__address'))
             break;
         case 'delivery-point':
-            (window.matchMedia('(max-width: 414px)').matches ? rootSmDeliveryPointDesc : root).insertAdjacentElement('beforeend', deliveryPointDescTemplate.querySelector('.ordering-form-section__desc'))
+            (window.matchMedia('(max-width: 650px)').matches ? rootSmDeliveryPointDesc : root).insertAdjacentElement('beforeend', deliveryPointDescTemplate.querySelector('.ordering-form-section__desc'))
             break;
         case 'shop':
-            (window.matchMedia('(max-width: 414px)').matches ? rootSmShopDesc : root).insertAdjacentElement('beforeend', shopDescTemplate.querySelector('.ordering-form-section__desc'))
+            (window.matchMedia('(max-width: 650px)').matches ? rootSmShopDesc : root).insertAdjacentElement('beforeend', shopDescTemplate.querySelector('.ordering-form-section__desc'))
             break;
         default:
             break;

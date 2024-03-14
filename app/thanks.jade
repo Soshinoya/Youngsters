@@ -1,0 +1,53 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='apple-touch-icon' sizes='180x180' href='./assets/apple-touch-icon.png')
+        link(rel='icon' type='image/png' sizes='32x32' href='./assets/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='./assets/favicon-16x16.png')
+        link(rel='manifest' href='./assets/site.webmanifest')
+        title Youngsters - Спасибо за ваш заказ
+        link(rel="stylesheet" href="css/main.min.css")
+        script(src="js/minified/main.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/molecules/categoriesHeader.jade
+
+        include ./components/atoms/price.jade
+        include ./components/atoms/buttons/buttonFirst.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+            .main__inner--thanks
+                section.thanks
+                    .container
+                        .thanks__inner
+                            h2.thanks__title Спасибо за ваш заказ
+                            .thanks-detailed
+                                .thanks-detailed__field.thanks-detailed__field--order
+                                    p.thanks-detailed__field-title Заказ
+                                    p.thanks-detailed__field-text № 123456 от 27.10.2024
+                                .thanks-detailed__field.thanks-detailed__field--status
+                                    p.thanks-detailed__field-title Статус
+                                    p.thanks-detailed__field-text Создан
+                                .thanks-detailed__field.thanks-detailed__field--payment-method
+                                    p.thanks-detailed__field-title Способ оплаты
+                                    p.thanks-detailed__field-text Оплата картой на сайте
+                                .thanks-detailed__field.thanks-detailed__field--sum
+                                    p.thanks-detailed__field-title Сумма
+                                    +price('35 000,00')
+                            .thanks__btn
+                                +buttonFirst('Оплатить', 'thanks-btn')
+                                p.thanks__subtitle Далее вы будете перенаправлены на страницу банка
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")
