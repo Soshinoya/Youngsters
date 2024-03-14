@@ -1,0 +1,39 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='apple-touch-icon' sizes='180x180' href='./assets/apple-touch-icon.png')
+        link(rel='icon' type='image/png' sizes='32x32' href='./assets/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='./assets/favicon-16x16.png')
+        link(rel='manifest' href='./assets/site.webmanifest')
+        title Youngsters - Заказ оплачен
+        link(rel="stylesheet" href="css/main.min.css")
+        script(src="js/minified/main.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/molecules/categoriesHeader.jade
+
+        include ./components/atoms/price.jade
+        include ./components/atoms/buttons/buttonFirst.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+            .main__inner--order-paid
+                section.order-paid
+                    .container
+                        .order-paid__inner
+                            h2.order-paid__title Заказ оплачен!
+                            p.order-paid__text Ваш заказ успешно оплачен! Скоро с вами свяжется наш оператор для подтверждения деталей доставки. Спасибо за покупку в нашем ювелирном магазине!
+                            +buttonFirst('Продолжить шоппинг', 'order-paid-btn')
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

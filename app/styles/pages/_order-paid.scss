@@ -1,0 +1,17 @@
+@use '../base/variables.scss';
+
+.order-paid {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    &__title {
+        text-align: center;
+    }
+
+    &__text {
+        @extend %text-style-first;
+    }
+}
