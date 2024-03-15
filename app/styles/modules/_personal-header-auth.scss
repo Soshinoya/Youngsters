@@ -1,0 +1,70 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.personal-header-auth,
+.personal-header-unauth {
+    position: absolute;
+    top: -1000%;
+    right: 0;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: rgba(#000, .7);
+    backdrop-filter: blur(70px);
+    transition: top variables.$transitionDuration variables.$transitionTimingFunc;
+
+    &__title {
+        @extend %text-style;
+        color: variables.$color-fourth;
+    }
+
+    &--active {
+        top: 68px;
+    }
+}
+
+.personal-header-unauth {
+    gap: 30px;
+
+    &__btn {
+        color: variables.$color-first;
+        background-color: variables.$bg-color;
+
+        @include mixins.hover() {
+            background-color: variables.$color-sixth;
+        }
+    }
+}
+
+.personal-header-auth {
+    gap: 20px;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__list-item__link {
+        @extend %text-style-first;
+        color: variables.$color-fourth;
+        cursor: pointer;
+
+        &--underline {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+
+    .personal-header-auth,
+    .personal-header-unauth {
+        right: 0 !important;
+
+        &--active {
+            top: 62px;
+        }
+    }
+}

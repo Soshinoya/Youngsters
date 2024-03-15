@@ -31,15 +31,6 @@ const closeDropdown = dropdownValue => {
     if (document.querySelector('.header-sidebar-top__inner-page')) toggleHeaderSidebarInnerPage('close')
 }
 
-window.addEventListener('resize', () => {
-    !window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
-    setPaddingFromContainerToElem(document.querySelector('.hero-slider__pagination'), 'right')
-})
-
-!window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
-
-setPaddingFromContainerToElem(document.querySelector('.hero-slider__pagination'), 'right')
-
 const toggleHeaderSidebarInnerPage = action => {
     const headerSidebarTop = document.querySelector('.header-sidebar-top')
     const headerSidebarMainPage = document.querySelector('.header-sidebar-main-page')
@@ -134,6 +125,44 @@ const inputHandler = input => {
         }
     })
 }
+
+// Header user block
+
+const headerLinksUser = document.querySelector('.header-links__user')
+
+const togglePersonalHeaderAuth = () => {
+    const headerWrapper = document.querySelector('.header__wrapper')
+
+    // В переменной isAuth должно быть boolean значение авторизован ли пользователь или нет
+    const isAuth = true
+
+    headerLinksUser.classList.toggle('header-links__user--active')
+    headerWrapper.classList.toggle('header__wrapper--active')
+
+    if (isAuth) {
+        const personalHeaderAuth = document.querySelector('.personal-header-auth')
+        personalHeaderAuth.classList.toggle('personal-header-auth--active')
+    } else {
+        const personalHeaderUnauth = document.querySelector('.personal-header-unauth')
+        personalHeaderUnauth.classList.toggle('personal-header-unauth--active')
+    }
+}
+
+headerLinksUser.addEventListener('click', togglePersonalHeaderAuth)
+
+window.addEventListener('resize', () => {
+    !window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
+    !window.matchMedia('(max-width: 768px)').matches && setPaddingFromContainerToElem(document.querySelector('.personal-header-auth'), 'right')
+    !window.matchMedia('(max-width: 768px)').matches && setPaddingFromContainerToElem(document.querySelector('.personal-header-unauth'), 'right')
+    setPaddingFromContainerToElem(document.querySelector('.hero-slider__pagination'), 'right')
+})
+
+!window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
+
+!window.matchMedia('(max-width: 768px)').matches && setPaddingFromContainerToElem(document.querySelector('.personal-header-auth'), 'right')
+!window.matchMedia('(max-width: 768px)').matches && setPaddingFromContainerToElem(document.querySelector('.personal-header-unauth'), 'right')
+
+setPaddingFromContainerToElem(document.querySelector('.hero-slider__pagination'), 'right')
 
 document.addEventListener('click', e => {
     // Toggle dropdowns
@@ -241,6 +270,15 @@ document.addEventListener('click', e => {
     // inputs
     const input = e.target.closest('.input')
     if (input) inputHandler(input)
+
+    // Удаляем активные классы у .personal-header-auth или .personal-header-unauth, если кликнули снаружи
+    const personalHeaderAuth = e.target.closest('.personal-header-auth')
+    const personalHeaderUnauth = e.target.closest('.personal-header-unauth')
+    const headerLinksUserClosest = e.target.closest('.header-links__user')
+    if (!(personalHeaderAuth || personalHeaderUnauth || headerLinksUserClosest)
+        &&
+        document.querySelector('.header-links__user--active')
+    ) togglePersonalHeaderAuth()
 })
 
 const counters = document.querySelectorAll('.counter')

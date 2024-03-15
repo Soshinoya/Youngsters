@@ -1,5 +1,9 @@
 include ../atoms/sizeButton.jade
 include ../atoms/menuItems/menuItemDropdown.jade
+
+include ../molecules/personalHeaderAuth.jade
+include ../molecules/personalHeaderUnauth.jade
+
 include ./searchOverlay.jade
 
 mixin header(variant)
@@ -21,13 +25,15 @@ mixin header(variant)
                             svg
                                 use(xlink:href="./images/sprite.svg#logo-youngsters")
                         .header-links
-                            a.header-links__icon.header-links__user(href="/profile.html")
+                            .header-links__icon.header-links__user
                                 div
                             .header-links__icon.header-links__search
                                 div
-                            a.header-links__icon.header-links__heart(href="/profile-favorites.html")
+                            a.header-links__icon.header-links__heart(href="personal-favorites.html")
                                 div
-                            a.header-links__icon.header-links__bag(href="/shopping-cart.html")
+                            a.header-links__icon.header-links__bag(href="cart.html")
                                 div
                                 span.header-links__icon-counter (4)
+        +personalHeaderAuth()
+        +personalHeaderUnauth()
         +searchOverlay()

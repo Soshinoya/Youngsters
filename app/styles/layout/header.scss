@@ -23,6 +23,18 @@
             background-color: rgba(#000, .7);
             backdrop-filter: blur(70px);
         }
+
+        &--active {
+            .header {
+                background-color: rgba(0, 0, 0, .7);
+                backdrop-filter: blur(70px);
+            }
+
+            &:hover {
+                background-color: transparent;
+                backdrop-filter: none;
+            }
+        }
     }
 }
 
@@ -89,11 +101,16 @@
         width: 22px;
         height: 22px;
         @include mixins.bg-img(null, null, null, no-repeat, cover, center);
+        cursor: pointer;
     }
 
     &__user {
         div {
             background-image: url('../images/sprite.svg#male-user');
+        }
+
+        &--active div {
+            background-image: url('../images/sprite.svg#male-user-accent');
         }
     }
 
