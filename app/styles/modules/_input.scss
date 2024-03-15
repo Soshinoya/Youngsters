@@ -32,22 +32,20 @@
         cursor: pointer;
     }
 
+    &__icon-done,
     &__icon-hidden,
     &__icon-show {
         margin-left: auto;
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
     }
 
     &__icon-magnifying {
         display: none;
         margin-right: 15px;
-    }
-
-    &__icon-hidden {
-        display: none;
-    }
-
-    &__icon-show {
-        display: none;
     }
 
     &__wrapper:has(.input--active) {
@@ -69,6 +67,14 @@
         display: flex;
         align-items: center;
 
+        &--done {
+            .input {
+                &__icon-done {
+                    display: block;
+                }
+            }
+        }
+
         &--address {
             .input {
                 width: 100%;
@@ -88,23 +94,20 @@
         }
 
         &--password {
-            .input {
-                &__icon-hidden {
+            .input__icon-hidden {
+                display: block;
+            }
+
+            &--visible {
+                .input__icon-hidden {
+                    display: none;
+                }
+
+                .input__icon-show {
                     display: block;
                 }
-
-                &-password--visible {
-                    .input {
-                        &__icon-hidden {
-                            display: none;
-                        }
-
-                        &__icon-show {
-                            display: block;
-                        }
-                    }
-                }
             }
+
         }
     }
 }

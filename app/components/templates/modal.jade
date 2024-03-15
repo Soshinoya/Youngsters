@@ -1,0 +1,8 @@
+mixin modal(dataModalPage, title)
+    .modal(data-modal-page=dataModalPage)
+        .modal__inner
+            .modal-top
+                p.modal-top__title= title
+                svg.modal-top__close(data-modal-close=dataModalPage)
+                        use(xlink:href="./images/sprite.svg#close-black")
+            block

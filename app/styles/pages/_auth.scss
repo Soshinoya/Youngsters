@@ -1,0 +1,151 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.auth {
+    &__inner {
+        display: flex;
+        justify-content: center;
+        gap: 90px;
+    }
+
+    &__separator {
+        width: 1px;
+        background-color: rgba(variables.$color-first, .2);
+    }
+
+    &__tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 40px;
+    }
+}
+
+.auth-tab {
+    padding: 10px 15px;
+    border-bottom: 2px solid rgba(variables.$black-color, .1);
+    cursor: pointer;
+
+    &__title {
+        @extend %text-style;
+        opacity: .5;
+    }
+
+    &--active {
+        border-bottom-color: variables.$black-color;
+
+        .auth-tab {
+            &__title {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.login,
+.register {
+    max-width: 528px;
+    width: 100%;
+
+    &__title {
+        margin-bottom: 40px;
+    }
+}
+
+.login-form,
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .radio {
+        align-items: center;
+    }
+
+    .button-first {
+        margin-bottom: 10px;
+    }
+
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__text,
+    &__link {
+        @extend %text-style-first;
+        color: variables.$color-first;
+        cursor: pointer;
+    }
+
+    &__link {
+        text-decoration: underline;
+    }
+}
+
+.register-form-field {
+    &__title {
+        margin-bottom: 15px;
+        @extend %text-style-first;
+        color: rgba(variables.$color-first, .6);
+    }
+
+    &__inputs {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+}
+
+@media (min-width: 769px) {
+    .auth {
+        &__inner--md {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .auth {
+        &__inner {
+            gap: 30px;
+        }
+    }
+
+    .login,
+    .register {
+        max-width: 442px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth {
+        &__inner {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+
+    .login-form,
+    .register-form {
+        &__fields {
+            gap: 15px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .auth-tab {
+        &__title {
+            @include mixins.font(12px, 16px);
+        }
+    }
+
+    .register-form-field {
+        &__inputs {
+            gap: 40px;
+        }
+    }
+}

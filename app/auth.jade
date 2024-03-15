@@ -1,0 +1,80 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(href='./assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180')
+        link(type='image/png' href='./assets/favicon-32x32.png' rel='icon' sizes='32x32')
+        link(type='image/png' href='./assets/favicon-16x16.png' rel='icon' sizes='16x16')
+        link(href='./assets/site.webmanifest' rel='manifest')
+        title Youngsters - Авторизация
+        link(href="css/main.min.css" rel="stylesheet")
+        script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/auth.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/organisms/modalCompositions/modalForgotPassword.jade
+
+        include ./components/molecules/categoriesHeader.jade
+
+        include ./components/atoms/buttons/buttonFirst.jade
+        include ./components/atoms/input.jade
+        include ./components/atoms/radio.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+            .main__inner--auth
+                section.auth
+                    .container
+                        .auth__inner
+                            .login
+                                p.form-title.login__title Войти
+                            .auth__separator
+                            .register
+                                p.form-title.register__title Зарегистрироваться
+                        .auth__inner--md
+                            .auth__tabs
+                                .auth-tab.auth-tab--active(data-tab-target="login-form")
+                                    .auth-tab__title Войти
+                                .auth-tab(data-tab-target="register-form")
+                                    .auth-tab__title Зарегистрироваться
+                            .auth-content
+
+        template#login-form
+            form.login-form(action="#" name="login-form")
+                .login-form__fields
+                    +input('email', 'E-mail*', 'login-form-email', 'email', true)
+                    +input('password', 'Пароль', 'login-form-password', 'password', true)
+                .login-form__submit
+                    +buttonFirst('Войти', 'login-submit', 'submit')
+                    p.login-form__link(data-modal-target="modal-forgot-password") Забыли пароль?
+                    +modalForgotPassword()
+        template#register-form
+            form.register-form(action="#" name="register-form")
+                .register-form__fields
+                    +input('text', 'Имя*', 'register-form-name', 'name', true)
+                    +input('text', 'Фамилия*', 'register-form-lastname', 'lastname', true)
+                    .register-form-field
+                        .register-form-field__title Пол
+                        .register-form-field__inputs
+                            +radio('male', 'Мужской', 'register-form-gender', 'active')
+                            +radio('female', 'Женский', 'register-form-gender')
+                    +input('text', 'Дата рождения', 'register-form-birthday', 'date', true)
+                    +input('email', 'E-mail*', 'register-form-email', 'email', true)
+                    +input('password', 'Пароль', 'register-form-password', 'password', true)
+                .register-form__submit
+                    +buttonFirst('Зарегистрироваться', 'register-submit', 'submit')
+                    p.register-form__text
+                        |   Регистрируясь, я принимаю 
+                        a.register-form__link(href="#") условия конфиденциальности персональной информации
+                        |    в том числе в части обработки и использования моих персональных данных
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

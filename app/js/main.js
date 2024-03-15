@@ -18,6 +18,18 @@ const toggleBackgroundBlur = action => {
     }
 }
 
+const toggleBackgroundBlackout = action => {
+    const currentBlackout = document.querySelector('.background-blackout')
+
+    if (currentBlackout) {
+        currentBlackout.classList[action]('background-blackout--active')
+    } else if (action !== 'remove') {
+        const newBlur = document.createElement('div')
+        newBlur.classList.add('background-blackout', 'background-blackout--active')
+        document.body.insertAdjacentElement('afterbegin', newBlur)
+    }
+}
+
 const closeDropdown = dropdownValue => {
     const dropdownTarget = document.querySelector(`[data-dropdown-target="${dropdownValue}"]`)
     const dropdownList = document.querySelector(`[data-dropdown-list="${dropdownValue}"]`)
@@ -68,66 +80,158 @@ const toggleProductImagesSliderZoom = action => {
 }
 
 const inputHandler = input => {
-    const wrapper = input.closest('.input__wrapper')
-    const type = input.getAttribute('data-type')
+    const inputWrapper = input.closest('.input__wrapper')
+    const dataType = input.getAttribute('data-type')
     const isRequired = input.getAttribute('required') ?? false
 
     const phoneMaskOptions = { mask: '+{7} (000) 000-00-00' }
-    const dateMaskOptions = { mask: Date, lazy: false }
+    const dateMaskOptions = {
+        mask: Date,
+        pattern: 'd{.}d{.}Y',
+        blocks: {
+            d: {
+                mask: IMask.MaskedRange,
+                from: 1,
+                to: 31,
+                maxLength: 2
+            },
+            m: {
+                mask: IMask.MaskedRange,
+                from: 1,
+                to: 12,
+                maxLength: 2
+            },
+            Y: {
+                mask: IMask.MaskedRange,
+                from: 1900,
+                to: 9999
+            }
+        },
+        format(date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
 
-    switch (type) {
-        case 'password':
-            const hiddenIcon = wrapper.querySelector('.input__icon-hidden')
-            const showIcon = wrapper.querySelector('.input__icon-show')
-            hiddenIcon.addEventListener('click', () => input.classList.add('input-password--visible'))
-            showIcon.addEventListener('click', () => input.classList.remove('input-password--visible'))
-            break;
-        case 'phone':
-            IMask(input, phoneMaskOptions)
-        default:
-            break;
+            return [day, month, year].map(this.addLeadingZero).join('.');
+        },
+        parse(str) {
+            const parts = str.split('.');
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1;
+            const year = parseInt(parts[2], 10);
+
+            return new Date(year, month, day);
+        },
+        autofix: true
     }
 
-    if (type === 'date') {
+    let phoneMask;
+
+    if (dataType === 'name' || dataType === 'lastname') {
+        input.addEventListener('blur', () => {
+            if ((isRequired && input.value.trim() === '') || input.value === 'Обязательное поле') {
+                input.classList.add('input--error', 'input--active')
+                input.value = 'Обязательное поле'
+            } else {
+                input.classList.remove('input--error')
+            }
+        })
+    }
+
+    if (dataType === 'email') {
+        input.addEventListener('blur', () => {
+            const regExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if ((isRequired && input.value.trim() === '') || input.value === 'Обязательное поле') {
+                input.classList.add('input--error', 'input--active')
+                input.value = 'Обязательное поле'
+            }
+            if (regExp.test(input.value)) {
+                input.classList.remove('input--error')
+            } else {
+                input.classList.add('input--error', 'input--active')
+            }
+        })
+    }
+
+    if (dataType === 'password') {
+        const hiddenIcon = inputWrapper.querySelector('.input__icon-hidden')
+        const showIcon = inputWrapper.querySelector('.input__icon-show')
+        hiddenIcon.addEventListener('click', () => {
+            inputWrapper.classList.add('input__wrapper--password--visible')
+            input.setAttribute('type', 'text')
+        })
+        showIcon.addEventListener('click', () => {
+            inputWrapper.classList.remove('input__wrapper--password--visible')
+            input.setAttribute('type', 'password')
+        })
+
+        input.addEventListener('blur', () => {
+            if (isRequired && input.value.trim() === '') {
+                input.classList.add('input--error', 'input--active')
+            } else {
+                input.classList.remove('input--error')
+            }
+        })
+    }
+
+    if (dataType === 'phone') {
+        phoneMask = IMask(input, phoneMaskOptions)
+
+        input.addEventListener('blur', () => {
+            if (input.value === '+7 (000) 000-00-00') {
+                console.log(input.value)
+                input.classList.add('input--error', 'input--active')
+                phoneMask.destroy()
+                input.value += ' (Некорректный ввод данных)'
+            } else {
+                input.classList.remove('input--error')
+            }
+
+            if (input.value === '') {
+                input.classList.remove('input--error', 'input--active')
+            }
+        })
+    }
+
+    if (dataType === 'date') {
+        input.classList.add('input--active')
         IMask(input, dateMaskOptions)
+        input.addEventListener('blur', () => {
+            if (input.value.split('.').join('').length !== 8) {
+                input.classList.add('input--error')
+            } else {
+                input.classList.remove('input--error')
+            }
+        })
     }
 
     input.addEventListener('input', () => {
-        if (input.value.trim() === '') {
+        if (input.value.trim() === '' && dataType !== 'date') {
             input.classList.remove('input--active')
         } else {
             input.classList.add('input--active')
         }
     })
 
-    input.addEventListener('blur', () => {
-        if ((isRequired && input.value.trim() === '')
-            || input.value === 'Обязательное поле'
-            || input.value === '+7 (000) 000-00-00') {
-            input.classList.add('input--error')
-
-            if (type !== 'phone') {
-                input.value = 'Обязательное поле'
-                input.classList.add('input--active')
-            } else {
-                input.value += ' (Некорректный ввод данных)'
-                input.classList.add('input--active')
-            }
-        } else {
-            input.classList.remove('input--error')
-        }
-    })
-
+    // Если инпут имеет класс input--error при фокусе на нём, то удаляем этот класс и очищаем value
     input.addEventListener('focus', () => {
         if (input.classList.contains('input--error')) {
             input.classList.remove('input--error')
             input.value = ''
+            phoneMask = (dataType === 'phone' ? IMask(input, phoneMaskOptions) : undefined)
         }
     })
 }
 
-// Header user block
+const toggleModal = (action, value) => {
+    if (!document.querySelector('.modal--visible')) {
+        toggleBackgroundBlackout(action)
+    }
+    const modal = document.querySelector(`[data-modal-page="${value}"]`)
+    modal.classList[action]('modal--visible')
+}
 
+// Header user block
 const headerLinksUser = document.querySelector('.header-links__user')
 
 const togglePersonalHeaderAuth = () => {
@@ -255,6 +359,19 @@ document.addEventListener('click', e => {
 
     const sidebarBack = e.target.closest('[data-sidebar-back]')
     if (sidebarBack) toggleSidebar('remove', sidebarBack.getAttribute('data-sidebar-back'))
+    
+    // Modal
+    const modalClose = e.target.closest('[data-modal-close]')
+    const modalPage = e.target.closest('[data-modal-page]')
+    const visibleModal = document.querySelector('.modal--visible')
+    if (modalClose || (!modalPage && visibleModal)) {
+        const visibleModals = document.querySelectorAll('.modal--visible')
+        visibleModals.forEach(modal => modal.classList.remove('modal--visible'))
+        toggleBackgroundBlackout('remove')
+    }
+
+    const modalTarget = e.target.closest('[data-modal-target]')
+    if (modalTarget) toggleModal('add', modalTarget.getAttribute('data-modal-target'))
 
     // Product Images Slider
     const productImagesSliderZoomIcon = e.target.closest('.product-images-slider-slide__icon')

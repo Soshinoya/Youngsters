@@ -35,6 +35,10 @@
 
 @media (max-width: 768px) {
     .categories-header {
+        .container {
+            padding: 0;
+        }
+        
         &__inner {
             padding: 10px 20px;
         }

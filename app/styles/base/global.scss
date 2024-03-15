@@ -9,7 +9,7 @@ body {
 
 .main {
     flex-grow: 1;
-    padding-top: 85px;
+    padding-top: 68px;
 
     &__inner--cart {
         margin: 15px 0 100px;
@@ -28,8 +28,16 @@ body {
         margin-top: 30px;
     }
 
+    &__inner--auth {
+        margin-top: 30px;
+    }
+
     &--index {
         padding-top: 0;
+    }
+
+    &--catalog {
+        padding-top: 95px;
     }
 }
 
@@ -65,6 +73,20 @@ body {
     &--active {
         background-color: rgba($color-first, .3);
         backdrop-filter: blur(2px);
+        z-index: 2;
+    }
+}
+
+.background-blackout {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    &--active {
+        background-color: rgba($color-first, .5);
         z-index: 2;
     }
 }
@@ -129,6 +151,8 @@ body {
 
 @media (max-width: 768px) {
     .main {
+        padding-top: 62px;
+
         &__inner--thanks,
         &__inner--order-paid,
         &__inner--order-created {
@@ -152,6 +176,10 @@ body {
         &__inner--order-created {
             margin-top: 60px;
         }
+
+        &__inner--change-password {
+            margin-top: 30px;
+        }
     }
 
     .thanks,
@@ -164,6 +192,8 @@ body {
 
 @media (max-width: 320px) {
     .main {
+        padding-top: 43px;
+
         &__inner--thanks,
         &__inner--order-paid,
         &__inner--order-created {

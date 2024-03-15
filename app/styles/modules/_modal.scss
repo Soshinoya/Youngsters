@@ -1,0 +1,65 @@
+@use '../base/variables.scss';
+
+.modal {
+    position: fixed;
+    width: 564px;
+    top: 1000%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 3;
+
+    transition: top variables.$transitionDuration variables.$transitionTimingFunc, opacity variables.$transitionDuration variables.$transitionTimingFunc;
+
+    &__inner {
+        padding: 30px;
+        background-color: variables.$color-sixth;
+        box-shadow: 0px 4px 10px 0px rgba(variables.$black-color, .25);
+    }
+
+    &--visible {
+        top: 50%;
+        opacity: 1;
+    }
+}
+
+.modal-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(variables.$black-color, .15);
+
+    &__title {
+        @extend %text-style;
+    }
+
+    &__close {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        width: 403px;
+    }
+}
+
+@media (max-width: 414px) {
+    .modal {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .modal {
+        padding: 0 16px;
+
+        &__inner {
+            padding: 16px;
+        }
+    }
+}

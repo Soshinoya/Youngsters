@@ -38,13 +38,13 @@ mixin sidebarProductSizeOrder()
             .sidebar-product-size-order-data
                 p.sidebar-product-size-order__title Контактные данные
                 .sidebar-product-size-order-data__inputs
-                    +input('text', 'Имя*', 'product-size-order-data', 'name', true)
-                    +input('text', 'Телефон*', 'product-size-order-data', 'phone', true)
+                    +input('text', 'Имя*', 'product-size-order-data-name', 'name', true)
+                    +input('text', 'Телефон*', 'product-size-order-data-phone', 'phone', true)
             .sidebar-product-size-order-contacts
                 p.sidebar-product-size-order__title Предпочтительный способ связи
                 .sidebar-product-size-order-contacts__variants
-                    +checkbox('telegram', 'Telegram', 'checkbox', 'product-size-order-data')
-                    +checkbox('whatsapp', 'Whatsapp', 'checkbox', 'product-size-order-data')
+                    +checkbox('telegram', 'Telegram', 'checkbox', 'product-size-order-data-telegram')
+                    +checkbox('whatsapp', 'Whatsapp', 'checkbox', 'product-size-order-data-whatsapp')
         +sidebarProductSizeSent()
         .sidebar-bottom
             +buttonSecond('Очистить', 'sidebar-product-size-order-clear')
