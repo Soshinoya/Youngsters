@@ -30,6 +30,39 @@ html(lang='ru')
                     +breadcrumbs(breadcrumbsPages)
             .main__inner--personal
                 section.personal
+                    .container
+                        .personal__inner
+                            nav.personal-nav
+                                ul.personal-nav__list
+                                    li.personal-nav__list-item.personal-nav__list-item--active
+                                        a.personal-nav__list-item__link(href="personal.html") MYOUNGSTERS
+                                    li.personal-nav__list-item
+                                        a.personal-nav__list-item__link(href="personal-data.html") Мои данные
+                                    li.personal-nav__list-item
+                                        a.personal-nav__list-item__link(href="personal-orders.html") Мои заказы
+                                    li.personal-nav__list-item
+                                        a.personal-nav__list-item__link(href="personal-favorites.html") Избранное
+                            .personal-center
+                                .personal__img
+                                    img(src="./images/content/banners/personal/1.jpg", alt="Мужчина позирует в украшениях Youngsters")
+                                a.personal-card(href="personal-data.html")
+                                    svg.personal-card__icon
+                                        use(xlink:href="./images/sprite.svg#male-user-black-filled")
+                                    p.personal-card__title Мои данные
+                                    p.personal-card__text Обновляйте свои регистрационные данные, адреса доставки
+                            .personal-bottom
+                                a.personal-card(href="personal-orders.html")
+                                    svg.personal-card__icon
+                                        use(xlink:href="./images/sprite.svg#shopping-bag-black-filled")
+                                    p.personal-card__title Мои заказы
+                                    p.personal-card__text Отслеживайте статус актуальных заказов, смотрите историю исполненных
+                                a.personal-card(href="personal-favorites.html")
+                                    svg.personal-card__icon
+                                        use(xlink:href="./images/sprite.svg#heart-black-filled")
+                                    p.personal-card__title Избранное
+                                    p.personal-card__text Сохраняйте понравившиеся Вам изделия, проверяйте их наличие и скидки
+                                .personal__img
+                                    img(src="./images/content/banners/personal/2.jpg", alt="Мужчина позирует в украшениях Youngsters")
         +footer()
 
 

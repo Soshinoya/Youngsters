@@ -15,6 +15,10 @@ body {
         margin: 15px 0 100px;
     }
 
+    &__inner--personal {
+        margin: 30px 0 100px;
+    }
+
     &__inner--thanks,
     &__inner--order-paid,
     &__inner--order-created {
@@ -115,7 +119,8 @@ body {
 
 @media (max-width: 1440px) {
     .main {
-        &__inner--cart {
+        &__inner--cart,
+        &__inner--personal {
             margin-bottom: 90px;
         }
 
@@ -133,7 +138,8 @@ body {
 
 @media (max-width: 1024px) {
     .main {
-        &__inner--cart {
+        &__inner--cart,
+        &__inner--personal {
             margin-bottom: 80px;
         }
 
@@ -163,7 +169,8 @@ body {
 
 @media (max-width: 414px) {
     .main {
-        &__inner--cart {
+        &__inner--cart,
+        &__inner--personal {
             margin-bottom: 70px;
         }
 

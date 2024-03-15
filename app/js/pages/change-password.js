@@ -4,12 +4,16 @@ form.addEventListener('submit', e => {
     e.preventDefault()
     const passwordFirst = document.querySelector('[name="change-password-form-password-1"]')
     const passwordSecond = document.querySelector('[name="change-password-form-password-2"]')
-    if (
-        passwordFirst.classList.contains('input--error')
-        || passwordSecond.classList.contains('input--error')
-        || passwordFirst.value !== passwordSecond.value
-    ) {
-        toggleModal('add', 'modal-incorrect-password')
+    if (passwordFirst.value !== passwordSecond.value) {
+        const rootElem = document.querySelector('.change-password-form-field:last-child')
+        const errorText = document.createElement('p')
+        errorText.classList.add('change-password-form-field__text', 'change-password-form-field__text--error')
+        errorText.textContent = 'Пароли не совпадают'
+        rootElem?.insertAdjacentElement('beforeend', errorText)
+
+        if (passwordFirst.classList.contains('input--error') || passwordSecond.classList.contains('input--error')) {
+            toggleModal('add', 'modal-incorrect-password')
+        }
     } else {
         const categoriesHeaderWrapper = document.querySelector('.categories-header__wrapper')
         const mainInnerChangePassword = document.querySelector('.main__inner--change-password')
