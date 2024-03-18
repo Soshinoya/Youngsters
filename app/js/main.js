@@ -398,7 +398,7 @@ document.addEventListener('click', e => {
     ) togglePersonalHeaderAuth()
 
     // Personal nav
-    if (window.matchMedia('(max-width: 414px)').matches) {
+    if (window.matchMedia('(max-width: 530px)').matches) {
         const personalNavListItem = e.target.closest('.personal-nav__list-item')
 
         if (personalNavListItem) {

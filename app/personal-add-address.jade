@@ -1,0 +1,82 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(href='./assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180')
+        link(type='image/png' href='./assets/favicon-32x32.png' rel='icon' sizes='32x32')
+        link(type='image/png' href='./assets/favicon-16x16.png' rel='icon' sizes='16x16')
+        link(href='./assets/site.webmanifest' rel='manifest')
+        title Youngsters - Добавить адрес
+        link(href="css/main.min.css" rel="stylesheet")
+        script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/personal-add-address.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/organisms/sidebarCompositions/sidebarCity.jade
+
+        include ./components/molecules/categoriesHeader.jade
+        include ./components/molecules/personalNav.jade
+
+        include ./components/atoms/breadcrumbs.jade
+        include ./components/atoms/buttons/buttonFirst.jade
+        include ./components/atoms/buttons/buttonSecond.jade
+        include ./components/atoms/input.jade
+        include ./components/atoms/checkbox.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+                - var breadcrumbsPages = [{title: 'Главная',href: '#'},{title: 'Добавить адрес',href: '#'}]
+                .container
+                    +breadcrumbs(breadcrumbsPages)
+            .main__inner--personal
+                section.personal-add-address
+                    .container
+                        .personal-container.personal-add-address__holder
+                            +personalNav(1)
+                            .personal-add-address__wrapper
+                                .personal-section-header
+                                    p.personal-section-header__title Добавить адрес
+                                form.personal-add-address-form(action="#")
+                                    .personal-add-address-form__fields
+                                        +input('text', 'Имя', 'contacts-name', 'name', false)
+                                        +input('text', 'Фамилия', 'contacts-lastname', 'lastname', false)
+                                        +input('phone', 'Телефон', 'contacts-phone', 'phone', false)
+                                        +input('email', 'E-mail', 'contacts-email', 'email', false)
+                                    .personal-add-address-form--other-recipient__wrapper
+                                        +checkbox('other-recipient', 'Другой получатель', 'checkbox', 'is-other-recipient')
+                                        .personal-add-address-form--other-recipient__fields
+                                            +input('text', 'Имя', 'other-recipient-name', 'name', false)
+                                            +input('phone', 'Телефон', 'other-recipient-phone', 'phone', false)
+                                    .personal-add-address-form__toggle-sidebar(data-sidebar-target="city-pick")
+                                        svg.personal-add-address-form__toggle-sidebar__icon
+                                            use(xlink:href="./images/sprite.svg#marker")
+                                        p.personal-add-address-form__text.personal-add-address-form__toggle-sidebar__title Выберите город
+                                        svg.personal-add-address-form__toggle-sidebar__open
+                                            use(xlink:href="./images/sprite.svg#triangle")
+                                    +sidebarCity()
+                                    .personal-add-address-form__address
+                                        +input('text', 'Адрес (Район, улица)*', 'address-street', 'street', true)
+                                        .personal-add-address-form__address-fields
+                                            +input('text', 'Квартира*', 'address-apartment', 'apartment', true)
+                                            +input('text', 'Домофон*', 'address-intercom', 'intercom', true)
+                                            +input('text', 'Подъезд*', 'address-approach', 'approach', true)
+                                            +input('text', 'Этаж*', 'address-floor', 'floor', true)
+                                    .personal-add-address-form--save-by-default
+                                        +checkbox('save-by-default', 'Сохранить как адрес доставки по умолчанию', 'checkbox', 'is-saved-by-default')
+                                    .personal-add-address-form-btns
+                                        a.personal-add-address-form-btns__link(href="personal-details.html")
+                                            +buttonSecond('Отменить', 'personal-add-address-form-cancel', 'button')
+                                        +buttonFirst('Сохранить', 'personal-add-address-form-submit', 'submit')
+        +footer()
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

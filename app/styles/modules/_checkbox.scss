@@ -45,6 +45,7 @@
     }
 
     &__text {
+        width: fit-content;
         @extend %text-style-first;
     }
 }

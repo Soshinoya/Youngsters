@@ -81,6 +81,7 @@ function generalScripts() {
     'node_modules/swiper/swiper-bundle.js',
     'node_modules/ion-rangeslider/js/ion.rangeSlider.js',
     'node_modules/imask/dist/imask.js',
+    'app/js/minified/cart.min.js',
     'app/js/service/*.js',
     'app/js/main.js'
   ])

@@ -6,6 +6,8 @@ mixin personalNav(activeIndex)
                 if index == activeIndex
                     li(class="personal-nav__list-item personal-nav__list-item--active")
                         .personal-nav__list-item__link= link.title
+                        svg.personal-nav__list-item__icon
+                            use(xlink:href="./images/sprite.svg#plus-math")
                 else
                     li.personal-nav__list-item
                         a.personal-nav__list-item__link(href=link.href)= link.title
