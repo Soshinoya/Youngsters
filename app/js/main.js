@@ -166,8 +166,11 @@ const inputHandler = input => {
         })
 
         input.addEventListener('blur', () => {
-            if (isRequired && input.value.trim() === '') {
+            if ((isRequired && input.value.trim() === '') || input.value.trim() === 'Обязательное поле') {
                 input.classList.add('input--error', 'input--active')
+                inputWrapper.classList.add('input__wrapper--password--visible')
+                input.value = 'Обязательное поле'
+                input.setAttribute('type', 'text')
             } else {
                 input.classList.remove('input--error')
             }
@@ -218,7 +221,13 @@ const inputHandler = input => {
         if (input.classList.contains('input--error')) {
             input.classList.remove('input--error')
             input.value = ''
+
             phoneMask = (dataType === 'phone' ? IMask(input, phoneMaskOptions) : undefined)
+
+            if (dataType === 'password') {
+                inputWrapper.classList.remove('input__wrapper--password--visible')
+                input.setAttribute('type', 'password')
+            }
         }
     })
 }
@@ -226,9 +235,11 @@ const inputHandler = input => {
 const toggleModal = (action, value) => {
     if (!document.querySelector('.modal--visible')) {
         toggleBackgroundBlackout(action)
+    } else {
+        document.querySelectorAll('.modal--visible').forEach(elem => elem.classList.remove('modal--visible'))
     }
     const modal = document.querySelector(`[data-modal-page="${value}"]`)
-    modal.classList[action]('modal--visible')
+    modal && modal.classList[action]('modal--visible')
 }
 
 // Header user block
@@ -353,10 +364,10 @@ document.addEventListener('click', e => {
         visibleSidebars.forEach(sidebar => sidebar.classList.remove('sidebar--visible'))
         toggleBackgroundBlur('remove')
     }
-
+    
     const sidebarTarget = e.target.closest('[data-sidebar-target]')
     if (sidebarTarget) toggleSidebar('add', sidebarTarget.getAttribute('data-sidebar-target'))
-
+    
     const sidebarBack = e.target.closest('[data-sidebar-back]')
     if (sidebarBack) toggleSidebar('remove', sidebarBack.getAttribute('data-sidebar-back'))
 
@@ -524,6 +535,30 @@ const setGoodsSlider = () => {
 window.addEventListener('resize', setGoodsSlider)
 
 setGoodsSlider()
+
+// Забыл пароль
+const forgotPassword = () => {
+    const input = document.querySelector('[name="forgot-password-email"]')
+    const inputWrapper = input.closest('.input__wrapper')
+    const inputValue = input.value
+    const modalForgotPasswordText = document.querySelector('.modal-forgot-password-form__text')
+
+    const regExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (inputValue.trim() !== '' && regExp.test(inputValue)) {
+        inputWrapper.classList.add('input__wrapper--done')
+        modalForgotPasswordText.textContent = 'На ваш электронный адрес направлена ссылка для восстановления пароля'
+    } else {
+        input.classList.add('input--error', 'input--active')
+        input.value = 'Обязательное поле'
+    }
+}
+
+const forgotPasswordForms = document.querySelectorAll('[name="forgot-password-form"]')
+forgotPasswordForms.forEach(form => form.addEventListener('submit', e => {
+    e.preventDefault()
+    forgotPassword()
+}))
 
 window.addEventListener('resize', () => {
     console.clear()

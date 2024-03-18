@@ -51,24 +51,6 @@ setAuthContent()
 const loginUser = () => console.log('Вход...')
 const registerUser = () => console.log('Регистрация...')
 
-// Забыл пароль
-const forgotPassword = () => {
-    const input = document.querySelector('[name="forgot-password-email"]')
-    const inputWrapper = input.closest('.input__wrapper')
-    const inputValue = input.value
-    const modalForgotPasswordText = document.querySelector('.modal-forgot-password-content__text')
-
-    const regExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (inputValue.trim() !== '' && regExp.test(inputValue)) {   
-        inputWrapper.classList.add('input__wrapper--done')
-        modalForgotPasswordText.textContent = 'На ваш электронный адрес направлена ссылка для восстановления пароля'
-    } else {
-        input.classList.add('input--error', 'input--active')
-        input.value = 'Обязательное поле'
-    }
-}
-
 if (window.matchMedia('(max-width: 768px)').matches) {
     document.addEventListener('click', e => {
         const submitBtn = e.target.closest('[type="submit"]')
@@ -86,7 +68,7 @@ if (window.matchMedia('(max-width: 768px)').matches) {
                 case 'forgot-password-form':
                     forgotPassword()
                     break;
-            
+
                 default:
                     break;
             }

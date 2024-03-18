@@ -44,7 +44,7 @@ html(lang='ru')
                             .personal-add-address__wrapper
                                 .personal-section-header
                                     p.personal-section-header__title Добавить адрес
-                                form.personal-add-address-form(action="#")
+                                form.personal-add-address-form(action="#" name="personal-add-address-form")
                                     .personal-add-address-form__fields
                                         +input('text', 'Имя', 'contacts-name', 'name', false)
                                         +input('text', 'Фамилия', 'contacts-lastname', 'lastname', false)
@@ -73,8 +73,8 @@ html(lang='ru')
                                         +checkbox('save-by-default', 'Сохранить как адрес доставки по умолчанию', 'checkbox', 'is-saved-by-default')
                                     .personal-add-address-form-btns
                                         a.personal-add-address-form-btns__link(href="personal-details.html")
-                                            +buttonSecond('Отменить', 'personal-add-address-form-cancel', 'button')
-                                        +buttonFirst('Сохранить', 'personal-add-address-form-submit', 'submit')
+                                            +buttonSecond('Отменить', 'form-cancel', 'button')
+                                        +buttonFirst('Сохранить', 'form-submit', 'submit')
         +footer()
 
 

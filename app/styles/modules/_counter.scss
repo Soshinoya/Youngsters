@@ -24,6 +24,7 @@
         align-items: center;
         justify-content: center;
         border: 1px solid rgba(variables.$color-first, .35);
+        background-color: transparent;
         @extend %text-style;
         outline: none;
     }

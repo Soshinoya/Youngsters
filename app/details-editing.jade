@@ -1,0 +1,91 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(href='./assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180')
+        link(type='image/png' href='./assets/favicon-32x32.png' rel='icon' sizes='32x32')
+        link(type='image/png' href='./assets/favicon-16x16.png' rel='icon' sizes='16x16')
+        link(href='./assets/site.webmanifest' rel='manifest')
+        title Youngsters - Редактировать данные
+        link(href="css/main.min.css" rel="stylesheet")
+        script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/details-editing.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/organisms/modalCompositions/modalForgotPassword.jade
+        include ./components/organisms/modalCompositions/modalConfirmPassword.jade
+        include ./components/organisms/modalCompositions/modalChangePassword.jade
+
+        include ./components/molecules/categoriesHeader.jade
+        include ./components/molecules/personalNav.jade
+
+        include ./components/atoms/breadcrumbs.jade
+        include ./components/atoms/buttons/buttonFirst.jade
+        include ./components/atoms/buttons/buttonSecond.jade
+        include ./components/atoms/input.jade
+        include ./components/atoms/checkbox.jade
+        include ./components/atoms/radio.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+                - var breadcrumbsPages = [{title: 'Главная',href: '#'},{title: 'Редактировать данные',href: '#'}]
+                .container
+                    +breadcrumbs(breadcrumbsPages)
+            .main__inner--personal
+                section.details-editing
+                    .container
+                        .personal-container.details-editing__holder
+                            +personalNav(1)
+                            .details-editing__wrapper
+                                .personal-section-header
+                                    p.personal-section-header__title Редактировать данные
+                                form.details-editing-form(action="#" name="details-editing-form")
+                                    .details-editing-form__fields
+                                        .details-editing-form-field
+                                            +input('text', 'Имя', 'contacts-name', 'name', false)
+                                        .details-editing-form-field
+                                            +input('text', 'Фамилия', 'contacts-lastname', 'lastname', false)
+                                        .details-editing-form-field
+                                            +input('phone', 'Телефон', 'contacts-phone', 'phone', false)
+                                            svg.details-editing-form-field__icon(data-modal-target="modal-confirm-password")
+                                                use(xlink:href="./images/sprite.svg#edit")
+                                        .details-editing-form-field
+                                            +input('email', 'E-mail', 'contacts-email', 'email', false)
+                                            svg.details-editing-form-field__icon(data-modal-target="modal-confirm-password")
+                                                use(xlink:href="./images/sprite.svg#edit")
+                                        .details-editing-form-field
+                                            +input('text', 'Дата рождения', 'contacts-birthday', 'date', false)
+                                        .details-editing-form-field
+                                            +input('password', 'Пароль', 'contacts-password', 'password', false)
+                                            svg.details-editing-form-field__icon(data-modal-target="modal-confirm-password")
+                                                use(xlink:href="./images/sprite.svg#edit")
+                                    .details-editing-form__gender
+                                        p.details-editing-form__title Персонализируйте свои покупки
+                                        .details-editing-form__gender-variants
+                                            +radio('male', 'Мужской', 'gender', 'active')
+                                            +radio('female', 'Женский', 'gender')
+                                    .details-editing-form__checkboxes
+                                        +checkbox('', 'Хочу  узнавать об эксклюзивных промоакциях по SMS', 'checkbox', 'promo-sms')
+                                        +checkbox('', 'Хочу  узнавать об эксклюзивных промоакциях по E-mail', 'checkbox', 'promo-email')
+                                    .details-editing-form-btns
+                                        a.details-editing-form-btns__link(href="personal-details.html")
+                                            +buttonSecond('Отменить', 'form-cancel', 'button')
+                                        +buttonFirst('Сохранить', 'form-submit', 'submit')
+                                +modalForgotPassword()
+                                +modalConfirmPassword()
+                                +modalChangePassword()
+        template#change-password-thanks
+            h2.change-password-thanks__title Ваш пароль успешно изменён!
+        +footer()
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

@@ -1,0 +1,150 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.details-editing {
+    &__holder {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin: 0 auto;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px 30px 30px;
+        background-color: variables.$color-fourth;
+    }
+}
+
+.details-editing-form {
+    &__fields,
+    &__gender,
+    &__checkboxes {
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        @extend %text-style-first;
+    }
+
+    &__fields {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 90px;
+        row-gap: 30px;
+    }
+
+    &__gender,
+    &__gender-variants {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__gender {
+        gap: 90px;
+    }
+
+    &__checkboxes {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+.details-editing-form-btns {
+    max-width: 536px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 30px;
+    margin-left: auto;
+}
+
+.details-editing-form-field {
+    position: relative;
+
+    &__icon {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    .input__icon-hidden {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .details-editing-form {
+        &__fields {
+            column-gap: 60px;
+            row-gap: 20px;
+        }
+
+        &__gender {
+            gap: 60px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .details-editing-form {
+        &__fields {
+            column-gap: 30px;
+        }
+
+        &__gender {
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .details-editing-form {
+        &__fields {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        &__gender {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .details-editing {
+        .container {
+            padding: 0;
+        }
+
+        &__wrapper {
+            padding: 20px 20px 6px 20px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .details-editing {
+        &__wrapper {
+            padding: 20px 16px 6px 16px;
+        }
+    }
+
+    .details-editing-form {
+        &__title {
+            @include mixins.font(12px, 14px);
+        }
+    }
+
+    .details-editing-form-btns {
+        gap: 6px;
+    }
+}

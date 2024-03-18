@@ -21,3 +21,15 @@ cityPickBtn.addEventListener('click', () => {
         toggleBackgroundBlur('remove')
     }
 })
+
+// Handle form submit
+const form = document.querySelector('[name="personal-add-address-form"]')
+
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    console.log('Добавление адреса...')
+    // const formData = new FormData(form)
+    // for (const pair of formData.entries()) {
+    //     console.log(`Name: ${pair[0]}`, `Value: ${pair[1]}`)
+    // }
+})

@@ -51,9 +51,7 @@ html(lang='ru')
                             .cart-amount__wrapper
                                 .cart-amount__sidebar-btns.cart-amount__sidebar-btns--lg
                                     +sidebarBtn('Доставка и оплата', 'product-menu')
-                                        +sidebarProductMenu()
                                     +sidebarBtn('Гарантия и возврат', 'product-warranty')
-                                        +sidebarProductWarranty()
                                 .cart-amount
                                     .form-title.cart-section__title Сумма заказа
                                     .cart-amount__info
@@ -69,11 +67,11 @@ html(lang='ru')
                                     +buttonFirst('Оформить заказ')
                                     .cart-amount__sidebar-btns
                                         +sidebarBtn('Доставка и оплата', 'product-menu')
-                                            +sidebarProductMenu()
                                         +sidebarBtn('Гарантия и возврат', 'product-warranty')
-                                            +sidebarProductWarranty()
                 +chosenDecorations()
         +footer()
+        +sidebarProductMenu()
+        +sidebarProductWarranty()
 
 
     //- svg
