@@ -359,7 +359,7 @@ document.addEventListener('click', e => {
 
     const sidebarBack = e.target.closest('[data-sidebar-back]')
     if (sidebarBack) toggleSidebar('remove', sidebarBack.getAttribute('data-sidebar-back'))
-    
+
     // Modal
     const modalClose = e.target.closest('[data-modal-close]')
     const modalPage = e.target.closest('[data-modal-page]')
@@ -396,6 +396,24 @@ document.addEventListener('click', e => {
         &&
         document.querySelector('.header-links__user--active')
     ) togglePersonalHeaderAuth()
+
+    // Personal nav
+    if (window.matchMedia('(max-width: 414px)').matches) {
+        const personalNavListItem = e.target.closest('.personal-nav__list-item')
+
+        if (personalNavListItem) {
+            if (personalNavListItem.classList.contains('personal-nav__list-item--active')) {
+                const personalNav = document.querySelector('.personal-nav');
+                personalNav.classList.toggle('personal-nav--active')
+            } else {
+                // Удаляем активный класс и всех item
+                [...document.querySelectorAll('.personal-nav__list-item')].forEach(item => item?.remove())
+
+                // Добавляем активный класс item, по которому кликнул пользователь
+                personalNavListItem.classList.add('personal-nav__list-item--active')
+            }
+        }
+    }
 })
 
 const counters = document.querySelectorAll('.counter')

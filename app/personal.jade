@@ -17,6 +17,7 @@ html(lang='ru')
         include ./components/organisms/headerSidebar.jade
 
         include ./components/molecules/categoriesHeader.jade
+        include ./components/molecules/personalNav.jade
 
         include ./components/atoms/breadcrumbs.jade
 
@@ -31,17 +32,8 @@ html(lang='ru')
             .main__inner--personal
                 section.personal
                     .container
-                        .personal__inner
-                            nav.personal-nav
-                                ul.personal-nav__list
-                                    li.personal-nav__list-item.personal-nav__list-item--active
-                                        a.personal-nav__list-item__link(href="personal.html") MYOUNGSTERS
-                                    li.personal-nav__list-item
-                                        a.personal-nav__list-item__link(href="personal-data.html") Мои данные
-                                    li.personal-nav__list-item
-                                        a.personal-nav__list-item__link(href="personal-orders.html") Мои заказы
-                                    li.personal-nav__list-item
-                                        a.personal-nav__list-item__link(href="personal-favorites.html") Избранное
+                        .personal-container.personal__inner
+                            +personalNav(0)
                             .personal-center
                                 .personal__img
                                     img(src="./images/content/banners/personal/1.jpg", alt="Мужчина позирует в украшениях Youngsters")

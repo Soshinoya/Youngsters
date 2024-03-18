@@ -1,0 +1,11 @@
+mixin personalNav(activeIndex)
+    nav.personal-nav
+        ul.personal-nav__list
+            - var links = [{href:"personal.html",title:"MYOUNGSTERS"},{href:"personal-details.html",title:"Мои данные"},{href:"personal-orders.html",title:"Мои заказы"},{href:"personal-favorites.html",title:"Избранное"}]
+            each link, index in links
+                if index == activeIndex
+                    li(class="personal-nav__list-item personal-nav__list-item--active")
+                        .personal-nav__list-item__link= link.title
+                else
+                    li.personal-nav__list-item
+                        a.personal-nav__list-item__link(href=link.href)= link.title

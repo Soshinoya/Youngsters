@@ -1,0 +1,55 @@
+@use '../base/variables.scss';
+
+.personal-nav {
+    padding: 10px 0;
+    transition: height variables.$transitionDuration variables.$transitionTimingFunc;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+    }
+
+    &__list-item {
+        &__link {
+            @extend %text-style-first;
+            color: variables.$color-first;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        &--active .personal-nav__list-item__link {
+            color: variables.$color-third;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .personal-nav {
+        &__list {
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .personal-nav {
+        height: 42px;
+
+        &__list {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &__list-item {
+            &--active {
+                order: -1;
+            }
+        }
+
+        &--active {
+            height: 155px;
+        }
+    }
+}

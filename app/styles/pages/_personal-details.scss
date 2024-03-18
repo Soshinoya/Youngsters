@@ -1,0 +1,220 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.personal-details {
+    &__holder {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        gap: 6px;
+    }
+
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: inherit;
+    }
+
+    &__img {
+        height: 295px;
+
+        img {
+            @include mixins.image-default();
+        }
+    }
+}
+
+.personal-details-main,
+.personal-details-address {
+    background-color: variables.$color-fourth;
+}
+
+.personal-details-main {
+    padding: 20px 30px 0 30px;
+}
+
+.personal-details-address {
+    position: relative;
+    display: flex;
+    padding: 20px 30px 15px;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.personal-details-address-slider-pagination--sm {
+    position: static;
+    width: fit-content;
+    margin: 0 auto;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.personal-details-address-slider-pagination--md {
+    position: absolute;
+    display: flex;
+    align-items: baseline;
+    bottom: unset;
+    top: 50%;
+    right: 37px;
+    gap: 3px;
+    transform: translateY(-50%);
+    user-select: none;
+
+    .swiper-pagination-total {
+        @extend %text-style;
+    }
+
+    .swiper-pagination-current {
+        @include mixins.font(30px, 36px, variables.$color-third) {
+            @extend %cormorant-700;
+            letter-spacing: 0em;
+        }
+    }
+}
+
+.personal-details-address-slider {
+    &__nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 65px;
+
+        .swiper-button-prev {
+            transform: rotate(180deg);
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+        }
+
+        .swiper-button-disabled {
+            opacity: 0;
+        }
+    }
+
+    .swiper-slide {
+        &:not(:first-child) {
+            .personal-details-address-item {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: -30px;
+                    width: 1px;
+                    height: 100%;
+                    background-color: rgba(variables.$color-first, .15);
+                }
+            }
+        }
+    }
+}
+
+.personal-details-address-item {
+    position: relative;
+
+    &__title,
+    &__subtitle,
+    &__text {
+        @extend %text-style-first;
+    }
+
+    &__title {
+        margin-bottom: 15px;
+    }
+
+    &__subtitle {
+        margin-bottom: 5px;
+        color: rgba(variables.$color-first, .7);
+    }
+
+    &__text {
+        &:first-child {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media (min-width: 415px) {
+    .personal-details-address-slider {
+        .personal-details-address-slider-pagination--sm {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .personal-details-main {
+        .personal-section-header__text {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .personal-details {
+        &__inner {
+            grid-template-columns: unset;
+        }
+
+        &__img {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .personal-details {
+        .container {
+            padding: 0;
+        }
+    }
+
+    .personal-details-main {
+        padding: 20px 20px 0 20px;
+    }
+
+    .personal-details-address {
+        padding: 20px 20px 30px 20px;
+    }
+
+    .personal-details-address {
+        gap: 30px;
+    }
+
+    .personal-details-address-slider {
+        &__nav {
+            display: none;
+        }
+
+        .swiper-slide {
+            &:not(:first-child) {
+                .personal-details-address-item {
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+
+    .personal-details-main,
+    .personal-details-address {
+        padding: 16px 16px 30px 16px;
+    }
+
+    .personal-details-address-item {
+
+        &__title,
+        &__subtitle,
+        &__text {
+            @include mixins.font(12px, 14px);
+        }
+    }
+}
