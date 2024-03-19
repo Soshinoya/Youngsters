@@ -59,6 +59,12 @@
     &__text {
         @extend %text-style-first;
     }
+
+    &__text {
+        &--status {
+            color: variables.$color-third;
+        }
+    }
 }
 
 .personal {

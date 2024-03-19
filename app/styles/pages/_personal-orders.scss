@@ -1,0 +1,153 @@
+@use '../base/variables.scss';
+@use '../utils/mixins.scss';
+
+.personal-orders {
+    .personal-section-header {
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .personal-section-field {
+        &__text {
+            text-align: right;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin: 0 auto;
+    }
+}
+
+.personal-orders-delivery,
+.personal-orders-purchase {
+    min-height: 295px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: variables.$color-fourth;
+    padding: 20px 30px;
+}
+
+.personal-orders-decorations {
+    padding-top: 10px;
+    border-top: 1px solid rgba(variables.$color-first, .15);
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        cursor: pointer;
+    }
+
+    &__text {
+        @extend %text-style-first;
+    }
+
+    &__icon {
+        width: 22px;
+        height: 22px;
+        fill: variables.$color-third;
+        transition: transform variables.$transitionDuration variables.$transitionTimingFunc;
+    }
+
+    &__cards {
+        height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow: hidden;
+    }
+
+    &__btn--active {
+        .personal-orders-decorations__icon {
+            transform: rotate(45deg);
+        }
+    }
+
+    &__btn--active+.personal-orders-decorations__cards {
+        height: auto;
+        margin-top: 30px;
+    }
+}
+
+.personal-orders-no-orders {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    
+    &__icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 15px;
+    }
+    
+    &__title,
+    &__text {
+        text-align: center;
+    }
+
+    &__title {
+        @extend %text-style;
+        margin-bottom: 5px;
+    }
+    
+    &__text {
+        @extend %text-style-first;
+    }
+
+    &__btn {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 414px) {
+    .personal-orders {
+        .container {
+            padding: 0;
+        }
+    }
+
+    .personal-orders-delivery,
+    .personal-orders-purchase {
+        min-height: 270px;
+        padding: 20px;
+    }
+
+    .personal-orders-no-orders {
+        &__icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+
+    .personal-orders-delivery,
+    .personal-orders-purchase {
+        padding: 20px 16px;
+    }
+
+    .personal-orders-decorations {
+        &__text {
+            @include mixins.font(12px, 14px);
+        }
+    }
+
+    .personal-orders-no-orders {
+        &__title {
+            @include mixins.font(12px, 16px);
+        }
+
+        &__text {
+            @include mixins.font(12px, 14px);
+        }
+    }
+}
