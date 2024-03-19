@@ -2,6 +2,7 @@
 
 .personal-nav {
     padding: 10px 0;
+    overflow: hidden;
     transition: height variables.$transitionDuration variables.$transitionTimingFunc;
 
     &__list {

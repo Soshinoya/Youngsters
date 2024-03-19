@@ -57,7 +57,8 @@
     .menu-item-dropdown {
         &__text {
             font-size: 16px;
-            left: 22px;
+            // left: 22px;
+            left: 0;
         }
     }
 }
@@ -66,7 +67,8 @@
     .menu-item-dropdown {
         &__text {
             font-size: 12px;
-            left: 16px;
+            // left: 16px;
+            left: 0;
         }
 
         &__icon {

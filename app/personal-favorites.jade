@@ -18,6 +18,7 @@ html(lang='ru')
         include ./components/organisms/goodsSlider.jade
 
         include ./components/molecules/categoriesHeader.jade
+        include ./components/molecules/personalNav.jade
         include ./components/molecules/card.jade
 
         include ./components/atoms/breadcrumbs.jade
@@ -30,22 +31,21 @@ html(lang='ru')
                 - var breadcrumbsPages = [{title: 'Главная',href: '#'},{title: 'Избранное',href: '#'}]
                 .container
                     +breadcrumbs(breadcrumbsPages)
-            .main__inner--guest-favorites
-                section.guest-favorites
+            .main__inner--personal-favorites
+                section.favorites
                     .container
-                        .guest-favorites__inner
-                            h2.guest-favorites__title Избранное
-                            .guest-favorites__cards
+                        .favorites__holder
+                            +personalNav(3)
+                            .favorites__cards
                                 - var cardsData=[{imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"},{imgSrc:"./images/content/products/bracelet.png",imgAlt:"Браслет",title:"Браслет YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"bracelet",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/necklace.png",imgAlt:"Колье",title:"Колье YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"necklace",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/cuff.png",imgAlt:"Кафф",title:"Кафф YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"cuff",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/mas-ring.png",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"}];
                                 for cardInfo in cardsData
                                     +card(cardInfo)
-                template#guest-favorites-empty
-                    .guest-favorites-empty
-                        svg.guest-favorites-empty__icon
+                template#favorites-empty
+                    .favorites-empty
+                        svg.favorites-empty__icon
                             use(xlink:href="./images/sprite.svg#heart-black-filled")
-                        p.guest-favorites-empty__title Добавляйте в избранное
-                        p.guest-favorites-empty__text Сохраняйте понравившиеся Вам изделия, проверяйте их наличие и скидки
-                +goodsSlider()
+                        p.favorites-empty__title Добавляйте в избранное
+                        p.favorites-empty__text Сохраняйте понравившиеся Вам изделия, проверяйте их наличие и скидки
         +footer()
 
 

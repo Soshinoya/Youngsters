@@ -364,10 +364,10 @@ document.addEventListener('click', e => {
         visibleSidebars.forEach(sidebar => sidebar.classList.remove('sidebar--visible'))
         toggleBackgroundBlur('remove')
     }
-    
+
     const sidebarTarget = e.target.closest('[data-sidebar-target]')
     if (sidebarTarget) toggleSidebar('add', sidebarTarget.getAttribute('data-sidebar-target'))
-    
+
     const sidebarBack = e.target.closest('[data-sidebar-back]')
     if (sidebarBack) toggleSidebar('remove', sidebarBack.getAttribute('data-sidebar-back'))
 
@@ -559,6 +559,16 @@ forgotPasswordForms.forEach(form => form.addEventListener('submit', e => {
     e.preventDefault()
     forgotPassword()
 }))
+
+const favoritesCards = document.querySelector('.favorites__cards')
+
+const setFavoritesEmptyBlock = () => {
+    const template = document.importNode(document.getElementById('favorites-empty')?.content, true)
+    const favoritesEmpty = template?.querySelector('.favorites-empty')
+    favoritesCards?.insertAdjacentElement('afterend', favoritesEmpty)
+}
+
+if (favoritesCards?.children?.length === 0) setFavoritesEmptyBlock()
 
 window.addEventListener('resize', () => {
     console.clear()

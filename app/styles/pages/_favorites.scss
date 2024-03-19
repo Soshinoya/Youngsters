@@ -1,7 +1,13 @@
 @use '../base/variables.scss';
 @use '../utils/mixins.scss';
 
-.guest-favorites {
+.favorites {
+    &__holder {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
     &__inner {
         display: flex;
         flex-direction: column;
@@ -15,7 +21,7 @@
     }
 }
 
-.guest-favorites-empty {
+.favorites-empty {
     max-width: 400px;
     display: flex;
     flex-direction: column;
@@ -44,7 +50,7 @@
 }
 
 @media (max-width: 1024px) {
-    .guest-favorites {
+    .favorites {
         &__inner {
             gap: 20px;
         }
@@ -58,7 +64,7 @@
 }
 
 @media (max-width: 768px) {
-    .guest-favorites {
+    .favorites {
         &__cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -68,13 +74,13 @@
 }
 
 @media (max-width: 414px) {
-    .guest-favorites {
+    .favorites {
         &__inner {
             gap: 15px;
         }
     }
 
-    .guest-favorites-empty {
+    .favorites-empty {
         &__icon {
             width: 24px;
             height: 24px;
@@ -83,7 +89,7 @@
 }
 
 @media (max-width: 320px) {
-    .guest-favorites-empty {
+    .favorites-empty {
         &__title {
             @include mixins.font(12px, 16px);
         }
