@@ -18,21 +18,25 @@
         right: 0;
         left: 0;
         z-index: 1;
-
-        &:hover {
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
             background-color: rgba(#000, .7);
-            backdrop-filter: blur(70px);
+            backdrop-filter: blur(20px);
+            transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+            z-index: -1;
         }
 
+        &:hover,
         &--active {
-            .header {
-                background-color: rgba(0, 0, 0, .7);
-                backdrop-filter: blur(70px);
-            }
-
-            &:hover {
-                background-color: transparent;
-                backdrop-filter: none;
+            &::before {
+                opacity: 1;
             }
         }
     }
@@ -57,11 +61,10 @@
     align-items: center;
     gap: 60px;
 
-    &__logo {
-        svg {
-            width: 224px;
-            height: 42px;
-        }
+    &__logo,
+    &__logo svg {
+        width: 224px;
+        height: 42px;
     }
 
     &__menu--md svg {
@@ -197,8 +200,9 @@
 }
 
 .header-search__wrapper {
-    background-color: rgba(#000, .7);
-    backdrop-filter: blur(70px);
+    &::before {
+        opacity: 1;
+    }
 }
 
 .header.header-black:hover,

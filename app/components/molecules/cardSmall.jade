@@ -6,7 +6,7 @@ mixin cardSmall(cardType, productData)
         .card-small-main
             .card-small-main__info
                 .card-small-main__img
-                    img(src=productData.image.src, alt=productData.image.alt)
+                    img(src=productData.image.src, srcset=productData.image.srcset alt=productData.image.alt)
                 .card-small-main__info-inner
                     .card-small-main__subtitle-wrapper
                         p.card-small-main__subtitle

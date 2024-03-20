@@ -17,7 +17,9 @@ class HTMLTemplates {
                 </div>
             </div>
             ` : ''}
-            <div class="card__img" style="background-image: url(${data.imgSrc});"></div>
+            <div class="card__img">
+                <img src="${data.imgSrc}" srcset="${data.imgSrcset}" alt="${data.imgAlt}">
+            </div>
             <div class="card__info">
                 <p class="card__info-title">${data.title}</p>
                 <p class="price card__info-price">${data.price}</p>

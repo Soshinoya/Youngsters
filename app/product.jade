@@ -46,66 +46,67 @@ html(lang='ru')
                 - var breadcrumbsPages = [{title: 'Главная',href: '#'},{title: 'Каталог',href: '#'},{title: 'Кольца',href: '#'},{title: 'Серебряное массивное кольцо Green Stone ',href: '#'}]
                 .container
                     +breadcrumbs(breadcrumbsPages)
-            .product
-                .container
-                    .product__inner
-                        +productImagesSlider([{src: './images/content/products/rings/golden-stone/1.webp',srcset: './images/content/products/rings/golden-stone/1.webp 1x, ./images/content/products/rings/golden-stone/1@2x.webp 2x', alt: 'Кольцо Green Stone', class: 'product-images-slider-slide__img--position-left'},{src: './images/content/products/rings/golden-stone/2.webp',srcset: './images/content/products/rings/golden-stone/2.webp 1x, ./images/content/products/rings/golden-stone/2@2x.webp 2x', alt: 'Кольцо Green Stone'},{src: './images/content/products/rings/golden-stone/3.webp',srcset: './images/content/products/rings/golden-stone/3.webp 1x, ./images/content/products/rings/golden-stone/3@2x.webp 2x', alt: 'Кольцо Green Stone'}])
-                        .product-info
-                            .product-info-top
-                                p.product-info-top__subtitle Артикул 123456
-                                .product-info-top__inner
-                                    h1.product-info-top__title Серебряное массивное кольцо 
-                                        span green Stone
-                                    +price('35 000,00')
-                            .product-info__holder
-                                ul.product-info__features
-                                    li.product-info__features-item Серебро 925 проба
-                                    li.product-info__features-item Средний вес 9,30 гр
-                                    li.product-info__features-item Вставка - Оникс 28 ct
-                                .product-info-config
-                                    .product-info-config__item.product-info-config__item--color
-                                        p.product-info-config__item-title Цвет: Позолоченное серебро
-                                        .product-info-config__item-colors
-                                            +colorPick('#E9D590', 'beige', 'product-color', 'active')
-                                            +colorPick('#C8C8C8', 'gray', 'product-color')
-                                            +colorPick('#141318', 'black', 'product-color')
-                                    .product-info-config__item.product-info-config__item--size
-                                        p.product-info-config__item-title Размер
-                                        .product-info-config__item-size(data-sidebar-target="product-size")
-                                            .product-info-config__item-text__wrapper
-                                                p.product-info-config__item-text 29,5
-                                            svg.product-info-config__item-icon
-                                                use(xlink:href="./images/sprite.svg#triangle")
-                                        +sidebarProductSize()
-                                    .product-info-config__item.product-info-config__item--count
-                                        p.product-info-config__item-title Количество
-                                        +counter(1, 1, 5, 'product-count')
-                                .product-info-actions
-                                    .product-info-actions__btns
-                                        +buttonFirst('Добавить в корзину')
-                                        +likeButton()
-                                    .product-info-actions__items
-                                        a.product-info-actions__item(href="#")
-                                            svg.product-info-actions__item-icon
-                                                use(xlink:href="./images/sprite.svg#whatsapp")
-                                            .product-info-actions__item-text Начать чат со стилистом в WhatsApp
-                                        a.product-info-actions__item(href="#")
-                                            svg.product-info-actions__item-icon
-                                                use(xlink:href="./images/sprite.svg#delivery")
-                                            .product-info-actions__item-text Доставка по РФ 2 - 3 дня
-                            .product-info-benefits
-                                .product-info-benefits__col
-                                    +sidebarBtn('Характеристики изделия', 'product-characteristics')
-                                        +sidebarProductCharacteristics()
-                                    +sidebarBtn('Доставка и оплата', 'product-menu')
-                                        +sidebarProductMenu()
-                                .product-info-benefits__col
-                                    +sidebarBtn('Гарантия и возврат', 'product-warranty')
-                                        +sidebarProductWarranty()
-                                    +sidebarBtn('Уход за изделием', 'product-care')
-                                        +sidebarProductCare()
-            +goodsSlider()
-            +chosenDecorations()
+            .main__inner--product
+                .product
+                    .container
+                        .product__inner
+                            +productImagesSlider([{src: './images/content/products/rings/golden-stone/1.webp',srcset: './images/content/products/rings/golden-stone/1.webp 1x, ./images/content/products/rings/golden-stone/1@2x.webp 2x', alt: 'Кольцо Green Stone', class: 'product-images-slider-slide__img--position-left'},{src: './images/content/products/rings/golden-stone/2.webp',srcset: './images/content/products/rings/golden-stone/2.webp 1x, ./images/content/products/rings/golden-stone/2@2x.webp 2x', alt: 'Кольцо Green Stone'},{src: './images/content/products/rings/golden-stone/3.webp',srcset: './images/content/products/rings/golden-stone/3.webp 1x, ./images/content/products/rings/golden-stone/3@2x.webp 2x', alt: 'Кольцо Green Stone'}])
+                            .product-info
+                                .product-info-top
+                                    p.product-info-top__subtitle Артикул 123456
+                                    .product-info-top__inner
+                                        h1.product-info-top__title Серебряное массивное кольцо 
+                                            span green Stone
+                                        +price('35 000,00')
+                                .product-info__holder
+                                    ul.product-info__features
+                                        li.product-info__features-item Серебро 925 проба
+                                        li.product-info__features-item Средний вес 9,30 гр
+                                        li.product-info__features-item Вставка - Оникс 28 ct
+                                    .product-info-config
+                                        .product-info-config__item.product-info-config__item--color
+                                            p.product-info-config__item-title Цвет: Позолоченное серебро
+                                            .product-info-config__item-colors
+                                                +colorPick('#E9D590', 'beige', 'product-color', 'active')
+                                                +colorPick('#C8C8C8', 'gray', 'product-color')
+                                                +colorPick('#141318', 'black', 'product-color')
+                                        .product-info-config__item.product-info-config__item--size
+                                            p.product-info-config__item-title Размер
+                                            .product-info-config__item-size(data-sidebar-target="product-size")
+                                                .product-info-config__item-text__wrapper
+                                                    p.product-info-config__item-text 29,5
+                                                svg.product-info-config__item-icon
+                                                    use(xlink:href="./images/sprite.svg#triangle")
+                                            +sidebarProductSize()
+                                        .product-info-config__item.product-info-config__item--count
+                                            p.product-info-config__item-title Количество
+                                            +counter(1, 1, 5, 'product-count')
+                                    .product-info-actions
+                                        .product-info-actions__btns
+                                            +buttonFirst('Добавить в корзину')
+                                            +likeButton()
+                                        .product-info-actions__items
+                                            a.product-info-actions__item(href="#")
+                                                svg.product-info-actions__item-icon
+                                                    use(xlink:href="./images/sprite.svg#whatsapp")
+                                                .product-info-actions__item-text Начать чат со стилистом в WhatsApp
+                                            a.product-info-actions__item(href="#")
+                                                svg.product-info-actions__item-icon
+                                                    use(xlink:href="./images/sprite.svg#delivery")
+                                                .product-info-actions__item-text Доставка по РФ 2 - 3 дня
+                                .product-info-benefits
+                                    .product-info-benefits__col
+                                        +sidebarBtn('Характеристики изделия', 'product-characteristics')
+                                            +sidebarProductCharacteristics()
+                                        +sidebarBtn('Доставка и оплата', 'product-menu')
+                                            +sidebarProductMenu()
+                                    .product-info-benefits__col
+                                        +sidebarBtn('Гарантия и возврат', 'product-warranty')
+                                            +sidebarProductWarranty()
+                                        +sidebarBtn('Уход за изделием', 'product-care')
+                                            +sidebarProductCare()
+                +goodsSlider()
+                +chosenDecorations()
         +footer()
 
 

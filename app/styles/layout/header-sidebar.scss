@@ -12,12 +12,21 @@
     gap: 60px;
     padding: 20px 30px 30px 0;
     background-color: rgba(#000, .7);
-    backdrop-filter: blur(70px);
+    backdrop-filter: blur(20px);
     z-index: 2;
     transition: left variables.$transitionDuration variables.$transitionTimingFunc;
 
     &--visible {
         left: 0;
+    }
+
+    &--visible+.header-sidebar__overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
     }
 
     .search {
@@ -73,7 +82,8 @@
         gap: 25px;
 
         .menu-dropdown-list--visible {
-            margin: 15px 0 0 20px;
+            margin-top: 15px;
+            height: 220px;
         }
     }
 
@@ -88,7 +98,7 @@
         align-items: center;
         gap: 15px;
 
-        &__icon svg {
+        &__icon {
             width: 20px;
             height: 20px;
         }
@@ -130,7 +140,9 @@
     &__inner-page {
         .header-sidebar-top {
             &__text {
-                @include mixins.font(12px, 14px, rgba(variables.$color-fourth, .5));
+                @include mixins.font(12px, 14px, rgba(variables.$color-fourth, .5)) {
+                    text-transform: none;
+                }
 
                 svg {
                     display: block;
@@ -176,6 +188,12 @@
         &__list-item__dropdown--md.menu-item-dropdown {
             display: none;
         }
+    }
+}
+
+@media (min-width: 1921px) {
+    .header-sidebar {
+        min-width: 650px;
     }
 }
 

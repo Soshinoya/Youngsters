@@ -29,14 +29,17 @@
     gap: 15px;
     height: 0;
     overflow: hidden;
-
-    &--visible {
-        height: 100%;
-    }
+    margin-left: 20px;
+    transition: height $transitionDuration $transitionTimingFunc, margin $transitionDuration $transitionTimingFunc;
 
     &__item-link {
         @include font(14px, 16px, $color-fourth) {
             @extend %roboto-400;
+            transition: opacity $transitionDuration $transitionTimingFunc;
+        }
+
+        &:hover {
+            opacity: .7;
         }
     }
 }

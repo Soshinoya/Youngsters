@@ -60,6 +60,12 @@
         flex-direction: column;
         gap: 15px;
         overflow: hidden;
+
+        .card-small-main {
+            &__img {
+                background-color: variables.$color-sixth;
+            }
+        }
     }
 
     &__btn--active {

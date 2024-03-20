@@ -20,6 +20,10 @@ body {
         margin: 30px 0 100px;
     }
 
+    &__inner--product {
+        margin-bottom: 100px;
+    }
+
     &__inner--thanks,
     &__inner--order-paid,
     &__inner--order-created {
@@ -122,7 +126,8 @@ body {
     .main {
         &__inner--cart,
         &__inner--personal,
-        &__inner--personal-favorites {
+        &__inner--personal-favorites,
+        &__inner--product {
             margin-bottom: 90px;
         }
 
@@ -142,7 +147,8 @@ body {
     .main {
         &__inner--cart,
         &__inner--personal,
-        &__inner--personal-favorites {
+        &__inner--personal-favorites,
+        &__inner--product {
             margin-bottom: 80px;
         }
 
@@ -178,7 +184,8 @@ body {
     .main {
         &__inner--cart,
         &__inner--personal,
-        &__inner--personal-favorites {
+        &__inner--personal-favorites,
+        &__inner--product {
             margin-bottom: 70px;
         }
 

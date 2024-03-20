@@ -34,5 +34,10 @@
     &__list-item__link {
         @extend %text-style-first;
         color: variables.$color-fourth;
+        transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+        
+        &:hover {
+            opacity: .7;
+        }
     }
 }

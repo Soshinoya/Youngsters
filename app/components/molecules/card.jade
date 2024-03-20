@@ -12,7 +12,8 @@ mixin card(cardInfo)
                     use(xlink:href="./images/sprite.svg#heart-black")
         if cardInfo.isPlaque
             +plaque(cardInfo.plaqueTopText, cardInfo.plaqueBottomText)
-        .card__img(style="background-image: url(#{cardInfo.imgSrc});")
+        .card__img
+            img(src=cardInfo.imgSrc, srcset=cardInfo.imgSrcset alt=cardInfo.imgAlt)
         .card__info
             .card__info-title= cardInfo.title
             .price.card__info-price= cardInfo.price

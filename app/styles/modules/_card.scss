@@ -54,9 +54,11 @@
 
     &__img {
         height: 171px;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
+        width: 220px;
+
+        img {
+            @include mixins.image-default();
+        }
     }
 
     &__info {
@@ -112,7 +114,6 @@
         }
 
         &__img {
-            background-size: cover;
             height: 133px;
         }
 
@@ -127,9 +128,8 @@
         &--earrings {
             .card {
                 &__img {
-                    height: 140px;
+                    height: 160px;
                     width: 185px;
-                    background-position-y: bottom;
                 }
             }
         }

@@ -341,6 +341,15 @@ document.addEventListener('click', e => {
         searchBtn.classList.add('header-links__search--active')
     }
 
+    // Clear search-input value
+    const searchClear = e.target.closest('.search__clear')
+    if (searchClear) {
+        const input = searchClear.closest('.search')?.querySelector('.search__input')
+        if (input) {
+            input.value = ''
+        }
+    }
+
     // Size Button
     const sizeButton = e.target.closest('.size-button')
     if (sizeButton && !sizeButton?.classList?.contains('size-button--disabled')) {

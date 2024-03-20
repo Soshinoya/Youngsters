@@ -41,6 +41,7 @@ if (window.matchMedia('(max-width: 768px)').matches) {
 // Объект с данными для одного товара
 const singleProductData = {
     imgSrc: "./images/content/products/mas-ring.png",
+    imgSrcset: "./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",
     imgAlt: "Кольцо",
     title: "Кольцо YOUNGSTERS",
     price: "35 000,00",

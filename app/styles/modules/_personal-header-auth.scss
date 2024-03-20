@@ -11,7 +11,7 @@
     flex-direction: column;
     padding: 30px;
     background-color: rgba(#000, .7);
-    backdrop-filter: blur(70px);
+    backdrop-filter: blur(20px);
     transition: top variables.$transitionDuration variables.$transitionTimingFunc;
 
     &__title {
@@ -20,7 +20,7 @@
     }
 
     &--active {
-        top: 68px;
+        top: 62px;
     }
 }
 
@@ -62,9 +62,5 @@
     .personal-header-auth,
     .personal-header-unauth {
         right: 0 !important;
-
-        &--active {
-            top: 62px;
-        }
     }
 }
