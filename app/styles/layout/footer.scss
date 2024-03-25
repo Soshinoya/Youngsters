@@ -33,7 +33,7 @@
     width: 100%;
     justify-content: space-between;
     margin-left: auto;
-    
+
     &__list-wrapper,
     &__social {
         max-width: calc((921px - (120px * 2)) / 3);
@@ -59,6 +59,11 @@
     &__list-item__link {
         @include mixins.font(16px, 22px, variables.$color-fourth) {
             @extend %roboto-400;
+            transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+        }
+
+        &:hover {
+            opacity: .7;
         }
     }
 
@@ -79,6 +84,15 @@
         gap: 20px;
     }
 
+    &__social-icon {
+        transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+
+    &__social-icon,
     &__social-icon svg {
         width: 22px;
         height: 22px;

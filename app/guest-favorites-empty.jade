@@ -1,0 +1,53 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(href='./assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180')
+        link(type='image/png' href='./assets/favicon-32x32.png' rel='icon' sizes='32x32')
+        link(type='image/png' href='./assets/favicon-16x16.png' rel='icon' sizes='16x16')
+        link(href='./assets/site.webmanifest' rel='manifest')
+        title Youngsters - Избранное
+        link(href="css/main.min.css" rel="stylesheet")
+        script(src="js/minified/main.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+        include ./components/organisms/goodsSlider.jade
+
+        include ./components/molecules/categoriesHeader.jade
+        include ./components/molecules/card.jade
+
+        include ./components/atoms/breadcrumbs.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+                - var breadcrumbsPages = [{title: 'Главная',href: '#'},{title: 'Избранное',href: '#'}]
+                .container
+                    +breadcrumbs(breadcrumbsPages)
+            .main__inner--guest-favorites
+                section.favorites
+                    .container
+                        .favorites__inner
+                            h2.favorites__title Избранное
+                            .favorites__cards
+                                //- - var cardsData=[{imgSrc:"./images/content/products/mas-ring.png",imgSrcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"},{imgSrc:"./images/content/products/bracelet.png",imgSrcset:"./images/content/products/bracelet.png 1x, ./images/content/products/bracelet@2x.png 2x",imgAlt:"Браслет",title:"Браслет YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"bracelet",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/necklace.png",imgSrcset:"./images/content/products/necklace.png 1x, ./images/content/products/necklace@2x.png 2x",imgAlt:"Колье",title:"Колье YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"necklace",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/cuff.png",imgSrcset:"./images/content/products/cuff.png 1x, ./images/content/products/cuff@2x.png 2x",imgAlt:"Кафф",title:"Кафф YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"cuff",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/earrings.png",imgSrcset:"./images/content/products/earrings.png 1x, ./images/content/products/earrings@2x.png 2x",imgAlt:"Серьги",title:"Серьги YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"earrings",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"10%"},{imgSrc:"./images/content/products/mas-ring.png",imgSrcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",imgAlt:"Кольцо",title:"Кольцо YOUNGSTERS",price:"35 000,00",href:"/catalog.html",isFavorite:!0,type:"ring",isPlaque:!0,plaqueTopText:"Бестселлер",plaqueBottomText:"-10%"}];
+                                //- for cardInfo in cardsData
+                                //-     +card(cardInfo)
+                template#favorites-empty
+                    .favorites-empty
+                        svg.favorites-empty__icon
+                            use(xlink:href="./images/sprite.svg#heart-black-filled")
+                        p.favorites-empty__title Добавляйте в избранное
+                        p.favorites-empty__text Сохраняйте понравившиеся Вам изделия, проверяйте их наличие и скидки
+                +goodsSlider()
+        +footer()
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

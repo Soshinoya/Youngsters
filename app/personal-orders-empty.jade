@@ -1,0 +1,88 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(href='./assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180')
+        link(type='image/png' href='./assets/favicon-32x32.png' rel='icon' sizes='32x32')
+        link(type='image/png' href='./assets/favicon-16x16.png' rel='icon' sizes='16x16')
+        link(href='./assets/site.webmanifest' rel='manifest')
+        title Youngsters - Мои заказы
+        link(href="css/main.min.css" rel="stylesheet")
+        script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/personal-orders.min.js" defer)
+    body
+        include ./components/organisms/header.jade
+        include ./components/organisms/footer.jade
+        include ./components/organisms/headerSidebar.jade
+
+        include ./components/molecules/categoriesHeader.jade
+        include ./components/molecules/personalNav.jade
+        include ./components/molecules/cardSmall.jade
+
+        include ./components/atoms/buttons/buttonFirst.jade
+        include ./components/atoms/breadcrumbs.jade
+
+        +header('black')
+        +headerSidebar()
+        main.main
+            .categories-header__wrapper
+                +categoriesHeader()
+                - var breadcrumbsPages = [{title: 'Главная',href: '#'},{title: 'Мои заказы',href: '#'}]
+                .container
+                    +breadcrumbs(breadcrumbsPages)
+            .main__inner--personal
+                section.personal-orders
+                    .container
+                        .personal-container.personal-orders__inner
+                            +personalNav(2)
+                            .personal-orders-delivery
+                                .personal-section-header
+                                    svg.personal-section-header__icon
+                                        use(xlink:href="./images/sprite.svg#shopping-bag-black-filled")
+                                    p.personal-section-header__title Доставки
+                                .personal-orders__items
+                            .personal-orders-purchase
+                                .personal-section-header
+                                    svg.personal-section-header__icon
+                                        use(xlink:href="./images/sprite.svg#mobile-shopping")
+                                    p.personal-section-header__title Покупки
+                                .personal-orders__items
+        template#personal-orders-delivery--no-orders
+            .personal-orders-no-orders
+                svg.personal-orders-no-orders__icon
+                    use(xlink:href="./images/sprite.svg#shopping-bag-black-filled")
+                p.personal-orders-no-orders__title У вас еще нет заказов
+                p.personal-orders-no-orders__text
+                    |   Загляните в каталог, чтобы выбрать товары
+                    br
+                    |   Вдохновляйтесь нашими украшениями!
+                a.personal-orders-no-orders__btn(href="catalog.html")
+                    +buttonFirst('Начать шоппинг', '', 'button')
+        template#personal-orders-delivery--in-cart
+            .personal-orders-no-orders
+                svg.personal-orders-no-orders__icon
+                    use(xlink:href="./images/sprite.svg#shopping-bag-black-filled")
+                p.personal-orders-no-orders__title Ваши украшения еще в корзине
+                p.personal-orders-no-orders__text
+                    |   Оформите заказ в корзине и возвращайтесь,
+                    br
+                    br
+                    |   чтобы узнать, статус доставки
+                a.personal-orders-no-orders__btn(href="cart.html")
+                    +buttonFirst('Перейти в корзину', '', 'button')
+        template#personal-orders-delivery--no-purchases
+            .personal-orders-no-orders
+                svg.personal-orders-no-orders__icon
+                    use(xlink:href="./images/sprite.svg#mobile-shopping")
+                p.personal-orders-no-orders__title Совершайте покупки
+                p.personal-orders-no-orders__text
+                    |   В этом разделе вы сможете увидеть все купленные вами украшения. 
+                    br
+                    |   Найти их будет легко, а также можно повторить заказ или порекомендовать друзьям.
+        +footer()
+
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

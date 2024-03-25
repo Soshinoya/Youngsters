@@ -80,6 +80,11 @@
 
     &__link {
         text-decoration: underline;
+        transition: color variables.$transitionDuration variables.$transitionTimingFunc;
+
+        &:hover {
+            color: variables.$color-third;
+        }
     }
 }
 
