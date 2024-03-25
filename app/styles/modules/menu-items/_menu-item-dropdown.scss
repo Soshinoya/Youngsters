@@ -11,7 +11,7 @@
     &__text {
         position: relative;
         padding: 0;
-        transition: padding variables.$transitionDuration variables.$transitionTimingFunc;
+        transition: padding variables.$transitionDuration variables.$transitionTimingFunc, opacity variables.$transitionDuration variables.$transitionTimingFunc;
         user-select: none;
         @extend %text-style;
 

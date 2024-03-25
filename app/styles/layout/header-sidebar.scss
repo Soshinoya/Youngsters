@@ -68,6 +68,8 @@
 
         .menu-dropdown-list {
             gap: 25px;
+            margin-left: 0;
+            height: auto;
         }
 
         &__title {
@@ -119,6 +121,18 @@
     }
 
     &__list-item {
+
+        .menu-item {
+            transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
+        }
+
+        .menu-item,
+        .menu-item-dropdown__text {
+            &:hover {
+                opacity: .7;
+            }
+        }
+
         &__dropdown--md.menu-item-dropdown {
             justify-content: space-between;
 
