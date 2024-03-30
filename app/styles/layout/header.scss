@@ -18,7 +18,7 @@
         right: 0;
         left: 0;
         z-index: 1;
-        
+
         &::before {
             content: '';
             position: absolute;
@@ -297,11 +297,21 @@
 @media (max-width: 768px) {
     .header-nav {
         gap: 24px;
-        padding: 3px;
 
         &__logo,
         .menu-item-dropdown {
             display: none;
+        }
+
+        &__menu--md {
+            position: absolute;
+            padding: 20px;
+            left: 0;
+        }
+
+        &__search {
+            position: absolute;
+            left: 64px;
         }
     }
 
@@ -323,6 +333,13 @@
 }
 
 @media (max-width: 320px) {
+    .header-nav {
+        &__menu--md {
+            padding: 16px;
+        }
+    }
+
+    .header__logo--md,
     .header__logo--md svg {
         width: 173px;
         height: 17px;

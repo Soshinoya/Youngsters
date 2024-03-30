@@ -1,0 +1,26 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='apple-touch-icon' sizes='180x180' href='./assets/apple-touch-icon.png')
+        link(rel='icon' type='image/png' sizes='32x32' href='./assets/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='./assets/favicon-16x16.png')
+        link(rel='manifest' href='./assets/site.webmanifest')
+        title Youngsters
+        link(rel="stylesheet" href="css/main.min.css")
+        link(rel="stylesheet", href="https://unpkg.com/leaflet/dist/leaflet.css")
+        script(src="https://unpkg.com/leaflet/dist/leaflet.js" defer)
+        script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/ordering-map.min.js" defer)
+    body
+
+        include ./components/organisms/sidebarCompositions/sidebarOrderingMap.jade
+
+        main.main.main--ordering-map
+            #map(style="height: 100%;")
+        +sidebarOrderingMap()
+
+    //- svg
+    //- use(xlink:href="./images/sprite.svg")

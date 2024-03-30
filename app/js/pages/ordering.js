@@ -1,5 +1,5 @@
-let deliveryPointAddress = 'г. Москва, м. Текстильщики, 8-я улица Текстильщиков, д. 10'
-let shopAddress = 'г. Москва, м. Текстильщики, 8-я улица Текстильщиков, д. 610'
+let deliveryPointAddress = localStorage.getItem('delivery-point-address') || ''
+let shopAddress = localStorage.getItem('shop-address') || ''
 
 // Other recipient
 const otherRecipientFields = document.querySelector('.ordering-form-section--other-recipient__fields')
@@ -37,6 +37,16 @@ const setTextAndBtnTextContentToReceiptMethod = () => {
     const deliveryPointBtn = document.getElementById('ordering-form-choose-delivery-point')
     const shopBtn = document.getElementById('ordering-form-choose-shop')
 
+    deliveryPointBtn.addEventListener('click', () => {
+        localStorage.setItem('ordering-map-type', 'delivery-point')
+        location.href = 'ordering-map.html'
+    })
+
+    shopBtn.addEventListener('click', () => {
+        localStorage.setItem('ordering-map-type', 'shop')
+        location.href = 'ordering-map.html'
+    })
+
     // Delete the current address if it exists
     const currentAddress = document.querySelector('.ordering-form-section__text--address')
     if (currentAddress) currentAddress.remove()
@@ -69,7 +79,7 @@ const setTextAndBtnTextContentToReceiptMethod = () => {
     if (shopAddress && activeRadio.value === 'shop') {
         if (window.matchMedia('(max-width: 650px)').matches) {
             paragraph.textContent = shopAddress
-            shopBtn.querySelector('p').textContent = 'Изменить ПВЗ'
+            shopBtn.querySelector('p').textContent = 'Изменить магазин'
             rootSmShopAddress.insertAdjacentElement('beforeend', paragraph)
         } else {
             paragraph.textContent = `МАГАЗИН: ${shopAddress}`

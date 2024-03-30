@@ -48,6 +48,11 @@ body {
     &--catalog {
         padding-top: 95px;
     }
+
+    &--ordering-map {
+        padding: 0 !important;
+        z-index: 1;
+    }
 }
 
 body {

@@ -263,7 +263,7 @@ const togglePersonalHeaderAuth = () => {
     }
 }
 
-headerLinksUser.addEventListener('click', togglePersonalHeaderAuth)
+headerLinksUser?.addEventListener('click', togglePersonalHeaderAuth)
 
 window.addEventListener('resize', () => {
     !window.matchMedia('(max-width: 320px)').matches && setPaddingFromContainerToElem(document.querySelector('aside.header-sidebar'), 'paddingLeft')
@@ -297,7 +297,7 @@ document.addEventListener('click', e => {
         dropdownTargetValue === 'catalog-filter' && toggleBackgroundBlur('add')
 
         dropdownElem.classList.toggle('menu-item-dropdown--active')
-        dropdownTargetList?.classList.toggle(dropdownTargetValue === 'header-sidebar' ? 'header-sidebar--visible' : 'menu-dropdown-list--visible')
+        dropdownTargetList?.classList?.toggle(dropdownTargetValue === 'header-sidebar' ? 'header-sidebar--visible' : 'menu-dropdown-list--visible')
     }
 
     // Close header-sidebar if clicked outside
@@ -326,7 +326,7 @@ document.addEventListener('click', e => {
     const headerWrapper = document.querySelector('.header__wrapper')
     const searchOverlay = document.querySelector('.search-overlay')
     const searchBtn = document.querySelector('.header-links__search')
-    if (searchOverlay.classList.contains('search-overlay--visible')) {
+    if (searchOverlay?.classList?.contains('search-overlay--visible')) {
         if (!e.target.closest('.search-overlay') || e.target.closest('.search__close')) {
             headerWrapper.classList.remove('header-search__wrapper')
             searchOverlay.classList.remove('search-overlay--visible')
@@ -336,9 +336,9 @@ document.addEventListener('click', e => {
         e.target.closest('.header-links__search')
         || e.target.closest('.header-nav__search')
     ) {
-        headerWrapper.classList.add('header-search__wrapper')
-        searchOverlay.classList.add('search-overlay--visible')
-        searchBtn.classList.add('header-links__search--active')
+        headerWrapper?.classList?.add('header-search__wrapper')
+        searchOverlay?.classList?.add('search-overlay--visible')
+        searchBtn?.classList?.add('header-links__search--active')
     }
 
     // Clear search-input value

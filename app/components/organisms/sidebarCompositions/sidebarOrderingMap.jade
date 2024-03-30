@@ -1,0 +1,13 @@
+include ../../templates/sidebar.jade
+
+include ../../atoms/buttons/buttonFirst.jade
+include ../../atoms/checkbox.jade
+
+mixin sidebarOrderingMap()
+    +sidebar('ordering-map', 'Выберите магазин')
+        .sidebar-ordering-map
+            ul.sidebar-ordering-map__list
+        .sidebar-bottom
+            +buttonFirst('Выбрать', 'sidebar-ordering-map-submit')
+        template#sidebar-ordering-map-checkbox
+            +checkbox('', '', 'radio', '')

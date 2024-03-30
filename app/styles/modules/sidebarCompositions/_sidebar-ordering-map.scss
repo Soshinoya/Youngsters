@@ -1,0 +1,33 @@
+@use '../../base/variables.scss';
+
+.main--ordering-map .leaflet-marker-icon {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.sidebar-ordering-map {
+    min-height: 100%;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__list-item {
+        .checkbox {
+            margin-bottom: 15px;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-left: 30px;
+
+            p {
+                @extend %text-style-first;
+            }
+        }
+    }
+}
