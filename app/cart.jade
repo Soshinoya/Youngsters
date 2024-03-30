@@ -11,6 +11,7 @@ html(lang='ru')
         title Youngsters - Корзина
         link(rel="stylesheet" href="css/main.min.css")
         script(src="js/minified/main.min.js" defer)
+        script(src="js/minified/cart.min.js" defer)
     body
         include ./components/organisms/header.jade
         include ./components/organisms/footer.jade
@@ -45,7 +46,7 @@ html(lang='ru')
                             .cart-products
                                 .form-title.cart-section__title Ваша корзина
                                 .cart-products__items
-                                    - var cartProducts=[{cardType:"config",productData:{id:12345,image:{src:"./images/content/products/mas-ring.png",srcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",alt:"Украшение Youngsters"},features:{material:"Серебро 925",insert:"Оникс 28 ct",weight:"Вес - 9,30 гр"},price:{value:"35 000,00",state:""},priceOld:{value:'', state:''},title:"Серебряное массивное кольцо Black Stone",size:29,amount:1,maxAmount:10}},{cardType:"config",productData:{id:12345,image:{src:"./images/content/products/mas-ring.png",srcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",alt:"Украшение Youngsters"},features:{material:"Серебро 925",insert:"Оникс 28 ct",weight:"Вес - 9,30 гр"},price:{value:"35 000,00",state:"discount"},priceOld:{value: "35 000,00",state:'old'},title:"Серебряное массивное кольцо Black Stone",size:29,amount:1,maxAmount:10}},{cardType:"config",productData:{id:12345,image:{src:"./images/content/products/mas-ring.png",srcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",alt:"Украшение Youngsters"},features:{material:"Серебро 925",insert:"Оникс 28 ct",weight:"Вес - 9,30 гр"},price:{value:"35 000,00",state:""},priceOld:{value:'', state:''},title:"Серебряное массивное кольцо Black Stone",size:29,amount:1,maxAmount:10}}];
+                                    - var cartProducts=[{cardType:"config",productData:{id:0,image:{src:"./images/content/products/mas-ring.png",srcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",alt:"Украшение Youngsters"},features:{material:"Серебро 925",insert:"Оникс 28 ct",weight:"Вес - 9,30 гр"},price:{value:"5 000,00",state:""},priceOld:{value:'', state:''},title:"Серебряное массивное кольцо Black Stone",size:29,amount:1,maxAmount:10}},{cardType:"config",productData:{id:1,image:{src:"./images/content/products/mas-ring.png",srcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",alt:"Украшение Youngsters"},features:{material:"Серебро 925",insert:"Оникс 28 ct",weight:"Вес - 9,30 гр"},price:{value:"15 000,00",state:"discount"},priceOld:{value: "30 000,00",state:'old'},title:"Серебряное массивное кольцо Black Stone",size:29,amount:1,maxAmount:10}},{cardType:"config",productData:{id:2,image:{src:"./images/content/products/mas-ring.png",srcset:"./images/content/products/mas-ring.png 1x, ./images/content/products/mas-ring@2x.png 2x",alt:"Украшение Youngsters"},features:{material:"Серебро 925",insert:"Оникс 28 ct",weight:"Вес - 9,30 гр"},price:{value:"35 000,00",state:""},priceOld:{value:'', state:''},title:"Серебряное массивное кольцо Black Stone",size:29,amount:1,maxAmount:10}}];
                                     for cartProduct in cartProducts
                                         +cardSmall(cartProduct.cardType, cartProduct.productData)
                             .cart-amount__wrapper
@@ -55,13 +56,13 @@ html(lang='ru')
                                 .cart-amount
                                     .form-title.cart-section__title Сумма заказа
                                     .cart-amount__info
-                                        .cart-amount__item
+                                        .cart-amount__item.cart-amount__item--products-sum
                                             p.cart-amount__text Товары на сумму
                                             +price('35 000,00')
-                                        .cart-amount__item
+                                        .cart-amount__item.cart-amount__item--discount
                                             p.cart-amount__text Скидка
                                             +price('35 000,00', 'old')
-                                        .cart-amount__item
+                                        .cart-amount__item.cart-amount__item--total
                                             p.cart-amount__text Итого
                                             +price('35 000,00')
                                     +buttonFirst('Оформить заказ')

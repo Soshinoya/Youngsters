@@ -32,9 +32,11 @@ mixin cardSmall(cardType, productData)
                 else
                     p.card-small-main__amount= productData.amount
                 .card-small-main__price
-                    +price(productData.price.value, productData.price.state)
+                    .card-small__price--actual
+                        +price(productData.price.value, productData.price.state)
                     if productData.priceOld.value
-                        +price(productData.priceOld.value, productData.priceOld.state)
+                        .card-small__price--old
+                            +price(productData.priceOld.value, productData.priceOld.state)
         if cardType == 'config'
             .card-small-actions
                 .card-small-actions__item
