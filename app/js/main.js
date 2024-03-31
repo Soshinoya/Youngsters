@@ -181,15 +181,23 @@ const inputHandler = input => {
         phoneMask = IMask(input, phoneMaskOptions)
 
         input.addEventListener('blur', () => {
-            if (input.value === '+7 (000) 000-00-00') {
-                console.log(input.value)
+            const trimmedValue = input.value.trim()
+            const isError = isRequired && (trimmedValue === '' || trimmedValue === '+7 (') || trimmedValue === '+7 (000) 000-00-00'
+        
+            if (isError) {
                 input.classList.add('input--error', 'input--active')
                 phoneMask.destroy()
-                input.value += ' (Некорректный ввод данных)'
+        
+                if (trimmedValue === '' || trimmedValue === '+7 (') {
+                    input.value = 'Обязательное поле'
+                } else if (trimmedValue === '+7 (000) 000-00-00') {
+                    input.value += ' (Некорректный ввод данных)'
+                }
             } else {
                 input.classList.remove('input--error')
             }
-
+        
+            // Удаление классов, если поле пустое после обработки
             if (input.value === '') {
                 input.classList.remove('input--error', 'input--active')
             }

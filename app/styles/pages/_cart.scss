@@ -65,6 +65,16 @@
     }
 }
 
+@media (max-width: 1640px) {
+    .cart-amount {
+        &__sidebar-btns {
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 5px;
+        }
+    }
+}
+
 @media (max-width: 1440px) {
     .cart {
         padding-bottom: 90px;
@@ -76,6 +86,12 @@
 
     .cart-products {
         width: 894px;
+    }
+
+    .cart-amount {
+        &__sidebar-btns {
+            align-items: center;
+        }
     }
 }
 

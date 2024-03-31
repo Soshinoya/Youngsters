@@ -24,7 +24,12 @@
         }
 
         .irs-handle>i:first-child {
-            display: none;
+            top: -5px;
+            width: 13px;
+            height: 13px;
+            background-color: #C2C0C1;
+            z-index: 2;
+            border-radius: 50%;
         }
         
         .irs-line,

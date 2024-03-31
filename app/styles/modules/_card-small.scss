@@ -50,7 +50,8 @@
 
     &__subtitle,
     &__feature,
-    &__size {
+    &__size,
+    &__amount {
         @extend %text-style-first;
     }
 
@@ -176,7 +177,8 @@
         &__subtitle,
         &__feature,
         &__size,
-        &__title {
+        &__title,
+        &__amount {
             font-size: 12px;
             line-height: 14px;
         }

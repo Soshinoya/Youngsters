@@ -43,8 +43,8 @@ mixin sidebarProductSizeOrder()
             .sidebar-product-size-order-contacts
                 p.sidebar-product-size-order__title Предпочтительный способ связи
                 .sidebar-product-size-order-contacts__variants
-                    +checkbox('telegram', 'Telegram', 'checkbox', 'product-size-order-data-telegram')
-                    +checkbox('whatsapp', 'Whatsapp', 'checkbox', 'product-size-order-data-whatsapp')
+                    +checkbox('telegram', 'Telegram', 'radio', 'product-size-order-data-connect')
+                    +checkbox('whatsapp', 'Whatsapp', 'radio', 'product-size-order-data-connect')
         +sidebarProductSizeSent()
         .sidebar-bottom
             +buttonSecond('Очистить', 'sidebar-product-size-order-clear')

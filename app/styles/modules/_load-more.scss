@@ -11,6 +11,20 @@
 
     .menu-item-dropdown {
         color: variables.$color-first;
+
+        &:hover .menu-item-dropdown {
+            &__text {
+                padding: 0;
+
+                &::before {
+                    left: -100%;
+                }
+            }
+
+            &__icon {
+                transform: rotate(0);
+            }
+        }
     }
 
     &__btn {

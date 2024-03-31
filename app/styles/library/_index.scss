@@ -41,6 +41,29 @@
     width: 337px;
 }
 
+@media (max-width: 768px) {
+    .product-images-slider {
+        .swiper {
+            width: 100%;
+            height: 700px;
+        }
+
+        .swiper-slide {
+            height: 700px !important;
+        }
+
+        &--fullscreen {
+            .swiper {
+                height: 100%;
+            }
+
+            .swiper-slide {
+                height: 100% !important;
+            }
+        }
+    }
+}
+
 @media (max-width: 320px) {
     .personal-details-address-slider .swiper-slide {
         width: 100%;
