@@ -17,6 +17,7 @@
         gap: 10px;
         color: variables.$color-first;
         background-color: variables.$color-sixth;
+        border-radius: 0;
         border: 1px solid rgba(variables.$black-color, .3);
         transition-property: color;
         transition-property: background-color;

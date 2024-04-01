@@ -1,19 +1,17 @@
 include ../atoms/plaque.jade
 
 mixin card(cardInfo)
-    a(class="card card--#{cardInfo.type}" + (cardInfo.isFavorite ? " card--favorite" : '') href="#{cardInfo.href}")
-        if cardInfo.isFavorite
-            .card__icon
-                svg
-                    use(xlink:href="./images/sprite.svg#close-black")
-        else
-            .card__icon
-                svg
-                    use(xlink:href="./images/sprite.svg#heart-black")
+    div(class="card card--#{cardInfo.type}" + (cardInfo.isFavorite ? " card--favorite" : ''))
+        .card__icon.card__icon--favorite
+            svg
+                use(xlink:href="./images/sprite.svg#close-black")
+        .card__icon.card__icon--heart
+            svg
+                use(xlink:href="./images/sprite.svg#heart-black")
         if cardInfo.isPlaque
             +plaque(cardInfo.plaqueTopText, cardInfo.plaqueBottomText)
-        .card__img
+        a.card__img(href="#{cardInfo.href}")
             img(src=cardInfo.imgSrc, srcset=cardInfo.imgSrcset alt=cardInfo.imgAlt)
-        .card__info
+        a.card__info(href="#{cardInfo.href}")
             .card__info-title= cardInfo.title
             .price.card__info-price= cardInfo.price

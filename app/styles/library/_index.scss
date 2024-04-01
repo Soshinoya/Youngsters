@@ -64,6 +64,23 @@
     }
 }
 
+@media (max-width: 414px) {
+    .product-images-slider {
+        .swiper {
+            height: 510px;
+        }
+    }
+}
+
+
+@media (max-width: 320px) {
+    .product-images-slider {
+        .swiper {
+            height: 364px;
+        }
+    }
+}
+
 @media (max-width: 320px) {
     .personal-details-address-slider .swiper-slide {
         width: 100%;

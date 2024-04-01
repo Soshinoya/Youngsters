@@ -442,6 +442,18 @@ document.addEventListener('click', e => {
             }
         }
     }
+
+    const cardIconHeart = e.target.closest('.card__icon--heart')
+    if (cardIconHeart) {
+        const card = cardIconHeart.closest('.card')
+        card.classList.add('card--favorite')
+    }
+
+    const cardIconClose = e.target.closest('.card__icon--favorite')
+    if (cardIconClose) {
+        const card = cardIconClose.closest('.card')
+        card.classList.remove('card--favorite')
+    }
 })
 
 const counters = document.querySelectorAll('.counter')

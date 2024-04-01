@@ -92,6 +92,22 @@
         }
     }
 
+    &__icon--favorite {
+        display: none;
+    }
+
+    &--favorite {
+        .card {
+            &__icon {
+                display: none;
+
+                &--favorite {
+                    display: block;
+                }
+            }
+        }
+    }
+
     &:hover {
         .card {
 
