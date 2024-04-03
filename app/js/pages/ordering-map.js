@@ -118,18 +118,20 @@ const toggleAddressContent = point => {
     selectedAddressLi.insertAdjacentHTML('beforeend', descriptionHTML)
 }
 
+// Открываем sidebar
+toggleSidebar('add', 'ordering-map')
+document.querySelector('.background-blur--active')?.classList?.add('d-none');
+
 (mapType === 'delivery-point' ? deliveryPoints : shops).forEach(point => {
     addAddressToSidebar(point)
     // Добавление маркеров для каждого пункта выдачи на карту
     const marker = L.marker([point.lat, point.lng]).addTo(map)
 
-    marker._icon.setAttribute('data-sidebar-target', 'ordering-map')
+    // marker._icon.setAttribute('data-sidebar-target', 'ordering-map')
     marker._icon.setAttribute('src', './images/icons/map-marker.svg')
 
     // Обработчик клика на маркере
     marker.on('click', () => {
-        // Открываем sidebar
-        toggleSidebar('add', 'ordering-map')
         // Изменяем активный адрес
         toggleAddressContent(point)
     })

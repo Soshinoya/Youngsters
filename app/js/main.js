@@ -377,6 +377,9 @@ document.addEventListener('click', e => {
     const sidebarPage = e.target.closest('[data-sidebar-page]')
     const visibleSidebar = document.querySelector('.sidebar--visible')
     if (sidebarClose || (!sidebarPage && visibleSidebar)) {
+        // Если sidebar ordering-map открыт - то дальше ничего не делаем
+        if (document.querySelector('[data-sidebar-page="ordering-map"]')?.classList?.contains('sidebar--visible')) return
+
         const visibleSidebars = document.querySelectorAll('.sidebar--visible')
         visibleSidebars.forEach(sidebar => sidebar.classList.remove('sidebar--visible'))
         toggleBackgroundBlur('remove')

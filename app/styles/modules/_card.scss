@@ -92,6 +92,10 @@
         }
     }
 
+    &__icon {
+        cursor: pointer;
+    }
+
     &__icon--favorite {
         display: none;
     }

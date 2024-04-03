@@ -6,6 +6,18 @@
     flex-direction: column;
     gap: 5px;
     color: variables.$color-first;
+
+    &--static {
+        .card-small-main {
+            gap: 0;
+        }
+        
+        .card-small-actions {
+            &__icon {
+                display: none;
+            }
+        }
+    }
 }
 
 .card-small-main {

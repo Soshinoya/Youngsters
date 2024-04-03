@@ -153,6 +153,10 @@
     border-bottom: 1px solid rgba(variables.$color-sixth, .3);
 
     &__inner-page {
+        svg {
+            display: none;
+        }
+
         .header-sidebar-top {
             &__text {
                 @include mixins.font(12px, 14px, rgba(variables.$color-fourth, .5)) {
@@ -183,7 +187,7 @@
         }
     }
 
-    svg {
+    svg[data-dropdown-close="header-sidebar"] {
         position: absolute;
         right: -15px;
         padding: 15px;

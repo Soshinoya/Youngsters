@@ -322,9 +322,14 @@
     }
 }
 
+@media (max-width: 550px) {
+    .header-nav__search {
+        display: none;
+    }
+}
+
 @media (max-width: 480px) {
 
-    .header-nav__search,
     .header-links__user,
     .header-links__heart,
     .header-links__icon-counter {

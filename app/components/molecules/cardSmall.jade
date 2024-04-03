@@ -2,7 +2,7 @@ include ../atoms/price.jade
 include ../atoms/counter.jade
 
 mixin cardSmall(cardType, productData)
-    .card-small(data-product-id=productData.id)
+    div(class=("card-small " + cardType ? "card-small--#{cardType}" : "") data-product-id=productData.id)
         .card-small-main
             .card-small-main__info
                 .card-small-main__img
@@ -30,7 +30,9 @@ mixin cardSmall(cardType, productData)
                 if cardType == 'config'
                     +counter(productData.amount, 1, productData.maxAmount, 'product-counter')
                 else
-                    p.card-small-main__amount= productData.amount
+                    p.card-small-main__amount
+                        =   productData.amount
+                        |   шт
                 .card-small-main__price
                     .card-small__price--actual
                         +price(productData.price.value, productData.price.state)

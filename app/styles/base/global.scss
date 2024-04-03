@@ -55,6 +55,10 @@ body {
     }
 }
 
+.main--ordering-map + [data-sidebar-page="ordering-map"] [data-sidebar-close="ordering-map"] {
+    display: none;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -219,7 +223,7 @@ body {
 
 @media (max-width: 320px) {
     .main {
-        padding-top: 43px;
+        padding-top: 42px;
 
         &__inner--thanks,
         &__inner--order-paid,
