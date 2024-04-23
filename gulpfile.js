@@ -82,7 +82,6 @@ function generalScripts() {
     'node_modules/nouislider/dist/nouislider.js',
     'node_modules/imask/dist/imask.js',
     'node_modules/leaflet/dist/leaflet.js',
-    'app/js/minified/cart-ex.min.js',
     'app/js/service/*.js',
     'app/js/main.js'
   ])
