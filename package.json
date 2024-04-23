@@ -34,6 +34,7 @@
   "dependencies": {
     "imask": "^7.5.0",
     "ion-rangeslider": "^2.3.1",
-    "leaflet": "^1.9.4"
+    "leaflet": "^1.9.4",
+    "nouislider": "^15.7.1"
   }
 }

@@ -1,5 +1,5 @@
-@use '../base/variables.scss';
-@use '../utils/mixins.scss';
+@use "../base/variables.scss";
+@use "../utils/mixins.scss";
 
 .product-images-slider {
     width: 870px;
@@ -75,23 +75,40 @@
         }
     }
 
+    // &__icon {
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     opacity: 0;
+    //     cursor: pointer;
+
+    //     &--md {
+    //         display: none;
+    //     }
+
+    //     &,
+    //     svg {
+    //         width: 40px;
+    //         height: 40px;
+    //     }
+    // }
+
     &__icon {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(0, 0);
+        top: unset;
+        left: unset;
+        bottom: 20px;
+        right: 20px;
         opacity: 0;
-        transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
         cursor: pointer;
-
-        &--md {
-            display: none;
-        }
+        transition: opacity variables.$transitionDuration variables.$transitionTimingFunc;
 
         &,
         svg {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
         }
     }
 
@@ -184,23 +201,27 @@
             height: 700px;
         }
 
+        // &__icon {
+        //     display: none;
+
+        //     &--md {
+        //         display: block;
+        //         transform: translate(0, 0);
+        //         top: unset;
+        //         left: unset;
+        //         bottom: 20px;
+        //         right: 20px;
+
+        //         &,
+        //         svg {
+        //             width: 30px;
+        //             height: 30px;
+        //         }
+        //     }
+        // }
+
         &__icon {
-            display: none;
-
-            &--md {
-                display: block;
-                transform: translate(0, 0);
-                top: unset;
-                left: unset;
-                bottom: 20px;
-                right: 20px;
-
-                &,
-                svg {
-                    width: 30px;
-                    height: 30px;
-                }
-            }
+            opacity: 1;
         }
     }
 }

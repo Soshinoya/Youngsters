@@ -1,61 +1,38 @@
-@use '../base/variables.scss';
+@use "../base/variables.scss";
 
 .range-slider {
-    .irs--flat {
+    .noUi-target {
+        border: none;
+        background-color: rgba(variables.$color-first, 0.2);
+    }
+
+    .noUi-horizontal {
+        height: 6px;
+    }
+
+    .noUi-connect {
+        background-color: variables.$color-third;
+        top: 1px;
+    }
+
+    .noUi-horizontal .noUi-handle {
+        width: 14px;
+        height: 14px;
+        right: -10px;
+        top: -3px;
+        background: #c2c0c1;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: none;
+        -webkit-tap-highlight-color: unset;
 
         &::before,
         &::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            width: 13px;
-            height: 13px;
-            background-color: #C2C0C1;
-            z-index: 2;
-            border-radius: 50%;
-        }
-        
-        &::before {
-            left: -4px;
-        }
-        
-        &::after {
-            right: -4px;
-        }
-
-        .irs-handle>i:first-child {
-            top: -5px;
-            width: 13px;
-            height: 13px;
-            background-color: #C2C0C1;
-            z-index: 2;
-            border-radius: 50%;
-        }
-        
-        .irs-line,
-        .irs-bar {
-            height: 4px;
-        }
-        
-        .irs-line {
-            background-color: rgba(variables.$color-first, .2);
-        }
-
-        .irs-bar {
-            background-color: variables.$color-third;
+            display: none;
         }
     }
 
-    .irs-single,
-    .irs-min,
-    .irs-max {
-        display: none;
-    }
-
-    .irs-handle {
-        height: 4px;
-        top: 25px;
-        background-color: variables.$color-third;
-        cursor: pointer;
+    [disabled] .noUi-handle {
+        cursor: not-allowed;
     }
 }

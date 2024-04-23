@@ -79,7 +79,7 @@ function generalScripts() {
   return src([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/swiper/swiper-bundle.js',
-    'node_modules/ion-rangeslider/js/ion.rangeSlider.js',
+    'node_modules/nouislider/dist/nouislider.js',
     'node_modules/imask/dist/imask.js',
     'node_modules/leaflet/dist/leaflet.js',
     'app/js/minified/cart-ex.min.js',

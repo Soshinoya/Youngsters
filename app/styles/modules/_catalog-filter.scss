@@ -1,5 +1,5 @@
-@use '../base/variables.scss';
-@use '../utils/mixins.scss';
+@use "../base/variables.scss";
+@use "../utils/mixins.scss";
 
 .catalog-filter {
     min-width: 436px;
@@ -53,7 +53,7 @@
         align-items: center;
         justify-content: space-between;
         padding-bottom: 15px;
-        border-bottom: 1px solid rgba(variables.$color-first, .15);
+        border-bottom: 1px solid rgba(variables.$color-first, 0.15);
     }
 
     svg {
@@ -91,21 +91,16 @@
 
     &--price {
         .catalog-filter-section {
-            &__title {
-                margin-bottom: 0;
-            }
-
             &__text {
                 position: relative;
-                margin-top: 10px;
                 padding-right: 20px;
 
                 &::after {
-                    content: '';
+                    content: "";
                     position: absolute;
                     top: 50%;
                     transform: translateY(-50%);
-                    @include mixins.bg-img(18px, 18px, '../images/sprite.svg#rub-black', no-repeat, cover, center)
+                    @include mixins.bg-img(18px, 18px, "../images/sprite.svg#rub-black", no-repeat, cover, center);
                 }
             }
 
@@ -115,6 +110,10 @@
                 gap: 10px;
             }
         }
+    }
+
+    .range-slider {
+        margin-bottom: 10px;
     }
 }
 

@@ -1,15 +1,21 @@
 const resultPriceFormatter = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 })
 
-$('#range-slider--filter-price').ionRangeSlider({
-    min: 10000,
-    max: 500000,
-    step: 10000,
-    from: 50000,
-    onStart: data => {
-        $('#filter-price--from').text(resultPriceFormatter.format(data.from))
-        $('#filter-price--to').text(resultPriceFormatter.format(data.to))
+const priceSlider = document.getElementById('range-slider--filter-price')
+
+const testSlider = noUiSlider.create(priceSlider, {
+    start: [10000, 100000], // Начальные значения для трех ползунков
+    connect: true, // Подключение между ползунками
+    range: {
+        'min': 10000,
+        'max': 100000
     },
-    onChange: data => $('#filter-price--to').text(resultPriceFormatter.format(data.from))
+    step: 1000,
+    behaviour: 'drag'
+})
+
+priceSlider.noUiSlider.on('update', values => {
+    $('#filter-price--from').text(resultPriceFormatter.format(values[0]))
+    $('#filter-price--to').text(resultPriceFormatter.format(values[1]))
 })
 
 // Инициализация переменных

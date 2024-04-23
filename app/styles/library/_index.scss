@@ -1,8 +1,7 @@
 @use '../base/variables.scss';
 
 @forward '../../../node_modules/swiper/swiper.scss';
-@forward '../../../node_modules/ion-rangeslider/css/ion.rangeSlider';
-// @forward '../../../node_modules/leaflet/dist/leaflet.css';
+@forward '../../../node_modules/nouislider/dist/nouislider.css';
 
 .swiper-pagination-bullet {
     display: block;
@@ -86,4 +85,8 @@
     .personal-details-address-slider .swiper-slide {
         width: 100%;
     }
+}
+
+.product-images-slider.product-images-slider--fullscreen .swiper {
+    height: 100%;
 }
